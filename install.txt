@@ -1,0 +1,5 @@
+npm i @angular/tsc-wrapped
+npm i enhanced-resolve
+npm install loader-utils
+npm install  autoprefixer
+
