@@ -1,0 +1,315 @@
+.page-settings {
+  padding-top: 26px;
+  h1 {
+    margin-bottom: 28px;
+  }
+}
+.form_offer_available {
+  margin-bottom: 18px;
+  &_mehod {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 14px;
+    font-size: 12px;
+    color: #3b3b3b;
+    input {
+      margin: 0 4px 0 0;
+      position: relative;
+      top: 1px;
+    }
+  }
+}
+.form_offer_pay {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 48px;
+  > div {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  &_cicle {
+    width: 249px;
+    position: relative;
+    >select{
+      display: block;
+      width: 100%;
+      height: 34px;
+      background-color: white;
+      border: 1px solid #d8d8d8;
+      box-sizing: border-box;
+      padding: 0 28px 0 9px;
+      font-size: 12px;
+      color: #999999;
+      cursor: pointer;
+    }
+    .Error{
+      display:none;
+      position: absolute;
+      width: 127px;
+      top: 29px;
+      left: 83px;
+      border: 1px solid black;
+      padding: 5px 10px 5px 10px;
+      background-color: #fff;
+      z-index: 100;
+      font-size: 11px;
+    }
+    .error{
+      position: absolute;
+      right: 13px;
+      top: 12px;
+      @include sp__warning_error;
+    }
+  }
+  &_send {
+    width: 270px;
+    position: relative;
+    >select{
+      display: block;
+      width: 100%;
+      height: 34px;
+      background-color: white;
+      border: 1px solid #d8d8d8;
+      box-sizing: border-box;
+      padding: 0 28px 0 9px;
+      font-size: 12px;
+      color: #999999;
+      cursor: pointer;
+    }
+    .Error{
+      display:none;
+      position: absolute;
+      width: 127px;
+      top: 29px;
+      left: 100px;
+      border: 1px solid black;
+      padding: 5px 10px 5px 10px;
+      background-color: #fff;
+      z-index: 100;
+      font-size: 11px;
+    }
+    .error{
+      position: absolute;
+      right: 13px;
+      top: 12px;
+      @include sp__warning_error;
+    }
+  }
+  .question {
+    margin: 0 10px 0 5px;
+  }
+}
+.form_search {
+  .form_offer_list {
+    margin-bottom: 26px;
+  }
+}
+.faq-tabs {
+  width: 530px;
+  &_head {
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: stretch;
+      li {
+        width: 14.28%;
+        height: 19px;
+        box-sizing: border-box;
+        list-style: none;
+        border-right: 1px solid #eeeeee;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &:first-child {
+          border-left: 1px solid #eeeeee;
+        }
+        span {
+          display: inline-block;
+        }
+        &:hover, &.active {
+          color: #2dc3dc;
+          .tab-stat {
+            @include sp__stat_blue;
+          }
+          .tab-partner {
+            @include sp__partners_blue;
+          }
+          .tab-offer {
+            @include sp__offer_blue;
+          }
+          .tab-pay {
+            @include sp__Coin_stack_blue;
+          }
+          .tab-error {
+            background-color: #2dc3dc;
+          }
+          .tab-setting {
+            @include sp__settings_blue;
+          }
+        }
+      }
+    }
+  }
+  &_qa {
+    padding: 27px 0;
+    &_item {
+      line-height: 17px;
+      padding: 0 0 10px 20px;
+      &.active {
+        .faq-tabs_qa_question {
+          &:before {
+            @include sp__del_circle_14-14;
+          }
+        }
+        .faq-tabs_qa_content {
+          display: block;
+        }
+      }
+    }
+    &_question {
+      cursor: pointer;
+      margin-left: -20px;
+      padding-left: 20px;
+      position: relative;
+      span {
+        border-bottom: 2px dotted #43c9e0;
+      }
+      &:before {
+        @include sp__add_14-14;
+        position: absolute;
+        top: 1px;
+        left: 0;
+      }
+    }
+    &_content {
+      border-bottom: 1px solid #e0e0e0;
+      display: none;
+    }
+    &_answer {
+      margin-bottom: 7px;
+      >*:last-child {
+        margin-bottom: 0;
+      }
+    }
+    &_download {
+      margin-bottom: 14px;
+      font-size: 12px;
+    }
+  }
+}
+.tab {
+  &-stat {
+    @include sp__stat;
+  }
+  &-partner {
+    @include sp__partners;
+  }
+  &-offer {
+    @include sp__offer;
+  }
+  &-pay {
+    @include sp__Coin_stack;
+  }
+  &-error {
+    width: 10px;
+    height: 10px;
+    background-color: #888988;
+    border-radius: 50%;
+  }
+  &-setting {
+    @include sp__settings;
+  }
+}
+.download {
+  @include sp__download;
+  border: none;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 8px;
+  &:hover {
+    @include sp__download_hover;
+  }
+}
+.form_offer_list {
+  &.customization {
+    .form_offer_browse {
+      padding: 0 3px 2px 3px;
+    }
+    .form_offer_browse_file {
+      width: 100%;
+    }
+    &_interface {
+
+    }
+  }
+}
+.form_offer_control {
+  width: 530px;
+  margin-bottom: 6px;
+  position: relative;
+  input {
+    width: 100%;
+  }
+  .control-next {
+    position: absolute;
+    top: 50%;
+    right: 9px;
+    transform: translatey(-50%);
+  }
+}
+.form_offer {
+  .form_offer_list {
+    > li {
+      .form_offer_control {
+        input[type='text'] {
+          &::-webkit-input-placeholder {color:#757575;}
+          &::-moz-placeholder          {color:#757575;}
+          &:-moz-placeholder           {color:#757575;}
+          &:-ms-input-placeholder      { color: #757575;}
+          &:focus::-webkit-input-placeholder {color: transparent}
+          &:focus::-moz-placeholder          {color: transparent}
+          &:focus:-moz-placeholder           {color: transparent}
+          &:focus:-ms-input-placeholder      {color: transparent}
+        }
+      }
+    }
+  }
+}
+.form_offer_ta {
+  width: 530px;
+  margin-bottom: 27px;
+  border: 1px solid #d8d8d8;
+  box-sizing: border-box;
+  padding: 4px;
+  textarea {
+    display: block;
+    width: 100%;
+    height: 165px;
+    box-sizing: border-box;
+    padding: 14px 12px;
+    background-color: #f4f4f4;
+    border: none;
+    resize: none;
+    overflow: auto;
+    font-size: 14px;
+    color: #616161;
+    line-height: 16px;
+  }
+}
+.control-next {
+  border: none;
+  border-radius: 50%;
+  @include sp__next_circle_14-14;
+  &:hover {
+    @include sp__next_circle_14-14_hover;
+  }
+}

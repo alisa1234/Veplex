@@ -1,0 +1,53 @@
+
+<!--<div class="info-block">-->
+  <!--<div class="info-block_time"><span class="info-block_time_title">Server Time:</span> 01/08/2015 16:40:49</div>-->
+  <!--<div class="breadcrumbs">-->
+    <!--<ul>-->
+      <!--<li><a title="Home">Home</a></li>-->
+      <!--<li></li>-->
+      <!--<li>{{tittle}}</li>-->
+      <!--<li>{{tittle_name}}</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="page page-offer">
+
+  <h1>{{tittle}} {{tittle_id}}</h1>
+  <div class="form_offer">
+    <form name="addoffer-form">
+          <!--id="customization-form"-->
+          <!--#fAdd="ngForm"-->
+          <!--novalidate>-->
+      <ul class="form_offer_list">
+        <li>
+          <div *ngIf="last" class="form_offer_access class2" >
+            <app-select-box  (pushOnSelected)="changeSelect()" [(model)]="offer_value" [values]="types_values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
+            <!--<select-->
+
+                    <!--[(ngModel)]="offer_value"-->
+                    <!--[ngModelOptions]="{standalone: true}"-->
+                    <!--id="offer_value"-->
+                    <!--class="form_offer_access_select"-->
+                     <!--data-placeholder="Offer access*">-->
+              <!--<option value="null">Offer access*</option>-->
+              <!--<option  *ngFor="let key of offerKeys; let last=last" value="{{key}}">{{offersType.availableTypes[key]}}{{last ? initStyler():''}}</option>-->
+            <!--</select>-->
+            <div class="question">
+              <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+            </div>
+          </div>
+        </li>
+        <app-cpa-offer *ngIf="typeOffer['1']" ></app-cpa-offer>
+        <app-cpc-offer *ngIf="typeOffer['2']" ></app-cpc-offer>
+        <app-dcpa-offer *ngIf="typeOffer['3']" ></app-dcpa-offer>
+        <app-fallback-offer *ngIf="typeOffer['4']"></app-fallback-offer>
+      </ul>
+      <!--<div class="form_offer_btn">-->
+        <!--<button type="submit" class="form_offer_btn_ch inactive" (click)="send()"></button>-->
+        <!--<button type="reset" class="form_offer_btn_cancel" (click)="clear()"></button>-->
+      <!--</div>-->
+    </form>
+
+  </div>
+</div>
+

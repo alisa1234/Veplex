@@ -1,0 +1,5 @@
+<div (click)="keypress()">
+<select  #select [(ngModel)]="model" class="" [disabled]="disabled">
+<option *ngFor="let value of values" value="{{value[option_value_var]}}">{{value[option_text_var]}}</option>
+</select>
+</div>

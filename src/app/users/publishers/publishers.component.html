@@ -1,0 +1,184 @@
+
+<div class="page page-offer">
+  <h1>{{tittle}} {{tittle_id}}</h1>
+  <div class="form_users">
+    <form action="" id="advertisers">
+      <ul class="form_users_list">
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="name"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="name"
+                  type="text"
+                  placeholder="Username*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr "><input
+                  [(ngModel)]="full_name"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="full_name"
+                  type="text"
+                  placeholder="Full name*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="email"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="email"
+                  type="text"
+                  placeholder="Email*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li class="enable">
+          <div class="enable_check"><input
+                  [(ngModel)]="notifications"
+                  [ngModelOptions]="{standalone:true}"
+                  (click)="check()"
+                  (click)="keypress($event)"
+                  id="notifications"
+                  type="checkbox"/>
+            <label for="notifications">Enable invoicing</label></div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="address"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="address"
+                  type="text"
+                  placeholder="Address*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="city"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="city"
+                  type="text"
+                  placeholder="City*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_access  form_users_input">
+            <app-select-box [(model)]="country" [values]="countries" [option_value_var]="'value'" [option_text_var]="'name'" [click_event]="true" [_parent]="this"></app-select-box>
+            <!--<select-->
+                    <!--[ngModel]="country"-->
+                    <!--(ngModelChange)="country=$event"-->
+                    <!--[ngModelOptions]="{standalone:true}"-->
+                    <!--class="form_offer_access_select"-->
+                    <!--id="country"-->
+                    <!--name=""-->
+                    <!--data-placeholder="Choose country">-->
+              <!--<option value="null">Choose country</option>-->
+              <!--<option-->
+                      <!--*ngFor="let country of countries|formstyler:'country':_this:'country', let last=last"-->
+                      <!--value="{{country.key}}" >{{country.value}}</option>-->
+            <!--</select>-->
+            <div class="question">
+              <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="zip"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="zip"
+                  type="text"
+                  placeholder="Index/ZIP*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="phone"
+                  [ngModelOptions]="{standalone:true}"
+                  [textMask]="{mask: maskPhone}"
+                  (keyup)="keypress($event)"
+                  id="phone"
+                  type="text"
+                  placeholder="Phone*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="password"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="password"
+                  type="password"
+                  placeholder="Password*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="repeatPassword"
+                  [ngModelOptions]="{standalone:true}"
+                  id="repeatPassword"
+                  type="password"
+                  placeholder="Repeat Password*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_access  form_users_input">
+            <app-select-box [(model)]="status" [values]="status_arr" [option_value_var]="'value'" [option_text_var]="'name'" [click_event]="true" [_parent]="this"></app-select-box>
+            <!--<select-->
+                    <!--#status_value-->
+                    <!--[(ngModel)]="status"-->
+                    <!--[ngModelOptions]="{standalone:true}"-->
+                    <!--class="form_offer_access_select form_users_select"-->
+                    <!--id="status"-->
+                    <!--name="" data-placeholder="Status">-->
+              <!--<option value="null" selected disabled>Status</option>-->
+              <!--<option *ngFor="let status of status_arr" value="{{status.key}}">{{status.value}}</option>-->
+            <!--</select>-->
+            <div class="question">
+              <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+            </div>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+          <li>
+              <div class="form_offer_access  form_users_input">
+                <app-select-box [(model)]="manager" [values]="managers_list" [option_value_var]="'id'" [option_text_var]="'name'" [click_event]="true" [_parent]="this"></app-select-box>
+                  <!--<select-->
+                          <!--#manager_value-->
+                          <!--[(ngModel)]="manager"-->
+                          <!--[ngModelOptions]="{standalone:true}"-->
+                          <!--class="form_offer_access_select form_users_select"-->
+                          <!--id="manager"-->
+                          <!--name="" data-placeholder="Manager">-->
+                      <!--<option value="null" selected disabled>Manager</option>-->
+                      <!--<option *ngFor="let manager of managers_list" value="{{manager.id}}">{{manager.name}}</option>-->
+                  <!--</select>-->
+                  <div class="question">
+                      <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+                  </div>
+              </div>
+              <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+          </li>
+      </ul>
+      <div class="form_offer_btn">
+        <button *ngIf="offer_ok" type="submit" class="form_offer_btn_ok" (click)="send()"></button>
+        <button *ngIf="offer_ch" type="submit" class="form_offer_btn_ch" (click)="sendOk()"></button>
+        <button type="reset" class="form_offer_btn_cancel" (click)="clear()"></button>
+      </div>
+    </form>
+  </div>
+</div>
+

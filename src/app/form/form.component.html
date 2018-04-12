@@ -1,0 +1,221 @@
+<div class="page-form" >
+  <div class="page-login" >
+    <div class="page-login_block">
+      <h2>Login</h2>
+      <div class="page-login_form">
+        <form name="form-login"
+              (ngSubmit)="submitLogIn()"
+              #f="ngForm"
+              novalidate>
+          <div class="page-login_form_input input-wr ">
+            <input
+                    type="text"
+                    placeholder="Username:"
+                    [(ngModel)]="username"
+                    [ngModelOptions]="{standalone: true}"
+                    id="username"
+                    required/>
+          </div>
+          <div class="page-login_form_input input-wr ">
+            <input
+                    type="password"
+                    placeholder="Password:"
+                    [(ngModel)]="password"
+                    [ngModelOptions]="{standalone: true}"
+                    id="password"
+                    required/>
+          </div>
+          <div class="page-login_form_data" >
+            <div class="page-login_form_check">
+              <input
+                      id="r1"
+                      type="checkbox"
+                      class="remember"
+                      (click)="check()"/>
+              <label for="r1" >Remember me</label>
+            </div>
+            <div class="page-login_form_forget"
+                 (click)="forgetPass()">
+              <a  title="Forget password?">Forget password?</a>
+            </div>
+          </div>
+          <div class="page-login_form_send">
+           <button type="submit"  class="admin-send">Log in to admin demo</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="page-login_block">
+      <h2>Sign up</h2>
+      <div class="page-login_form">
+        <form name="form-publisher_individual"
+              class="page-login_form--signIn individual"
+              (ngSubmit)="submitSignIn()"
+              #fI="ngForm"
+              novalidate>
+          <div class="page-login_form_input input-wr" >
+            <input
+                    type="text"
+                    placeholder="Username*"
+                    [(ngModel)]="name"
+                    [ngModelOptions]="{standalone: true}"
+                    id="name"
+                    required/>
+          </div>
+          <div class="page-login_form_input input-wr" >
+            <input
+                    type="text"
+                    placeholder="Full name*"
+                    [(ngModel)]="full_name"
+                    [ngModelOptions]="{standalone: true}"
+                    id="full_name"
+                    required/>
+          </div>
+          <div class="page-login_form_input input-wr" >
+            <input
+                    type="text"
+                    placeholder="Address*"
+                    [(ngModel)]="address"
+                    [ngModelOptions]="{standalone: true}"
+                    id="address"
+                    required/>
+          </div>
+          <div class="page-login_form_input input-wr" >
+            <input
+                    type="text"
+                    placeholder="City*"
+                    [(ngModel)]="city"
+                    [ngModelOptions]="{standalone: true}"
+                    id="city"
+                    required/>
+          </div>
+          <div class="page-login_form_input input-wr">
+            <select
+                    *ngIf="countriesLoaded"
+                    id="country">
+              <option>Select country</option>
+              <option
+                      *ngFor="let key of getCountriesKeys();"
+                      value="{{key}}">{{countr[key]}}</option>
+            </select>
+          </div>
+          <div class="page-login_form_input input-wr" >
+            <input
+                    type="text"
+                    placeholder="Zip*"
+                    [(ngModel)]="zip"
+                    [ngModelOptions]="{standalone: true}"
+                    id="zip"
+                    required/>
+          </div>
+          <div class="page-login_form_input input-wr" >
+            <input
+                    type="text"
+                    placeholder="Phone*"
+                    [(ngModel)]="phone"
+                    [ngModelOptions]="{standalone: true}"
+                    id="phone"
+                    [textMask]="{mask: maskPhone}"
+                    required/>
+          </div>
+          <div class="page-login_form_input input-wr" >
+            <input
+                    type="text"
+                    placeholder="Email*"
+                    [(ngModel)]="email"
+                    [ngModelOptions]="{standalone: true}"
+                    id="email"
+                    name="email"
+                    required/>
+          </div>
+          <div class="page-login_form_input input-wr" >
+            <input
+                    type="password"
+                    placeholder="Password*"
+                    [(ngModel)]="passwordReg"
+                    [ngModelOptions]="{standalone: true}"
+                    id="passwordReg"
+                    name="passwordReg"
+                    required/>
+          </div>
+          <div class="page-login_form_input input-wr" >
+            <input
+                    type="password"
+                    placeholder="Repeat password*"
+                    [(ngModel)]="repeatPassword"
+                    [ngModelOptions]="{standalone: true}"
+                    id="repeatPassword"
+                    name="repeatPassword"
+                    required/>
+          </div>
+          <div class="page-login_form_send">
+            <button type="submit" class="publisher-send">Sign up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="popup_wr" >
+    <div class="popup_restore" >
+      <h2>Password restore</h2>
+      <div class="recovery_step"><span class="active line-before">1</span><span class="line-before">2</span><span>3</span></div>
+      <div class="recovery_form">
+        <form
+                name="recovery_password"
+                (ngSubmit)="forgetSteps()"
+                #recoveryForm="ngForm"
+                novalidate>
+          <div class="recovery_inp">
+            <input
+                    type="email"
+                    class="error"
+                    placeholder="Enter your email"
+                    [(ngModel)]="recoveryEmail"
+                    [ngModelOptions]="{standalone: true}"
+                    id="recoveryEmail"
+                    required/>
+            <span class="recovery_error"></span>
+          </div>
+          <button class="recovery_btn" type="submit">reset password</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup_restore" style="display: none;">
+      <h2>Password restore</h2>
+      <div class="recovery_step"><span class="active active-line-before">1</span><span class="active line-before">2</span><span>3</span></div>
+      <div class="back_login">
+        <div class="back_tx">Please check your inbox for the verification link<br/><br/></div>
+        <div class="back_link" (click)="forgetBack()"><a>Back to Login form</a></div>
+      </div>
+    </div>
+    <div class="popup_restore" style="display: none;">
+      <h2>Password restore</h2>
+      <div class="recovery_step"><span class="active active-line-before">1</span><span class="active active-line-before">2</span><span class="active">3</span></div>
+      <div class="back_login">
+        <div class="back_tx">Please check your inbox for the new password</div>
+        <div class="back_link" (click)="forgetBack()"><br/><br/><a>Back to Login form</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="popup_wr2">
+    <div class="popup_restore">
+      <div class="recovery_step"><span class="complete active">&nbsp;</span></div>
+      <div class="setup_cont">
+        <div class="setup_tx">
+          <h3>Done!</h3>
+          <p>You will receive a confirmation email once<br>
+            your account is approved</p>
+        </div>
+        <div class="setup_quest">Questions? Please contact us via<br>
+          <a href="mailto:">Veplex@gmail.com</a>
+        </div>
+      </div>
+      <div class="popup_btn">
+        <div class="ok"><a></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,97 @@
+
+<div class="page page-settings">
+  <h1>Billing info</h1>
+  <div class="form_offer">
+    <form action="">
+      <div class="form_offer_available" *ngIf="globalLogin.role=='publisher'">Available methods:
+        <span class="form_offer_available_mehod">
+          <input name="pay_system" value="wire"  id="wire_publisher" type="radio" [checked]="wire"  (click)="getRadio($event.target.checked,'wire')"
+                 (click)="keypress($event)"/>
+          <label for="wire_publisher">WIRE</label></span><span class="form_offer_available_mehod">
+          <input name="pay_system" value="paypal" id="paypal_publisher" type="radio" [checked]="paypal"  (click)="getRadio($event.target.checked,'paypal')"
+                 (click)="keypress($event)"/>
+          <label for="paypal_publisher">PayPal</label>
+        </span>
+      </div>
+
+      <div class="form_offer_available" *ngIf="globalLogin.role=='admin'">Available methods:
+        <span class="form_offer_available_mehod">
+          <input  id="wire_admin" type="checkbox" [checked]="wire"  [(ngModel)]="wire" [ngModelOptions]="{standalone: true}"
+                  (click)="keypress($event)"/>
+          <label for="wire_admin">WIRE</label></span><span class="form_offer_available_mehod">
+          <input id="paypal_admin" type="checkbox" [checked]="paypal"  [(ngModel)]="paypal" [ngModelOptions]="{standalone: true}"
+                 (click)="keypress($event)"/>
+          <label for="paypal_admin">PayPal</label>
+        </span>
+      </div>
+
+      <ul class="form_offer_list">
+        <li *ngIf="paypal==true">
+          <div class="form_offer_link input-wr">
+            <input id="paypal_email" type="text" placeholder="PayPal Email" (keyup)="keypress($event)"
+                   [(ngModel)]="paypal_email" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input id="iban" type="text" placeholder="IBAN" (keyup)="keypress($event)"
+                    [(ngModel)]="iban" [ngModelOptions]="{standalone: true}" />
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input id="swift" type="text" placeholder="SWIFT" (keyup)="keypress($event)"
+                    [(ngModel)]="swift" [ngModelOptions]="{standalone: true}"/></div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <!--<li>-->
+          <!--<div class="form_offer_access">-->
+            <!--<app-select-box [(model)]="carrency" [values]="values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>-->
+            <!--<div class="question">-->
+              <!--<div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</li>-->
+        <li>
+          <div class="form_offer_link input-wr">
+            <input id="bank" type="text" placeholder="Bank" (keyup)="keypress($event)"
+                    [(ngModel)]="bank" [ngModelOptions]="{standalone: true}"/></div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input id="address" type="text" placeholder="Address" (keyup)="keypress($event)"
+                    [(ngModel)]="address" [ngModelOptions]="{standalone: true}"/></div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input id="city" type="text" placeholder="City" (keyup)="keypress($event)"
+                    [(ngModel)]="city" [ngModelOptions]="{standalone: true}"/></div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_access">
+            <app-select-box [(model)]="value" [values]="values" [option_value_var]="'id'" [option_text_var]="'title'" [click_event]="true" [_parent]="this"></app-select-box>
+            <div class="question">
+              <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input id="zip" type="text" placeholder="Index/ZIP" (keyup)="keypress($event)"
+                    [(ngModel)]="zip" [ngModelOptions]="{standalone: true}"/></div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+      </ul>
+      <div class="form_offer_btn">
+        <button type="submit" class="form_offer_btn_ch inactive" (click)="send()"></button>
+        <button type="reset" class="form_offer_btn_cancel" (click)="clear()"></button>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,19 @@
+<div [hidden]="hidden" class="popup_wr3">
+  <div #popup_screens class="popup_info" id="screens_dialog">
+    <div class="text_popup">
+      <!--<h6>{{name}} <span>(ID {{id}})</span></h6>-->
+      <div [class]="pics_url[selectedIndex] == screen ? 'info_bl active': ''"  *ngFor="let screen of pics_url">
+        <img *ngIf="pics_url[selectedIndex] == screen" src="{{screen}}"/>
+      </div>
+      <div class="wr_but">
+
+        <div class="sub_btn">
+          <!--<div class="ok" (click)="close()"><a href="#"></a></div>-->
+       <button (click)="previous()" class="previous_btn"></button>
+          <span class="countr">{{countr}}/{{this.pics_url.length}}</span>
+       <button (click)="next()" class="next_btn"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

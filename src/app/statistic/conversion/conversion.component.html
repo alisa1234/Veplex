@@ -1,0 +1,139 @@
+<!--<app-header></app-header>-->
+
+<div class="page page-offer-bundle">
+  <div class="page_header">
+    <h1>Conversions - Offer ID{{tittle_id}}</h1>
+    <a  style="margin-left:auto"></a>
+    <div class="data_set">
+      <div class="selection-block_form_item">
+        <app-select-box (pushOnSelected)="pushOnDate($event)" [(model)]="value" [values]="values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
+      </div>
+      <app-calendar [(inner_custom)]="calendarService.custom" [_parent]="this" [start_day]="calendarService.start_day" [end_day]="calendarService.end_day" [(new_datepicker)]="calendarService.name_class" [(new_datepicker_id)]="calendarService.id" [(new_datepicker_id2)]="calendarService.id2"></app-calendar>
+      <div class="csv"><a></a></div>
+    </div>
+  </div>
+  <div class="page_info">
+    <div class="page_info_result"
+         [hidden] = "displaying">
+      Displaying {{display_from}}
+      -
+      {{display_to}} of {{display_of}} results</div>
+  </div>
+  <div class="page-grid js-page-grid">
+    <div class="page-table page-table_offers">
+      <div class="page-table_head">
+        <table>
+          <tr>
+            <td class="t10_1">
+              <div class="page-table_sort_wr">
+                <a  title="#" class="page-table_sort" (click)="sort('pay_time')" id="pay_time_sort" >Date</a>
+              </div>
+            </td>
+            <td class="t10_2">
+              <div class="page-table_sort_wr">
+                <a  title="#" class="page-table_sort" (click)="sort('tid')" id="tid_sort">TID</a>
+                <button #ba (click)="ti.Toggle()" class="search-table" [class.actives]="ti.isActive" value="tid"></button>
+                <app-text-input #ti [clicker]="ba" [_parent]="this" [search]="tid"></app-text-input>
+              </div>
+            </td>
+            <td class="t10_3">
+              <div class="page-table_sort_wr">
+                <a  title="#" class="page-table_sort" (click)="sort('uid')" id="uid_sort">UID</a>
+                <button #ba2 (click)="ti2.Toggle()" class="search-table" [class.actives]="ti2.isActive" value="uid"></button>
+                <app-text-input #ti2 [clicker]="ba2" [_parent]="this" [search]="uid"></app-text-input>
+              </div>
+            </td>
+            <td class="t10_4">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('subid')" id="subid_sort" title="#" class="page-table_sort">Subid</a>
+              <button #ba3 (click)="ti3.Toggle()" class="search-table" [class.actives]="ti3.isActive" value="subid"></button>
+              <app-text-input #ti3 [clicker]="ba3" [_parent]="this" [search]="subid"></app-text-input>
+                </div>
+            </td>
+            <td class="t10_5">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('subid2')" id="subid2_sort" title="#" class="page-table_sort">Subid2</a>
+              <button #ba4 (click)="ti4.Toggle()" class="search-table" [class.actives]="ti4.isActive" value="subid2"></button>
+              <app-text-input #ti4 [clicker]="ba4" [_parent]="this" [search]="subid2"></app-text-input>
+                </div>
+            </td>
+            <td class="t10_6">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('subid3')" id="subid3_sort" title="#" class="page-table_sort">Subid3</a>
+              <button #ba5 (click)="ti5.Toggle()" class="search-table" [class.actives]="ti5.isActive" value="subid3"></button>
+              <app-text-input #ti5 [clicker]="ba5" [_parent]="this" [search]="subid3"></app-text-input>
+                </div>
+            </td>
+            <td class="t10_7">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('subid4')" id="subid4_sort" title="#" class="page-table_sort">Subid4</a>
+              <button #ba7 (click)="ti7.Toggle()" class="search-table" [class.actives]="ti7.isActive" value="subid4"></button>
+              <app-text-input #ti7 [clicker]="ba7" [_parent]="this" [search]="subid4"></app-text-input>
+                </div>
+            </td>
+            <td class="t10_8">
+              <a (click)="sort('geo')" id="geo_sort" title="#" class="page-table_sort">GEO</a>
+            </td>
+            <td class="t10_9">
+              <div class="page-table_sort_wr">
+              IP
+              <button #ba6 (click)="ti6.Toggle()" class="search-table" [class.actives]="ti6.isActive" value="ip"></button>
+              <app-text-input #ti6 [clicker]="ba6" [_parent]="this" [search]="ip"></app-text-input>
+                </div>
+            </td>
+            <td class="t10_10">
+              <a (click)="sort('revenue')" id="revenue_sort" title="#" class="page-table_sort">Revenue</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="page-table_body_wrap">
+        <div class="page-table_body">
+          <table>
+            <tr *ngIf="not_found_result" style="text-align: center"><td>Not found results</td></tr>
+            <tr class="visible-row" *ngFor="let data of list.rows">
+              <td class="t10_1">{{data.pay_time}}</td>
+              <td class="t10_2">{{data.tid}}</td>
+              <td class="t10_3">{{data.uid}}</td>
+              <td class="t10_4">{{data.subid}}</td>
+              <td class="t10_5">{{data.subid2}}</td>
+              <td class="t10_6">{{data.subid3}}</td>
+              <td class="t10_7">{{data.subid4}}</td>
+              <td class="t10_8">{{data.geo}}</td>
+              <td class="t10_9">{{data.ip}}</td>
+              <td class="t10_10">{{data.revenue}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-table_foot">
+        <table>
+          <tr>
+            <td class="t10_1">Total:</td>
+            <td class="t10_2"></td>
+            <td class="t10_3"></td>
+            <td class="t10_4"></td>
+            <td class="t10_5">{{total_raw}}</td>
+            <td class="t10_6">{{total_uniques}}</td>
+            <td class="t10_7">{{total_uniques}}</td>
+            <td class="t10_8">{{total_leads}}</td>
+            <td class="t10_9">{{total_revenue}}</td>
+            <td class="t10_10">{{total_cr}}</td>
+            <!--<td class="t10_10">{{total_epv}}</td>-->
+            <!--<td class="t10_13"></td>-->
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="page-footer">
+      <div class="pagination">
+        <div class="next-disabled"> <span [hidden]= "page_button_next_disabled">Next</span></div>
+        <div class="next"> <span  (click)="next()" [hidden]= "page_button_next">Next</span></div>
+        <div class="first"><span title="On the first" (click)="first()" [hidden] = "page_button_first"></span></div>
+        <div class="prev"><span title="Previous" (click)="prev()" [hidden] = "page_button_prev"></span></div>
+        <div class="current_page"><span  [hidden]= "current_page">{{currentPage}}</span></div>
+        <div class="next_arrow"> <span title="Next" (click)="next()" [hidden]= "page_button_next_arrow"></span></div>
+      </div>
+    </div>
+  </div>
+</div>

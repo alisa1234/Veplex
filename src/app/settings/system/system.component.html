@@ -1,0 +1,129 @@
+
+<div class="page page-settings">
+  <h1>System</h1>
+  <div class="form_offer">
+    <form
+            name="system-form"
+            #fSy="ngForm"
+            (ngSubmit)="send()">
+      <ul class="form_offer_list">
+        <!--<li>-->
+          <!--<div class="form_offer_link input-wr">-->
+            <!--<input-->
+                  <!--#TrackingDomain1-->
+                  <!--(keyup)="keypress($event)"-->
+                  <!--(click)="keypress($event)"-->
+                  <!--[(ngModel)]="tracking_domain"-->
+                  <!--[ngModelOptions]="{standalone:true}"-->
+                  <!--id="tracking_domain1"-->
+                  <!--required-->
+                  <!--type="text"-->
+                  <!--placeholder="Tracking domain"/>-->
+          <!--</div>-->
+          <!--<div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>-->
+        <!--</li>-->
+        <li>
+          <div class="form_offer_access" id="form_offer_access-whitelist">
+            <input
+                    [(ngModel)]="tracking_domain"
+                    [ngModelOptions]="{standalone:true}"
+                    (keyup)="keypress($event)"
+                    (paste)="keypress($event)"
+                    type="text"
+                    class="form_offer_link"
+                    id="ip_whitelist"
+                    placeholder="Add tracking domain"/>
+            <a (click)="addDomains()" class="form_offer_act_add" style="display: none;"></a>
+            <!--<select class="form_offer_access_select" name="" data-placeholder="Whitelist callback IP/IPs">-->
+            <!--<option value=""></option>-->
+            <!--<option value="">adsfadfdf 1</option>-->
+            <!--<option value="">adfadsfadf 2</option>-->
+            <!--</select>-->
+            <!--<div class="question">-->
+              <!--<div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>-->
+            <!--</div>-->
+          </div>
+
+        </li>
+        <!--<li>-->
+          <!--<div class="form_offer_link input-wr">-->
+            <!--<input-->
+                  <!--#TrackingDomain2-->
+                  <!--[(ngModel)]="tracking_domain2"-->
+                  <!--[ngModelOptions]="{standalone:true}"-->
+                  <!--((keyup)="keypress($event)"-->
+                  <!--(click)="keypress($event)"-->
+                  <!--id="tracking_domain2"-->
+                  <!--type="text"-->
+                  <!--placeholder="Tracking domain 2"-->
+                  <!--required/>-->
+          <!--</div>-->
+          <!--<div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<div class="form_offer_link input-wr">-->
+            <!--<input-->
+                  <!--#TrackingDomain3-->
+                  <!--[(ngModel)]="tracking_domain3"-->
+                  <!--[ngModelOptions]="{standalone:true}"-->
+                  <!--(keyup)="keypress($event)"-->
+                  <!--(click)="keypress($event)"-->
+                  <!--id="tracking_domain3"-->
+                  <!--type="text"-->
+                  <!--placeholder="Tracking domain 3"-->
+                  <!--required/>-->
+          <!--</div>-->
+          <!--<div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>-->
+        <!--</li>-->
+        <li>
+          <div class="form_offer_link input-wr">
+            <input
+                  #FallbackUrl
+                  [(ngModel)]="fallback_url"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  type="text"
+                  id="fallback_url"
+                  placeholder="ex.: http://fallbackURL.com/"
+                  required/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input
+                  #CallbackUrl
+                  [(ngModel)]="callback_url"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="callback_url"
+                  type="text"
+                  placeholder="http://veplex.site:9394/callback?tid={TID}"
+                  required/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input
+                  #ServerIp
+                  [(ngModel)]="server_ip"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="server_ip"
+                  type="text"
+                  placeholder="85.10.234.16"
+                  required
+                  />
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+      </ul>
+      <div class="form_offer_btn">
+        <button type="submit" class="form_offer_btn_ch inactive" ></button>
+        <button type="reset" class="form_offer_btn_cancel" (click)="clear()"></button>
+      </div>
+    </form>
+  </div>
+</div>
+

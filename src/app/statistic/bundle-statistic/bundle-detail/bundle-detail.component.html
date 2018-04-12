@@ -1,0 +1,149 @@
+<!--<app-header></app-header>-->
+
+<div class="page page-offer-bundle">
+  <div class="page_header">
+    <h1>Detail statistics - Bundle ID{{tittle_id}}</h1>
+    <a  style="margin-left:auto"></a>
+    <div class="data_set">
+      <div class="selection-block_form_item">
+        <app-select-box (pushOnSelected)="pushOnDate($event)" [(model)]="value" [values]="values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
+      </div>
+      <app-calendar [(inner_custom)]="calendarService.custom" [_parent]="this" [start_day]="calendarService.start_day" [end_day]="calendarService.end_day" [(new_datepicker)]="calendarService.name_class" [(new_datepicker_id)]="calendarService.id" [(new_datepicker_id2)]="calendarService.id2"></app-calendar>
+      <div class="csv"><a></a></div>
+    </div>
+
+  </div>
+  <div class="page_info">
+    <div class="page_info_result"
+         [hidden] = "displaying">
+      Displaying {{display_from}}
+      -
+      {{display_to}} of {{display_of}} results</div>
+  </div>
+  <div class="page-grid js-page-grid">
+    <div class="page-table page-table_offers">
+      <div class="page-table_head">
+        <table>
+          <tr>
+            <td class="t10_3">
+              <div class="page-table_sort_wr checkbox">
+                <input type="checkbox" id="subid" [checked]="checked['subid']" (change)="statisticBy('subid',checked['subid']= $event.target.checked)">
+                <a  title="#" class="page-table_sort" (click)="sort('subid')" id="subid_sort" >Subid</a>
+                <button #ba1 (click)="ti.Toggle()" class="search-table" [class.actives]="ti.isActive" value="subid"></button>
+                <app-text-input #ti [clicker]="ba1" [_parent]="this" [search]="subid"></app-text-input>
+              </div>
+            </td>
+            <td class="t10_3">
+              <div class="page-table_sort_wr checkbox">
+                <input type="checkbox" id="subid2" [checked]="checked['subid2']" (change)="statisticBy('subid2',checked['subid2']= $event.target.checked)">
+                <a  title="#" class="page-table_sort" (click)="sort('subid2')" id="subid2_sort">Subid2</a>
+                <button #ba2 (click)="ti2.Toggle()" class="search-table" [class.actives]="ti2.isActive" value="subid2"></button>
+                <app-text-input #ti2 [clicker]="ba2" [_parent]="this" [search]="subid2"></app-text-input>
+              </div>
+            </td>
+            <td class="t10_3">
+              <div class="page-table_sort_wr checkbox">
+                <input type="checkbox" id="subid3" [checked]="checked['subid3']" (change)="statisticBy('subid3',checked['subid3']= $event.target.checked)">
+                <a  title="#" class="page-table_sort" (click)="sort('subid3')" id="subid3_sort">Subid3</a>
+                <button #ba3 (click)="ti3.Toggle()" class="search-table" [class.actives]="ti3.isActive" value="subid3"></button>
+                <app-text-input #ti3 [clicker]="ba3" [_parent]="this" [search]="subid3"></app-text-input>
+              </div>
+            </td>
+            <td class="t10_3">
+              <div class="page-table_sort_wr checkbox">
+                <input type="checkbox" id="subid4" [checked]="checked['subid4']" (change)="statisticBy('subid4',checked['subid4']= $event.target.checked)">
+                <a  title="#" class="page-table_sort" (click)="sort('subid4')" id="subid4_sort">Subid4</a>
+                <button #ba4 (click)="ti4.Toggle()" class="search-table" [class.actives]="ti4.isActive" value="subid4"></button>
+                <app-text-input #ti4 [clicker]="ba4" [_parent]="this" [search]="subid4"></app-text-input>
+              </div>
+            </td>
+            <td class="t10_4">
+              <div class="page-table_sort_wr checkbox">
+                <input type="checkbox"  id="geo" [checked]="checked['geo']" (change)="statisticBy('geo',checked['geo']= $event.target.checked)">
+                <a (click)="sort('geo')" id="geo_sort" title="#" class="page-table_sort">Geo</a>
+              </div>
+            </td>
+            <td class="t10_4">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('raw')" id="raw_sort" title="#" class="page-table_sort">Raw</a>
+              </div>
+            </td>
+            <td class="t10_4">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('uniques')" id="uniques_sort" title="#" class="page-table_sort">Uniques</a>
+              </div>
+            </td>
+            <td class="t10_4">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('leads')" id="leads_sort" title="#" class="page-table_sort">Leads</a>
+              </div>
+            </td>
+            <td class="t10_4">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('revenue')" id="revenue_sort" title="#" class="page-table_sort">Revenue</a>
+              </div>
+            </td>
+            <td class="t10_4">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('cr')" id="cr_sort" title="#" class="page-table_sort">CR</a>
+              </div>
+            </td>
+            <td class="t10_4">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('epv')" id="epv_sort" title="#" class="page-table_sort">EPV</a>
+              </div>
+            </td>
+
+          </tr>
+        </table>
+      </div>
+      <div class="page-table_body_wrap">
+        <div class="page-table_body">
+          <table>
+            <tr *ngIf="not_found_result" style="text-align: center"><td>Not found results</td></tr>
+            <tr class="visible-row" *ngFor="let data of list.rows">
+              <td class="t10_3">{{data.subid}}</td>
+              <td class="t10_3">{{data.subid2}}</td>
+              <td class="t10_3">{{data.subid3}}</td>
+              <td class="t10_3">{{data.subid4}}</td>
+              <td class="t10_4">{{data.geo}}</td>
+              <td class="t10_4">{{data.raw}}</td>
+              <td class="t10_4">{{data.uniques}}</td>
+              <td class="t10_4">{{data.leads}}</td>
+              <td class="t10_4">{{data.revenue}}</td>
+              <td class="t10_4">{{data.cr}}</td>
+              <td class="t10_4">{{data.epv}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-table_foot">
+        <table>
+          <tr>
+            <td class="t10_3">Total:</td>
+            <td class="t10_3"></td>
+            <td class="t10_3"></td>
+            <td class="t10_3"></td>
+            <td class="t10_4"></td>
+            <td class="t10_4">{{total_raw}}</td>
+            <td class="t10_4">{{total_uniques}}</td>
+            <td class="t10_4">{{total_leads}}</td>
+            <td class="t10_4">{{total_revenue}}</td>
+            <td class="t10_4">{{total_cr}}</td>
+            <td class="t10_4">{{total_epv}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="page-footer">
+      <div class="pagination">
+        <div class="next-disabled"> <span [hidden]= "page_button_next_disabled">Next</span></div>
+        <div class="next"> <span  (click)="next()" [hidden]= "page_button_next">Next</span></div>
+        <div class="first"><span title="On the first" (click)="first()" [hidden] = "page_button_first"></span></div>
+        <div class="prev"><span title="Previous" (click)="prev()" [hidden] = "page_button_prev"></span></div>
+        <div class="current_page"><span  [hidden]= "current_page">{{currentPage}}</span></div>
+        <div class="next_arrow"> <span title="Next" (click)="next()" [hidden]= "page_button_next_arrow"></span></div>
+      </div>
+    </div>
+  </div>
+</div>

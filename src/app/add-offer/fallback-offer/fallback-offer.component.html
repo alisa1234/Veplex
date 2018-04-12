@@ -1,0 +1,276 @@
+<form name="addoffer-form"
+      id="customization-form"
+      #fAdd="ngForm"
+      novalidate>
+  <ul class="form_offer_list">
+    <li><div class="form_offer_access class2"><app-select-box [disabled]="disabled" [(model)]="value" [values]="values" [option_value_var]="'id'" [option_text_var]="'name'"></app-select-box></div></li>
+    <li>
+      <div class="form_offer_link input-wr"><input
+              [(ngModel)]="name"
+              [ngModelOptions]="{standalone: true}"
+              (keyup)="keypress($event)"
+              (click)="keypress($event)"
+              id="name"
+              type="text"
+              placeholder="Name"/></div>
+      <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+    </li>
+    <li>
+      <div class="form_offer_access class2">
+        <select
+                [(ngModel)]="access_value"
+                [ngModelOptions]="{standalone: true}"
+                (click)="keypress($event)"
+                id="access_value"
+                class="form_offer_access_select"
+                name="" data-placeholder="Offer access*">
+          <option value="null">Offer access*</option>
+          <option value="1">Public</option>
+          <option value="2">Private</option>
+        </select>
+        <div class="question">
+          <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="form_offer_list_box">
+        <div class="form_offer_it input-wr"><input
+                [(ngModel)]="url1"
+                [ngModelOptions]="{standalone: true}"
+                (keyup)="keypress($event)"
+                (click)="keypress($event)"
+                id="url1"
+                type="text"
+                placeholder="Offer*"/></div>
+        <div class="form_offer_cr cr1 input-wr"><input
+                [(ngModel)]="share1"
+                [ngModelOptions]="{standalone: true}"
+                (keyup)="keypress($event)"
+                (click)="keypress($event)"
+                id="share1"
+                type="text"/>
+        </div>
+        <div class="form_offer_cr cr2 input-wr ok">CR<input
+                type="text"
+                value="34.44%"/>
+        </div>
+        <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+      </div>
+    </li>
+    <li>
+      <div class="form_offer_list_box">
+        <div class="form_offer_it input-wr"><input
+                [(ngModel)]="url2"
+                [ngModelOptions]="{standalone: true}"
+                (keyup)="keypress($event)"
+                (click)="keypress($event)"
+                id="url2"
+                type="text"
+                placeholder="Offer iteration 2"/></div>
+        <div class="form_offer_cr cr1 input-wr"><input
+                [(ngModel)]="share2"
+                [ngModelOptions]="{standalone: true}"
+                (keyup)="keypress($event)"
+                (click)="keypress($event)"
+                id="share2"
+                type="text"/></div>
+        <div class="form_offer_cr cr2 input-wr">CR<input type="text"/></div>
+        <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+      </div>
+    </li>
+    <li class="automatic">
+      <div class="form_offer_list_box">
+        <div class="form_offer_it input-wr"><input
+                [(ngModel)]="url3"
+                [ngModelOptions]="{standalone: true}"
+                (keyup)="keypress($event)"
+                (click)="keypress($event)"
+                id="url3"
+                type="text"
+                placeholder="Offer iteration 3"/></div>
+        <div class="form_offer_cr cr1 input-wr"><input
+                [(ngModel)]="share3"
+                [ngModelOptions]="{standalone: true}"
+                (keyup)="keypress($event)"
+                (click)="keypress($event)"
+                id="share3"
+                type="text"/></div>
+        <div class="form_offer_cr cr2 input-wr">CR<input type="text"/></div>
+        <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+      </div>
+      </li>
+    <li class="automatic">
+      <div class="automatic_optimization"><input
+              (click)="check()"
+              [(ngModel)]="auto_optimization"
+              [ngModelOptions]="{standalone: true}"
+              (keyup)="keypress($event)"
+              (click)="keypress($event)"
+              id="auto_optimization"
+              type="checkbox"/> <label for="auto_optimization">Automatic optimization</label></div>
+    </li>
+    <li>
+      <!--<div class="form_offer_link input-wr"><input type="text" placeholder="Link*"/></div>-->
+      <div class="form_offer_return">
+        <div class="form_offer_act_title">Pass:</div>
+        <div class="form_offer_act">
+          <div class="form_offer_act_name">TID</div>
+          <a (click)="addPass($event)" class="form_offer_act_add" id="tid"></a>
+        </div>
+        <div class="form_offer_act">
+          <div class="form_offer_act_name">PID</div>
+          <a (click)="addPass($event)" class="form_offer_act_add" id="pid"></a>
+        </div>
+        <div class="form_offer_act">
+          <div class="form_offer_act_name">FROM</div>
+          <a (click)="addPass($event)" class="form_offer_act_add" id="from"></a>
+        </div>
+      </div>
+      <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+    </li>
+    <li>
+      <div class="form_offer_category js-form_offer_category">
+        <!--<div class="form_offer_category_data"><span>Category*</span></div>-->
+        <div class="form_offer_category_drop_wr">
+          <div class="form_offer_category_drop">
+            <div class="form_offer_category_drop_head" >
+              <table >
+                <tr class="input-wr">
+                  <td class="col1" ><input
+                          [(ngModel)]="category_id"
+                          [ngModelOptions]="{standalone: true}"
+                          (keyup)="searchCategory($event)"
+                          (keyup)="keypress($event)"
+                          (click)="keypress($event)"
+                          id="category_id"
+                          class="table-input"
+                          type="text"
+                          placeholder="Category"/></td>
+                  <td class="col2">
+                    <select
+                            [(ngModel)]="domains"
+                            [ngModelOptions]="{standalone: true}"
+                            id="domains"
+                            class="table-select"
+
+                            data-placeholder="Tracking domain">
+                      <option value="null" selected>Tracking domain</option>
+                      <option
+                              *ngFor="let domains of category_list_search.rows; let last=last"
+                              value="{{domains.domain}}">{{domains.domain}}{{last ? initStyler(): ''}}</option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="form_offer_category_drop_body">
+              <table>
+                <tr *ngFor="let category of category_list_search.rows" id="{{category.id}}" (click)="selectTable($event)">
+                  <td class="col1" >{{category.title}}</td>
+                  <td class="col2" >{{category.domain}}</td>
+                  <td class="col3"><a (click)="deleteCategory($event)" class="del"></a></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="form_offer_category_hang">
+            <div class="question">
+              <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+            </div>
+            <a *ngIf="addFlag" (click)="addCategory()" class="form_offer_category_add"></a>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="form_offer_link input-wr"><input
+              [(ngModel)]="rpa"
+              [ngModelOptions]="{standalone:true}"
+              (keyup)="keypress($event)"
+              (click)="keypress($event)"
+              id="rpa"
+              type="text"
+              placeholder="RPA*"
+              onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57);event.keyCode=190"
+      /></div>
+      <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+    </li>
+    <li>
+      <div class="form_offer_link input-wr"><input
+              class="form_offer_link input-wr"
+              [(ngModel)]="cpa"
+              [ngModelOptions]="{standalone:true}"
+              (keyup)="keypress($event)"
+              (click)="keypress($event)"
+              id="cpa"
+              type="text"
+              placeholder="Default CPA*"
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+      /></div>
+      <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+    </li>
+    <li>
+      <div class="form_offer_link input-wr"><input
+              class="form_offer_link input-wr"
+              [(ngModel)]="transaction_life"
+              [ngModelOptions]="{standalone:true}"
+              (keyup)="keypress($event)"
+              (click)="keypress($event)"
+              id="transaction_life"
+              type="text"
+              placeholder="ex.: 30"
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+      /></div>
+      <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+    </li>
+    <li>
+      <div class="form_offer_access">
+        <select
+                [(ngModel)]="enabled_value"
+                [ngModelOptions]="{standalone:true}"
+                class="form_offer_access_select"
+                (click)="keypress($event)"
+                id="enabled_value"
+                name="" data-placeholder="Status">
+          <option value="null">Status</option>
+          <option value="1">Active</option>
+          <option value="0">Disabled</option>
+        </select>
+        <div class="question">
+          <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="form_offer_access" id="form_offer_access-whitelist">
+        <input
+                [(ngModel)]="ip_whitelist"
+                [ngModelOptions]="{standalone:true}"
+                (keyup)="keypress($event)"
+                (paste)="keypress($event)"
+                type="text"
+                class="form_offer_link"
+                id="ip_whitelist"
+                placeholder="Whitelist callback IP/IPs"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode==46"/>
+        <a (click)="addIP()" class="form_offer_act_add" style="display: none;"></a>
+        <!--<select class="form_offer_access_select" name="" data-placeholder="Whitelist callback IP/IPs">-->
+        <!--<option value=""></option>-->
+        <!--<option value="">adsfadfdf 1</option>-->
+        <!--<option value="">adfadsfadf 2</option>-->
+        <!--</select>-->
+        <div class="question">
+          <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+        </div>
+      </div>
+
+    </li>
+  </ul>
+  <div class="form_offer_btn">
+    <button *ngIf="offer_ok" type="submit" class="form_offer_btn_ok" (click)="send()"></button>
+    <button *ngIf="offer_ch" type="submit" class="form_offer_btn_ch" (click)="sendOk()"></button>
+    <button type="reset" class="form_offer_btn_cancel" (click)="clear()"></button>
+  </div>
+</form>
+

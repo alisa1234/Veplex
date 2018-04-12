@@ -1,0 +1,148 @@
+<!--<div class="info-block">-->
+  <!--<div class="info-block_time"><span class="info-block_time_title">Server Time:</span> 01/08/2015 16:40:49</div>-->
+  <!--<div class="breadcrumbs">-->
+    <!--<ul>-->
+      <!--<li><a href="#" title="#">Home</a></li>-->
+      <!--<li>Offers bundle</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="page page-offer-bundle">
+  <div class="page_header">
+    <div class="page_header_cell"><h1>{{bundle_id_update}}</h1></div>
+    <div class="page_header_steps page_header_cell">
+      <ul>
+        <li><a  title="#">1</a></li>
+        <li class="activated"><a title="#">2</a></li>
+        <li><a  title="#">3</a></li>
+      </ul>
+    </div>
+    <div class="page_header_case page_header_cell">
+      <a *ngIf="update" (click)="getStep3_Edit()" title="#" class="button-next"></a>
+      <a *ngIf="!update" (click)="getStep3_Add()" title="#" class="button-next"></a>
+    </div>
+  </div>
+  <div class="page_info">
+    <!--<div class="page_info_input"><input [(ngModel)]="bundle_name"-->
+                                        <!--[ngModelOptions]="{standalone:true}" type="text" placeholder="Bundle name"/></div>-->
+    <!--<div class="question">-->
+      <!--<div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>-->
+    <!--</div>-->
+    <!--<div class="page_info_input">-->
+      <!--<select class="page_info_choose_select" name="">-->
+        <!--<option value="">Auto optimization</option>-->
+        <!--<option value="">Manual</option>-->
+      <!--</select>-->
+    <!--</div>-->
+    <!--<div class="question">-->
+      <!--<div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>-->
+    <!--</div>-->
+    <div class="page_info_check">
+      <div class="question">
+        <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+      </div>
+      <button class="page_info_check_filters" (click)="selectCheck($event,'country_name')" [class.filter]="geo_filter">
+    Geo
+      </button>
+      <div class="question">
+        <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+      </div>
+      <button class="page_info_check_filters" (click)="selectCheck($event,'browser_name')" [class.filter]="browser_filter">
+        Browser
+      </button>
+      <div class="question">
+        <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+      </div>
+      <button class="page_info_check_filters" (click)="selectCheck($event,'os_name')" [class.filter]="os_filter">
+        OS
+      </button>
+      <!--<div class="page_info_check_item"><input id="ch1" type="checkbox"/><label for="ch1">GEO</label></div>-->
+      <!--<div class="page_info_check_item"><input id="ch2" type="checkbox"/><label for="ch2">Browser</label></div>-->
+      <!--<div class="page_info_check_item"><input id="ch3" type="checkbox"/><label for="ch3">OS</label></div>-->
+      <!--<div class="page_info_check_item"><input id="ch4" type="checkbox"/><label for="ch4">Daytime</label></div>-->
+      <!--<div class="page_info_check_item"><input id="ch5" type="checkbox"/><label for="ch5">Day</label></div>-->
+    </div>
+    <!--<div class="question">-->
+      <!--<div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>-->
+    <!--</div>-->
+    <div class="page_info_input"><input type="text" placeholder="avg.CPC"/></div>
+    <div class="question">
+      <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+    </div>
+    <div class="page_info_result"
+         [hidden] = "displaying">
+      Displaying {{display_from}}
+      -
+      {{display_to}} of {{display_of}} results</div>
+  </div>
+  <div class="page-grid js-page-grid">
+    <div class="page-table page-table_offers page-table_offers_step">
+      <div class="page-table_head">
+        <table>
+          <tr>
+            <td class="t8_2">Rank</td>
+            <td class="t8_3">
+                <!--[class.t4_2]="offer_name_style"-->
+                <!--[class.t4_13]="one"-->
+                <!--[class.t4_14]="two"-->
+                <!--[class.t4_15]="three"-->
+
+              <div class="page-table_sort_wr">
+                <a title="#" class="page-table_sort" (click)="sort('name')" id="name_sort">Offer</a>
+                <button #ba1 (click)="ti.Toggle()" class="search-table" [class.actives]="ti.isActive" value="name"></button>
+                <app-text-input #ti [clicker]="ba1" [_parent]="this" [search]="name"></app-text-input>
+              </div>
+            </td>
+            <td class="t8_4" *ngIf="geo_filter">Geo</td>
+            <td class="t8_4" *ngIf="browser_filter">Browser</td>
+            <td class="t8_4" *ngIf="os_filter">OS</td>
+            <td class="t8_4">Share</td>
+            <td class="t8_9"><a title="#" class="page-table_sort" (click)="sort('cr')" id="cr_sort">CR</a></td>
+            <td class="t4_5"> </td>
+          </tr>
+        </table>
+      </div>
+      <div class="page-table_body_wrap">
+        <div class="page-table_body">
+          <table>
+            <tr *ngIf="this.not_found_result" style="text-align: center"><td>Not found results</td></tr>
+            <tr *ngFor="let data of list.rows" [class.group]="data.gr==1">
+              <td class="t8_2">{{data.gr}}</td>
+              <td class="t8_3">{{data.offer_name}}</td>
+                  <!--[class.t4_2]="offer_name_style"-->
+                  <!--[class.t4_13]="one"-->
+                  <!--[class.t4_14]="two"-->
+                  <!--[class.t4_15]="three"-->
+
+              <!--<td class="t4_2" *ngIf="geo_filter || browser_filter || os_filter" [style.width.%]="14">{{data.offer_name}}</td>-->
+              <!--<td class="t4_2" *ngIf="browser_filter && geo_filter || browser_filter && os_filter || os_filter && geo_filter" [style.width.%]="30">{{data.offer_name}}</td>-->
+              <!--<td class="t4_2" *ngIf="os_filter && browser_filter && geo_filter" [style.width.%]="40">{{data.offer_name}}</td>-->
+
+              <!--<td class="t4_2" *ngIf="browser_filter" *ngStyle="{'width':'65%'}">{{data.offer_name}}</td>-->
+              <!--<td class="t4_2" *ngIf="os_filter" *ngStyle="{'width':'60%'}">{{data.offer_name}}</td>-->
+              <td #geo class="t8_4" *ngIf="geo_filter">{{data.country_name}}</td>
+              <td #browser class="t8_4" *ngIf="browser_filter">{{data.browser_name}}</td>
+              <td #os class="t8_4" *ngIf="os_filter">{{data.os_name}}</td>
+              <td class="t8_4"> <span class="page-table_prc" id="category_id" data-name="Category" data-type="Select"
+                                      (click)="chooseField($event,data.id,data.user_id,data.proffer_id,data.share,data.share,'share','input',data)">{{data.share}}</span></td>
+              <td class="t8_9">{{data.cr}}</td>
+              <td class="t4_5"><a  title="#" class="reset"></a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-footer">
+        <div class="pagination">
+          <div class="next-disabled"> <span [hidden]= "page_button_next_disabled">Next</span></div>
+          <div class="next"> <span  (click)="next()" [hidden]= "page_button_next">Next</span></div>
+          <div class="first"><span title="On the first" (click)="first()" [hidden] = "page_button_first"></span></div>
+          <div class="prev"><span title="Previous" (click)="prev()" [hidden] = "page_button_prev"></span></div>
+          <div class="current_page"><span  [hidden]= "current_page">{{currentPage}}</span></div>
+          <div class="next_arrow"> <span title="Next" (click)="next()" [hidden]= "page_button_next_arrow"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-popup-filter-dialog #popupFilter [(inner_hidden)]="popupFilterDialogService.hidden" [top]="popupFilterDialogService.top" [left]="popupFilterDialogService.left"   [values]="popupFilterDialogService.values" [title]="popupFilterDialogService.field" [_parent]="this" ></app-popup-filter-dialog>
+<app-popup-table #popup (ch)="changeField($event)" [(inner_hidden)]="popupChange.hidden" [top]="popupChange.top" [left]="popupChange.left" [(value)]="popupChange.value_id"  [values]="popupChange.values" [type]="popupChange.type" [title]="popupChange.field"></app-popup-table>

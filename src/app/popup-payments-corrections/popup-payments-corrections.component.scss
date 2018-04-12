@@ -1,0 +1,82 @@
+.popup_info {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  margin-left: -218px;
+  /* margin-top: -148px; */
+  border-bottom: 2px solid #dbe1e9;
+  background: #fff;
+  width: 436px;
+  z-index: 10010;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+
+
+
+}
+.text_popup{
+  padding: 25px 20px 10px;
+
+  h6{
+    font: 13px "Arial";
+    font-weight: bold;
+    color: #3b3b3b;
+    //padding: 0 0 21px;
+
+    span{
+      font-family: "Arial";
+    }
+  }
+  .info_bl {
+    border-top: none;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 14px 0 14px;
+    font-size: 12px;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+  }
+  .wr_but {
+    padding: 8px 0 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+
+    .sub_btn {
+      padding: 0 0 0 5px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+
+
+    }
+  }
+  .comment{
+    border: 1px solid #dfdfdf;
+    height: 120px;
+    width: 100%;
+  }
+  .correction{
+    border: 1px solid #dfdfdf;
+    width: 100%;
+  }
+  .ok{
+    cursor: pointer;
+    background: url(../scss/icons/ok_circle_36-36_active.svg) no-repeat;
+    border: none;
+    width: 34px;
+    height: 34px;
+    &:hover {
+      background: url(../scss/icons/ok_circle_34-34_hover.svg) no-repeat;
+      width: 34px;
+      height: 34px;
+    }
+  }
+}

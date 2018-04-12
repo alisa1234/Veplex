@@ -1,0 +1,22 @@
+<div class="filter-dialog" [hidden]="inner_hidden" [style.top.px] = "top" [style.left.px] = "left">
+
+  <input type="search" class="filter-dialog_search"/>
+
+  <div class="filter-dialog_checkbox">
+    <div class="filter-dialog_checkbox_table" #checkbox>
+      <ul>
+        <li  *ngFor="let data of values">
+          <input #checkbox  type="checkbox" id="{{data.id}}" (click)="ValueCheckbox(data.id)" [checked]="Checked(data.id)" value="{{data.id}}"/>
+          <label for="{{data.id}}">{{data.title}}</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="form_offer_btn">
+    <button  type="submit" class="form_offer_btn_ch" (click)="send()"></button>
+    <button type="reset" class="form_offer_btn_cancel" (click)="close()"></button>
+  </div>
+  <!--<button class="filter-dialog_cansel-but">Cansel</button>-->
+  <!--<button class="filter-dialog_ok-but">OK</button>-->
+  <!--(click)="ValueCheckbox(data.id)"-->
+</div>

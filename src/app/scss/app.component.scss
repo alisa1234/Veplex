@@ -1,0 +1,24 @@
+//@import'../form/form.component';
+@import "../form/form.component";  ;
+
+body {
+  @extend %message;
+  font-family: Arial,sans-serif;
+}
+
+@import "inc/variables";
+@import "inc/responsive";
+@import "inc/reset";
+@import "inc/mixins";
+@import "inc/icons";
+@import "_svg-sprite";
+@import "_png-sprite";
+@import "chosen";
+@import "jquery.formstyler";
+@import "jquery-ui";
+@import "home";
+@import "offer";
+@import "settings";
+@import "payments";
+@import "users";
+@import "form";

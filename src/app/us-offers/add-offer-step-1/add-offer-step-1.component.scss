@@ -1,0 +1,14 @@
+:host(.root){
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-grow: 10;
+  -ms-flex-positive: 10;
+  /* flex-grow: 10; */
+  min-height: 200px;
+  position: relative;
+  //z-index: 0;
+}

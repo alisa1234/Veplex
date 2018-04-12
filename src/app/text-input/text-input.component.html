@@ -1,0 +1,9 @@
+<span [hidden]="hidden" class="search-table_dropdown" id="id_dropdown">
+    <input
+            [(ngModel)]="search"
+            (keyup.enter)="enter(clicker.value)"
+            id="id"
+            class="search__close"
+            type="text"/>
+    <a class="delate" title="Clear" [hidden]="hidden_delete" (click)="clearing(clicker.value)"></a>
+</span>

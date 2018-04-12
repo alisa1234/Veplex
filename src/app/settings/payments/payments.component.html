@@ -1,0 +1,57 @@
+
+<div class="page page-settings">
+  <h1>Payments</h1>
+  <div class="form_offer">
+    <form
+            name="payments-form"
+            #fP="ngForm"
+            (ngSubmit)="send()"
+            novalidate>
+      <div class="form_offer_pay">
+        <div class="form_offer_pay_cicle">
+          <app-select-box  [(model)]="payment_cycley" [values]="selectDays" [option_value_var]="'value'" [option_text_var]="'tittle'" [click_event]="true" [_parent]="this"></app-select-box>
+          <!--<select-->
+                  <!--#daysValue-->
+                  <!--(change)="onSelectDays(daysValue.value)"-->
+                  <!--[(ngModel)]="payment_cycley"-->
+                  <!--[ngModelOptions]="{standalone: true}"-->
+                  <!--id="payment_cycley"-->
+                  <!--class="form_offer_access_select"-->
+                  <!--data-placeholder="Payment cycley" >-->
+            <!--<option value="null" disabled selected>Payment cycley</option>-->
+            <!--<option value="d">Daily</option>-->
+            <!--<option value="w">Weekly</option>-->
+            <!--<option value="sm">Semi-monthly</option>-->
+            <!--<option value="m">Monthly</option>-->
+          <!--</select>-->
+        </div>
+        <div class="question">
+          <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+        </div>
+        <div class="form_offer_pay_send">
+          <app-select-box  [(model)]="send_over_stats" [values]="selectStats" [option_value_var]="'value'" [option_text_var]="'tittle'" [click_event]="true" [_parent]="this"></app-select-box>
+          <!--<select-->
+                  <!--#statsValue-->
+                  <!--(change)="onSelectStats(statsValue.value)"-->
+                  <!--[(ngModel)]="send_over_stats"-->
+                  <!--[ngModelOptions]="{standalone: true}"-->
+                  <!--id="send_over_stats"-->
+                  <!--class="form_offer_access_select"-->
+                  <!--data-placeholder="Send over stats">-->
+            <!--<option value="null" disabled selected>Send over stats</option>-->
+            <!--<option-->
+                    <!--*ngFor="let stat of stats"-->
+                    <!--[value]="stat.key">{{stat.value}}</option>-->
+          <!--</select>-->
+        </div>
+        <div class="question">
+          <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+        </div>
+      </div>
+      <div class="form_offer_btn">
+        <button type="submit" class="form_offer_btn_ch inactive"></button>
+        <button type="reset" class="form_offer_btn_cancel" (click)="clear()"></button>
+      </div>
+    </form>
+  </div>
+</div>

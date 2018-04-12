@@ -1,0 +1,10 @@
+<div class="dropdown" id="chosen_countries_dropdown">
+  <input type="hidden">
+  <select
+          class="form_offer_geo-select chosen-class"
+          id="chosen_countries_search"
+          data-placeholder="Supported GEO*"
+          multiple>
+    <option *ngFor="let country of elements" [value]="country.value">{{country.name}}</option>
+  </select>
+</div>

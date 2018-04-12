@@ -1,0 +1,193 @@
+<header *ngIf="globalLogin.role=='admin'">
+  <div class="page-login_form_send">
+  </div>
+  <div class="header">
+    <div class="header_logo"><a></a></div>
+    <div class="header_menu">
+      <ul>
+        <li class="m1"><a><span>Statistics</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a  routerLink="/statistic/offers-list">Offers</a></li>
+              <li><a  routerLink="/statistic/bundles-list">Bundle offers</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="m2"><a><span>Users</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a routerLink="/users/publisher-list">Publishers</a></li>
+              <li><a routerLink="/users/advertiser-list">Advertisers</a></li>
+              <li><a routerLink="/users/admin-list">Admin</a></li>
+              <li><a routerLink="/users/accountmanager-list">Account manager</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="m3"><a><span>Offers</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a routerLink="/offer/offer-list" >Offers</a></li>
+              <li><a  routerLink="/users/bundle-list">Bundle offers</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="m4"><a><span>Payments</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a routerLink="/payments/advertiser-payments-list">Adverisers</a></li>
+              <li><a routerLink="/payments/publisher-payments-list">Publishers</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="m5"><a ><span>Errors</span></a></li>
+        <li class="m6"><a ><span>Settings</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a routerLink="/settings/billing-info">Billing info</a></li>
+              <li><a routerLink="/settings/company-profile">Company's profile</a></li>
+              <li><a routerLink="/settings/customization">Customization</a></li>
+              <!--<li><a routerLink="/settings/faq">Faq</a></li>-->
+              <!--<li><a routerLink="/settings/management">Management</a></li>-->
+              <li><a routerLink="/settings/payments">Payments</a></li>
+              <li><a routerLink="/settings/system">System</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="header_box">
+      <div class="header_debug"><a></a></div>
+      <div class="header_user">{{globalLogin.name}}</div>
+      <div class="header_exit" ><a  (click)="logOut()">Exit</a></div>
+    </div>
+  </div>
+</header>
+<header *ngIf="globalLogin.role=='publisher'">
+  <div class="page-login_form_send">
+  </div>
+  <div class="header">
+    <div class="header_logo"><a></a></div>
+    <div class="header_menu">
+      <ul>
+        <li class="m1"><a><span>Statistics</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a>Offers</a></li>
+              <li><a>Bundle offers</a></li>
+            </ul>
+          </div>
+        </li>
+        <!--<li class="m2"><a><span>Users</span></a>-->
+          <!--<div class="header_submenu">-->
+            <!--<ul>-->
+              <!--<li *ngIf="login"><a routerLink="/users/publisher-list">Publishers</a></li>-->
+              <!--<li><a routerLink="/users/advertiser-list">Advertisers</a></li>-->
+              <!--<li><a routerLink="/users/admin-list">Admin</a></li>-->
+              <!--<li><a routerLink="/users/accountmanager-list">Account manager</a></li>-->
+            <!--</ul>-->
+          <!--</div>-->
+        <!--</li>-->
+        <li class="m3"><a><span>Offers</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a routerLink="/users/usoffer-list">Offers</a></li>
+              <li><a routerLink="/users/bundle-list">Bundle offers</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="m4"><a routerLink="/payments/publisher-payments-list"><span>Payments</span></a>
+          <!--<div class="header_submenu">-->
+            <!--<ul>-->
+              <!--<li><a >Publishers</a></li>-->
+              <!--&lt;!&ndash;<li><a >Bundle offers</a></li>&ndash;&gt;-->
+            <!--</ul>-->
+          <!--</div>-->
+        </li>
+        <li class="m5"><a ><span>Errors</span></a></li>
+        <!--<li class="m6"><a ><span>Settings</span></a>-->
+          <!--<div class="header_submenu">-->
+            <!--<ul>-->
+              <!--<li><a routerLink="/settings/billing-info">Billing info</a></li>-->
+              <!--<li><a routerLink="/settings/company-profile">Company's profile</a></li>-->
+              <!--<li><a routerLink="/settings/customization">Customization</a></li>-->
+              <!--&lt;!&ndash;<li><a routerLink="/settings/faq">Faq</a></li>&ndash;&gt;-->
+              <!--&lt;!&ndash;<li><a routerLink="/settings/management">Management</a></li>&ndash;&gt;-->
+              <!--<li><a routerLink="/settings/payments">Payments</a></li>-->
+              <!--<li><a routerLink="/settings/system">System</a></li>-->
+            <!--</ul>-->
+          <!--</div>-->
+        <!--</li>-->
+      </ul>
+    </div>
+    <div class="header_box">
+      <div class="header_debug"><a></a></div>
+      <div class="header_user">{{globalLogin.name}}</div>
+      <div class="header_exit" ><a  (click)="logOut()">Exit</a></div>
+    </div>
+  </div>
+</header>
+<header *ngIf="globalLogin.role=='advertiser'">
+  <div class="page-login_form_send">
+  </div>
+  <div class="header">
+    <div class="header_logo"><a></a></div>
+    <div class="header_menu">
+      <ul>
+        <li class="m1"><a><span>Statistics</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a >Offers</a></li>
+              <li><a >Bundle offers</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="m2"><a><span>Users</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li *ngIf="login"><a routerLink="/users/publisher-list">Publishers</a></li>
+              <li><a routerLink="/users/advertiser-list">Advertisers</a></li>
+              <li><a routerLink="/users/admin-list">Admin</a></li>
+              <li><a routerLink="/users/accountmanager-list">Account manager</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="m3"><a><span>Offers</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a routerLink="/offer/offer-list" >Offers</a></li>
+              <li><a >Bundle offers</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="m4"><a><span>Payments</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a routerLink="/payments/advertiser-payments-list">Advertisers</a></li>
+              <!--<li><a >Bundle offers</a></li>-->
+            </ul>
+          </div>
+        </li>
+        <li class="m5"><a ><span>Errors</span></a></li>
+        <li class="m6"><a ><span>Settings</span></a>
+          <div class="header_submenu">
+            <ul>
+              <li><a routerLink="/settings/billing-info">Billing info</a></li>
+              <li><a routerLink="/settings/company-profile">Company's profile</a></li>
+              <li><a routerLink="/settings/customization">Customization</a></li>
+              <!--<li><a routerLink="/settings/faq">Faq</a></li>-->
+              <!--<li><a routerLink="/settings/management">Management</a></li>-->
+              <li><a routerLink="/settings/payments">Payments</a></li>
+              <li><a routerLink="/settings/system">System</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="header_box">
+      <div class="header_debug"><a></a></div>
+      <div class="header_user">{{globalLogin.name}}</div>
+      <div class="header_exit" ><a  (click)="logOut()">Exit</a></div>
+    </div>
+  </div>
+
+</header>

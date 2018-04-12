@@ -1,0 +1,143 @@
+<!--<div class="info-block">-->
+  <!--<div class="info-block_time"><span class="info-block_time_title">Server Time:</span> 01/08/2015 16:40:49</div>-->
+  <!--<div class="breadcrumbs">-->
+    <!--<ul>-->
+      <!--<li><a href="#" title="#">Home</a></li>-->
+      <!--<li>Offers bundle</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="page page-offer-bundle">
+  <div class="page_header page_header_indented">
+    <div class="page_header_cell"><h1>{{tittle}} {{tittle_id}}</h1></div>
+    <div class="page_header_steps page_header_cell">
+      <ul>
+        <li><a href="#" title="#">1</a></li>
+        <li class="activated"><a href="#" title="#">2</a></li>
+      </ul>
+    </div>
+    <div class="page_header_cell"></div>
+  </div>
+  <div class="form_offer">
+    <form action="">
+      <ul class="form_offer_list">
+        <li>
+          <div class="form_offer_link input-wr">
+            <input
+                    [(ngModel)]="uid"
+                    [ngModelOptions]="{standalone:true}"
+                    (keyup)="keypress($event)"
+                    id="uid"
+                    class="uid" type="text" placeholder="UID"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr ok">
+            <input
+                    [(ngModel)]="subid"
+                    [ngModelOptions]="{standalone:true}"
+                    (keyup)="keypress($event)"
+                    id="subid"
+                    type="text" placeholder="SUBID"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input
+                    [(ngModel)]="subid2"
+                    [ngModelOptions]="{standalone:true}"
+                    (keyup)="keypress($event)"
+                    id="subid2"
+                    type="text" placeholder="SUBID2"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input
+                    [(ngModel)]="subid3"
+                    [ngModelOptions]="{standalone:true}"
+                    (keyup)="keypress($event)"
+                    id="subid3"
+                    type="text" placeholder="SUBID3"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input
+                    [(ngModel)]="subid4"
+                    [ngModelOptions]="{standalone:true}"
+                    (keyup)="keypress($event)"
+                    id="subid4"
+                    type="text" placeholder="SUBID4"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_link input-wr">
+            <input
+                    [(ngModel)]="postback_url"
+                    [ngModelOptions]="{standalone:true}"
+                    (keyup)="keypress($event)"
+                    id="postback_url"
+                    type="text" placeholder="Postback URL"/>
+          </div>
+          <div class="form_offer_return">
+            <div class="form_offer_act_title">Pass:</div>
+            <div class="form_offer_act">
+              <div class="form_offer_act_name">TID</div>
+              <a (click)="addReturn($event)" title="#" class="form_offer_act_add" id="add_tid"></a>
+            </div>
+            <div class="form_offer_act">
+              <div class="form_offer_act_name">Subid</div>
+              <a (click)="addReturn($event)" title="#" class="form_offer_act_add" id="add_subid"></a>
+            </div>
+            <div class="form_offer_act">
+              <div class="form_offer_act_name">Subid2</div>
+              <a (click)="addReturn($event)" title="#" class="form_offer_act_add" id="add_subid2"></a>
+            </div>
+            <div class="form_offer_act">
+              <div class="form_offer_act_name">Subid3</div>
+              <a (click)="addReturn($event)" title="#" class="form_offer_act_add" id="add_subid3"></a>
+            </div>
+            <div class="form_offer_act">
+              <div class="form_offer_act_name">Subid4</div>
+              <a (click)="addReturn($event)" title="#" class="form_offer_act_add" id="add_subid4"></a>
+            </div>
+            <div class="form_offer_act">
+              <div class="form_offer_act_name">SID</div>
+              <a (click)="addReturn($event)" title="#" class="form_offer_act_add" id="add_sid"></a>
+            </div>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+
+          <div class="automatic_optimization"><input
+                  (click)="check()"
+                  [(ngModel)]="remove_refferal"
+                  [ngModelOptions]="{standalone: true}"
+                  id="remove_refferal"
+                  (click)="keypress($event)"
+                  type="checkbox"/> <label for="remove_refferal">Remove Refferal</label></div>
+        </li>
+        <li>
+          <div [hidden]="tracking" class="form_offer_link input-wr">
+            <label for="tracking_url">Tracking URL</label>
+            <input
+                    [(ngModel)]="tracking_url"
+                    [ngModelOptions]="{standalone:true}"
+                    id="tracking_url"
+                    type="text"/>
+          </div>
+        </li>
+      </ul>
+      <div class="form_offer_btn">
+        <button *ngIf="offer_ok" type="submit" class="form_offer_btn_ok" (click)="send()"></button>
+        <button *ngIf="offer_ch" type="submit" class="form_offer_btn_ch" (click)="sendOk()"></button>
+        <button type="reset" class="form_offer_btn_cancel" (click)="clear()"></button>
+      </div>
+    </form>
+  </div>
+</div>

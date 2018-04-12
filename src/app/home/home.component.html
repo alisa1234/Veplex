@@ -1,0 +1,154 @@
+<div class="selection-block">
+  <form action="">
+    <div class="selection-block_form">
+      <div *ngIf="globalLogin.role=='admin'" class="selection-block_form_item">
+        <app-select-box *ngIf="globalLogin.role=='admin'"  (pushOnSelected)="pushOnPublishers($event)"  [(model)]="publisher_value" [values]="publisher_values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
+      </div>
+      <div class="selection-block_form_item">
+        <app-select-box (pushOnSelected)="pushOnOffers($event)"  [(model)]="offer_value" [values]="offer_values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
+      </div>
+      <div class="data_set">
+        <div class="selection-block_form_item">
+          <app-select-box (pushOnSelected)="pushOnDate($event)" [(model)]="calendar_value" [values]="calendar_values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
+        </div>
+        <app-calendar [(inner_custom)]="calendarService.custom" [_parent]="this" [(start_day)]="calendarService.start_day" [(end_day)]="calendarService.end_day" [(new_datepicker)]="calendarService.name_class" [(new_datepicker_id)]="calendarService.id" [(new_datepicker_id2)]="calendarService.id2"></app-calendar>
+      </div>
+      <div class="calendar_ok" (click)="sendStatistic()"></div>
+    </div>
+  </form>
+</div>
+<div class="testimony">
+  <div class="testimony_unit">
+    <div class="testimony_unit_info">
+      <div class="testimony_unit_info_head">Revenue <span class="testimony_unit_info_prc" [class.decrease]="chartData2['percent_revenue']<0">{{chartData2['percent_revenue']}}%</span></div>
+      <div class="testimony_unit_info_main">${{chartData2['total_revenue']}}</div>
+    </div>
+    <div class="testimony_unit_graph"  id="revenue"></div>
+  </div>
+  <div [hidden]="globalLogin.role=='publisher'" class="testimony_unit clearfix">
+    <div class="testimony_unit_info">
+      <div class="testimony_unit_info_head">EPV <span class="testimony_unit_info_prc" [class.decrease]="chartData2['percent_epv']<0">{{chartData2['percent_epv']}}%</span></div>
+      <div class="testimony_unit_info_main">${{chartData2['total_epv']}}</div>
+    </div>
+    <div class="testimony_unit_graph"  id="epv"></div>
+  </div>
+  <div [hidden]="globalLogin.role=='publisher'" class="testimony_unit clearfix">
+    <div class="testimony_unit_info">
+      <div class="testimony_unit_info_head">Profit <span class="testimony_unit_info_prc" [class.decrease]="chartData2['percent_profit']<0">{{chartData2['percent_profit']}}%</span></div>
+      <div class="testimony_unit_info_main">${{chartData2['total_profit']}}</div>
+    </div>
+    <div class="testimony_unit_graph"  id="profit"></div>
+  </div>
+  <div [hidden]="globalLogin.role=='publisher'" class="testimony_unit clearfix">
+    <div class="testimony_unit_info">
+      <div class="testimony_unit_info_head">Margin <span class="testimony_unit_info_prc" [class.decrease]="chartData2['percent_profit_margin']<0">{{chartData2['percent_profit_margin']}}%</span></div>
+      <div class="testimony_unit_info_main">%{{chartData2['total_profit_margin']}}</div>
+    </div>
+    <div class="testimony_unit_graph"  id="profit_margin"></div>
+  </div>
+  <div class="testimony_unit clearfix">
+    <div class="testimony_unit_info">
+      <div class="testimony_unit_info_head">Raw <span class="testimony_unit_info_prc" [class.decrease]="chartData2['percent_raw']<0">{{chartData2['percent_raw']}}%</span></div>
+      <div class="testimony_unit_info_main">{{chartData2['total_raw']}}</div>
+    </div>
+    <div class="testimony_unit_graph"  id="raw"></div>
+    </div>
+  <div class="testimony_unit clearfix">
+    <div class="testimony_unit_info">
+      <div class="testimony_unit_info_head">Uniques <span class="testimony_unit_info_prc" [class.decrease]="chartData2['percent_uniques']<0">{{chartData2['percent_uniques']}}%</span></div>
+      <div class="testimony_unit_info_main">{{chartData2['total_uniques']}}</div>
+    </div>
+    <div class="testimony_unit_graph" id="uniques"></div>
+  </div>
+  <div class="testimony_unit clearfix">
+    <div class="testimony_unit_info">
+      <div class="testimony_unit_info_head">Leads <span class="testimony_unit_info_prc" [class.decrease]="chartData2['percent_leads']<0">{{chartData2['percent_leads']}}%</span></div>
+      <div class="testimony_unit_info_main">{{chartData2['total_leads']}}</div>
+    </div>
+    <div class="testimony_unit_graph" id="leads"></div>
+  </div>
+  <div class="testimony_unit clearfix">
+    <div class="testimony_unit_info">
+      <div class="testimony_unit_info_head">CR <span class="testimony_unit_info_prc " [class.decrease]="chartData2['percent_cr']<0">{{chartData2['percent_cr']}}%</span></div>
+      <div class="testimony_unit_info_main">%{{chartData2['total_cr']}}</div>
+    </div>
+    <div class="testimony_unit_graph"  id="cr"></div>
+  </div>
+</div>
+<div class="graph">
+  <div class="graph_tabs">
+    <ul>
+      <li (click)="sendChartStatistic('hour')" [class.active]="period_type['hour']">Hourly</li>
+      <li (click)="sendChartStatistic('dow')" [class.active]="period_type['dow']">Daily</li>
+      <li (click)="sendChartStatistic('month')" [class.active]="period_type['month']">Monthly</li>
+      <li (click)="sendChartStatistic('geo')" [class.active]="period_type['geo']">GEO</li>
+    </ul>
+  </div>
+  <div class="graph_tabs_content" style="display: flex;">
+    <div class="graph_diagram"  id="main_chart" ></div>
+  </div>
+</div>
+<div class="page">
+  <div class="page_tabs">
+    <ul>
+      <li (click)="getTableStatistic('geo')" [class.active]="perfomers_type['geo']"><span class="page_tabs_icon world"></span></li>
+      <li *ngIf="globalLogin.role=='admin'" (click)="getTableStatistic('pub')" [class.active]="perfomers_type['pub']"><span class="page_tabs_icon user"></span></li>
+      <li (click)="getTableStatistic('ofr')" [class.active]="perfomers_type['ofr']"><span class="page_tabs_icon offer"></span></li>
+      <li *ngIf="globalLogin.role=='admin'" (click)="getTableStatistic('am')" [class.active]="perfomers_type['am']"><span class="page_tabs_icon user_man"></span></li>
+      <li *ngIf="globalLogin.role=='admin'" (click)="getTableStatistic('adv')" [class.active]="perfomers_type['adv']"><span class="page_tabs_icon horn"></span></li>
+    </ul>
+  </div>
+  <div class="page-grid page-grid_tabs  js-page-grid">
+    <div class="page-table">
+      <div class="page-table_head">
+        <table>
+          <tr>
+            <td class="t1_1">
+              <div class="page-table_sort_wr">Rank</div>
+            </td>
+            <td *ngIf="perfomers_type['geo']" class="t1_2">Countrie</td>
+            <td *ngIf="perfomers_type['pub']" class="t1_2">Publisher</td>
+            <td *ngIf="perfomers_type['ofr']" class="t1_2">Offer</td>
+            <td *ngIf="perfomers_type['am']" class="t1_2">Accaunt manager</td>
+            <td *ngIf="perfomers_type['adv']" class="t1_2">Advertiser</td>
+            <td class="t1_3">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('revenue')" id="revenue_sort" title="#" class="page-table_sort">Revenue</a>
+           </div>
+            </td>
+            <td class="t1_4">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('cr')" id="cr_sort" title="#" class="page-table_sort">CR</a>
+           </div>
+            </td>
+            <td class="t1_5">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('epv')" id="epv_sort" title="#" class="page-table_sort">EPV</a>
+            </div>
+            </td>
+            <td class="t1_6">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('share')" id="share_sort" title="#" class="page-table_sort">Share</a>
+            </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="page-table_body_wrap">
+        <div class="page-table_body page-table_body_1">
+          <table>
+            <tr *ngFor="let data of list.rows">
+              <td class="t1_1"><span class="page-table_ntr">{{data.rank}}</span></td>
+              <td class="t1_2">{{data.name}}</td>
+              <td class="t1_3">{{data.revenue}}</td>
+              <td class="t1_4">{{data.cr}}</td>
+              <td class="t1_5">{{data.epv}}</td>
+              <td class="t1_6" id="{{data.name}}"></td>
+            </tr >
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div
+        class="popup_link popup_link_block"
+        id="dialog_choose" [hidden]="inner_hidden" [style.top.px] = "top" [style.left.px] = "left">
+  <h6 class="h6">{{title}}</h6>
+  <div class="data1">
+    <div class="sel1">
+
+      <div class=" not_styler changed" [hidden]="!type">
+        <app-select-box [(model)]="value" [values]="values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
+      </div>
+
+      <div id="input_select" class=" not_styler changed cpa" [hidden]="type">
+        <input [(ngModel)]="value" class='cpa_popup' type="text" placeholder="1.00">
+        <a class="delate" title="#" (click)="clear()"></a>
+      </div>
+    </div>
+    <div class="sub_btn">
+      <div class="form_offer_btn_ch" (click)="changeField()"><a ></a></div>
+      <div class="form_offer_btn_cancel" (click)="close()"><a ></a></div>
+    </div>
+  </div>
+  <div class="bot"></div>
+</div>

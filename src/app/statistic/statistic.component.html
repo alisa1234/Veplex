@@ -1,0 +1,145 @@
+<!--<app-header></app-header>-->
+
+<div class="page page-offer-bundle">
+  <div class="page_header">
+    <h1>Offer</h1>
+    <a  style="margin-left:auto"></a>
+    <div class="data_set">
+      <div class="selection-block_form_item">
+        <app-select-box (pushOnSelected)="pushOnDate($event)" [(model)]="value" [values]="values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
+      </div>
+      <app-calendar [(inner_custom)]="calendarService.custom" [_parent]="this" [start_day]="calendarService.start_day" [end_day]="calendarService.end_day" [(new_datepicker)]="calendarService.name_class" [(new_datepicker_id)]="calendarService.id" [(new_datepicker_id2)]="calendarService.id2"></app-calendar>
+    </div>
+  </div>
+  <div class="page_info">
+    <div class="page_info_result"
+         [hidden] = "displaying">
+      Displaying {{display_from}}
+      -
+      {{display_to}} of {{display_of}} results</div>
+    </div>
+  <div class="page-grid js-page-grid">
+    <div class="page-table page-table_offers">
+      <div class="page-table_head">
+        <table>
+          <tr>
+            <td class="t9_1">
+              <div class="page-table_sort_wr">
+                <a  title="#" class="page-table_sort " (click)="sort('usoffer_id')" id="usoffer_id_sort" >ID</a>
+                <button #ba1 (click)="ti.Toggle()" class="search-table" [class.actives]="ti.isActive" value="usoffer_id"></button>
+                <app-text-input #ti [clicker]="ba1" [_parent]="this" [search]="usoffer_id"></app-text-input>
+              </div>
+            </td>
+            <td class="t9_2">
+              <div class="page-table_sort_wr checkbox">
+                <input type="checkbox" id="offer_name" [checked]="checked['offer_name']"  (change)="statisticBy('offer_name',checked['offer_name']= $event.target.checked)">
+                <a  title="#" class="page-table_sort " (click)="sort('offer_name')" id="offer_name_sort">Offer</a>
+                <button #ba2 (click)="ti2.Toggle()" class="search-table" [class.actives]="ti2.isActive" value="offer_name"></button>
+                <app-text-input #ti2 [clicker]="ba2" [_parent]="this" [search]="offer_name"></app-text-input>
+              </div>
+            </td>
+            <td class="t9_2">
+              <div class="page-table_sort_wr checkbox">
+                <input type="checkbox" id="user_name"  [checked]="checked['user_name']" (change)="statisticBy('user_name',checked['user_name']= $event.target.checked)">
+                <a  title="#" class="page-table_sort " (click)="sort('user_name')" id="user_name_sort">Partner</a>
+                <button #ba3 (click)="ti3.Toggle()" class="search-table" [class.actives]="ti3.isActive" value="user_name"></button>
+                <app-text-input #ti3 [clicker]="ba3" [_parent]="this" [search]="user_name"></app-text-input>
+              </div>
+            </td>
+            <td class="t9_3">
+              <div class="page-table_sort_wr checkbox">
+              <input type="checkbox"  id="type" [checked]="checked['type']" (change)="statisticBy('type',checked['type']= $event.target.checked)">
+              <a (click)="sort('type')" id="type_sort" title="#" class="page-table_sort ">Type</a>
+                </div>
+            </td>
+            <td class="t9_4">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('raw')" id="raw_sort" title="#" class="page-table_sort">Raw</a>
+                </div>
+            </td>
+            <td class="t9_4">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('uniques')" id="uniques_sort" title="#" class="page-table_sort">Uniques</a>
+                </div>
+            </td>
+            <td class="t9_4">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('leads')" id="leads_sort" title="#" class="page-table_sort">Leads</a>
+                </div>
+            </td>
+            <td class="t9_4">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('revenue')" id="revenue_sort" title="#" class="page-table_sort">Revenue</a>
+                </div>
+            </td>
+            <td class="t9_3">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('cr')" id="cr_sort" title="#" class="page-table_sort">CR</a>
+                </div>
+            </td>
+            <td class="t9_3">
+              <div class="page-table_sort_wr">
+              <a (click)="sort('epv')" id="epv_sort" title="#" class="page-table_sort">EPV</a>
+                </div>
+            </td>
+            <td class="t9_4"> </td>
+          </tr>
+        </table>
+      </div>
+      <div class="page-table_body_wrap">
+        <div class="page-table_body">
+          <table>
+            <tr *ngIf="not_found_result" style="text-align: center"><td>Not found results</td></tr>
+            <tr class="visible-row" *ngFor="let data of list.rows">
+              <td class="t9_1">{{data.usoffer_id}}</td>
+              <td class="t9_2">{{data.offer_name}}</td>
+              <td class="t9_2">{{data.user_name}}</td>
+              <td class="t9_3">{{data.type}}</td>
+              <td class="t9_4">{{data.raw}}</td>
+              <td class="t9_4">{{data.uniques}}</td>
+              <td class="t9_4">{{data.leads}}</td>
+              <td class="t9_4">{{data.revenue}}</td>
+              <td class="t9_3">{{data.cr}}</td>
+              <td class="t9_3">{{data.epv}}</td>
+              <td class="t9_4">
+                <ul class="page-table_proffers">
+                  <li *ngIf="user_name_icons"><a (click)="getConversions(data.usoffer_id,data.offer_name)" class="proffers-conv"  title="Conversions"></a></li>
+                  <li *ngIf="user_name_icons"><a (click)="getDetail(data.usoffer_id,data.offer_name)" class="proffers-stat"  title="Detail statistic"></a></li>
+                  <li *ngIf="user_name_icons"><a (click)="popupCorrectionsService.showCorrections(data.usoffer_id)" class="proffers-stat"  title="Corrections"></a></li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-table_foot">
+        <table>
+          <tr>
+            <td class="t9_1">Total:</td>
+            <td class="t9_2"></td>
+            <td class="t9_2"></td>
+            <td class="t9_3"></td>
+            <td class="t9_4">{{total_raw}}</td>
+            <td class="t9_4">{{total_uniques}}</td>
+            <td class="t9_4">{{total_leads}}</td>
+            <td class="t9_4">{{total_revenue}}</td>
+            <td class="t9_3">{{total_cr}}</td>
+            <td class="t9_3">{{total_epv}}</td>
+            <td class="t9_4"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="page-footer">
+      <div class="pagination">
+        <div class="next-disabled"> <span [hidden]= "page_button_next_disabled">Next</span></div>
+        <div class="next"> <span  (click)="next()" [hidden]= "page_button_next">Next</span></div>
+        <div class="first"><span title="On the first" (click)="first()" [hidden] = "page_button_first"></span></div>
+        <div class="prev"><span title="Previous" (click)="prev()" [hidden] = "page_button_prev"></span></div>
+        <div class="current_page"><span  [hidden]= "current_page">{{currentPage}}</span></div>
+        <div class="next_arrow"> <span title="Next" (click)="next()" [hidden]= "page_button_next_arrow"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-popup-corrections [(hidden)]="popupCorrectionsService.hidden"></app-popup-corrections>

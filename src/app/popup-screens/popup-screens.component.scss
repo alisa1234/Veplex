@@ -1,0 +1,112 @@
+#screens_dialog {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  //margin-left: -218px;
+  /* margin-top: -148px; */
+  border-bottom: 2px solid #dbe1e9;
+  background: #fff;
+  //width: 436px;
+  width: auto;
+  z-index: 10010;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  transform: translate(-50%,-20%);
+}
+.text_popup{
+  padding: 25px 20px 10px;
+
+  h6{
+    font: 13px "Arial";
+    font-weight: bold;
+    color: #3b3b3b;
+    padding: 0 0 21px;
+
+    span{
+      font-family: "Arial";
+    }
+  }
+  .info_bl {
+    border-top: none;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 14px 0 14px;
+    font-size: 12px;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+  }
+  .wr_but {
+    padding: 8px 0 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+
+    .sub_btn {
+      padding: 0 0 0 5px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 0 auto;
+
+      .previous_btn{
+        cursor: pointer;
+        background: url(../scss/img/left-arrow.svg) no-repeat;
+        border: none;
+        width: 21px;
+        height: 21px;
+        //&:hover {
+        //  background: url(app/images/left_arrow-hover.svg) no-repeat;
+        //  width: 21px;
+        //  height: 21px;
+        //}
+      }
+      .countr{
+        font: 14px "Arial";
+        color: #474747;
+        display: block;
+        float: left;
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 71px;
+        text-align: center;
+        padding: 3px 10px 0;
+        box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+      }
+      .next_btn{
+        cursor: pointer;
+        background: url(../scss/img/right-arrow.svg) no-repeat;
+        border: none;
+        width: 21px;
+        height: 21px;
+        //&:hover {
+        //  background: url(app/images/right_arrow-hover.svg) no-repeat;
+        //  width: 21px;
+        //  height: 21px;
+        //}
+      }
+
+      .ok{
+        cursor: pointer;
+        background: url(../scss/icons/ok_circle_36-36_active.svg) no-repeat;
+        border: none;
+        width: 34px;
+        height: 34px;
+        &:hover {
+          background: url(../scss/icons/ok_circle_34-34_hover.svg) no-repeat;
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+  }
+}

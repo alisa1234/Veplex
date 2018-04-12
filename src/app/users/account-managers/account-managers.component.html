@@ -1,0 +1,323 @@
+<!--<div class="info-block">-->
+  <!--<div class="info-block_time"><span class="info-block_time_title">Server Time:</span> 01/08/2015 16:40:49</div>-->
+  <!--<div class="breadcrumbs">-->
+    <!--<ul>-->
+      <!--<li><a title="Home">Home</a></li>-->
+      <!--<li><a title="Users">Users</a></li>-->
+      <!--<li><a>Account managers</a></li>-->
+      <!--<li>{{tittle}}</li>-->
+      <!--<li>{{tittle_name}}</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="page page-offer">
+  <h1>{{tittle}} {{tittle_id}}</h1>
+  <div class="form_users">
+    <form action="">
+      <ul class="form_users_list">
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="name"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="name"
+                  type="text"
+                  placeholder="Username*"/></div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="company_name"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="company_name"
+                  type="text"
+                  placeholder="Company name*"/></div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="password"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="password"
+                  type="password"
+                  placeholder="Password*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="repeatPassword"
+                  [ngModelOptions]="{standalone:true}"
+                  id="repeatPassword"
+                  type="password"
+                  placeholder="Repeat Password*"/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="email"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="email"
+                  type="text"
+                  placeholder="Email*"/></div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="bonus_publishers"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="bonus_publishers"
+                  type="text"
+                  placeholder="Bonus Publishers"/></div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_input input-wr"><input
+                  [(ngModel)]="bonus_advertisers"
+                  [ngModelOptions]="{standalone:true}"
+                  (keyup)="keypress($event)"
+                  id="bonus_advertisers"
+                  type="text"
+                  placeholder="Bonus Advertisers"/></div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+
+          <div class="form_offer_access  form_users_input" >
+          <app-select-box [(model)]="status" [values]="status_arr" [option_value_var]="'value'" [option_text_var]="'name'" [click_event]="true" [_parent]="this"></app-select-box>
+            <!--<select-->
+                    <!--#status_value-->
+                    <!--[(ngModel)]="status"-->
+                    <!--[ngModelOptions]="{standalone:true}"-->
+                    <!--class="form_offer_access_select form_users_select"-->
+                    <!--id="status"-->
+                    <!--name="" data-placeholder="Status">-->
+              <!--<option value="null" selected disabled>Status</option>-->
+              <!--<option *ngFor="let status of status_arr" value="{{status.key}}">{{status.value}}</option>-->
+            <!--</select>-->
+            <div class="question">
+              <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+            </div>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_users_access">
+            <h6>Access</h6>
+            <div class="form_users_check">
+              <div class="form_users_check_base">
+                <div class="form_users_check_item"><input
+                        #permission_statistics_value
+                        [(ngModel)]="permission_statistics"
+                        [ngModelOptions]="{standalone:true}"
+                        (click)="checking('permission_statistics')"
+                        id="permission_statistics"
+                        type="checkbox" />
+                  <label for="permission_statistics">Statistics</label></div>
+              </div>
+              <div>
+                <div class="form_users_check_subs" >
+                  <div class="form_users_check_item" [class.activate]="premissions_arr['permission_statistics']"><input
+                          #permission_assign_statistics_value
+                          [(ngModel)]="permission_assign_statistics"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_assign_statistics"
+                          class="permission_statistics"
+                          type="checkbox" />
+                    <label for="permission_assign_statistics">Assigned accounts only</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="form_users_check">
+              <div class="form_users_check_base">
+                <div class="form_users_check_item"><input
+                        #permission_users_value
+                        [(ngModel)]="permission_users"
+                        [ngModelOptions]="{standalone:true}"
+                        (click)="checking('permission_users')"
+                        id="permission_users"
+                        type="checkbox" />
+                  <label for="permission_users">Users</label></div>
+              </div>
+              <div>
+                <div class="form_users_check_subs"  >
+                  <div class="form_users_check_item" [class.activate]="premissions_arr['permission_users']"><input
+                          #permission_assign_users_value
+                          [(ngModel)]="permission_assign_users"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_assign_users"
+                          class="permission_users"
+                          type="checkbox"/>
+                    <label for="permission_assign_users">Assigned accounts only</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="form_users_check">
+              <div class="form_users_check_base">
+                <div class="form_users_check_item"><input
+                        #permission_offers_value
+                        [(ngModel)]="permission_offers"
+                        [ngModelOptions]="{standalone:true}"
+                        (click)="checking('permission_offers')"
+                        id="permission_offers"
+                        type="checkbox"/>
+                  <label for="permission_offers">Offers</label></div>
+              </div>
+              <div>
+                <div class="form_users_check_subs">
+                  <div class="form_users_check_item"  [class.activate]="premissions_arr['permission_offers']"><input
+                          #permission_assign_offers_value
+                          [(ngModel)]="permission_assign_offers"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_assign_offers"
+                          class="permission_offers"
+                          type="checkbox"/>
+                    <label for="permission_assign_offers">Assigned accounts only</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="form_users_check">
+              <div class="form_users_check_base">
+                <div class="form_users_check_item"><input
+                        #permission_payments_advertisers_value
+                        [(ngModel)]="permission_payments_advertisers"
+                        [ngModelOptions]="{standalone:true}"
+                        (click)="checking('permission_payments_advertisers')"
+                        id="permission_payments_advertisers"
+                        type="checkbox"/>
+                  <label for="permission_payments_advertisers">Payments advertisers</label></div>
+              </div>
+              <div>
+                <div class="form_users_check_subs" >
+                  <div class="form_users_check_item" [class.activate]="premissions_arr['permission_payments_advertisers']"><input
+                          #permission_assign_payments_advertisers_value
+                          [(ngModel)]="permission_assign_payments_advertisers"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_assign_payments_advertisers"
+                          class="permission_payments_advertisers"
+                          type="checkbox"/>
+                    <label for="permission_assign_payments_advertisers">Assigned accounts only</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="form_users_check">
+              <div class="form_users_check_base">
+                <div class="form_users_check_item"><input
+                        #permission_payments_publishers_value
+                        [(ngModel)]="permission_payments_publishers"
+                        [ngModelOptions]="{standalone:true}"
+                        (click)="checking('permission_payments_publishers')"
+                        id="permission_payments_publishers"
+                        type="checkbox"/>
+                  <label for="permission_payments_publishers">Payments publishers</label></div>
+              </div>
+              <div>
+                <div class="form_users_check_subs" >
+                  <div class="form_users_check_item" [class.activate]="premissions_arr['permission_payments_publishers']"><input
+                          #permission_assign_payments_publishers_value
+                          [(ngModel)]="permission_assign_payments_publishers"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_assign_payments_publishers"
+                          class="permission_payments_publishers"
+                          type="checkbox"/>
+                    <label for="permission_assign_payments_publishers">Assigned accounts only</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="form_users_check">
+              <div class="form_users_check_base">
+                <div class="form_users_check_item"><input
+                        #permission_settings_value
+                        [(ngModel)]="permission_settings"
+                        [ngModelOptions]="{standalone:true}"
+                        (click)="checking('permission_settings')"
+                        id="permission_settings"
+                        type="checkbox"/>
+                  <label for="permission_settings">Settings</label></div>
+              </div>
+              <div>
+                <div class="form_users_check_subs" >
+                  <div class="form_users_check_item" [class.activate]="premissions_arr['permission_settings']"><input
+                          #permission_settings_customization_value
+                          [(ngModel)]="permission_settings_customization"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_settings_customization"
+                          class="permission_settings"
+                          type="checkbox"/>
+                    <label for="permission_settings_customization">Customization</label>
+                  </div>
+                  <div class="form_users_check_item" [class.activate]="premissions_arr['permission_settings']"><input
+                          #permission_settings_companys_profile_value
+                          [(ngModel)]="permission_settings_companys_profile"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_settings_companys_profile"
+                          class="permission_settings"
+                          type="checkbox"/>
+                    <label for="permission_settings_companys_profile">Company’s profile</label>
+                  </div>
+                  <div class="form_users_check_item" [class.activate]="premissions_arr['permission_settings']"><input
+                          #permission_settings_billing_info_value
+                          [(ngModel)]="permission_settings_billing_info"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_settings_billing_info"
+                          class="permission_settings"
+                          type="checkbox"/>
+                    <label for="permission_settings_billing_info">Billing info</label>
+                  </div>
+                  <div class="form_users_check_item" [class.activate]="premissions_arr['permission_settings']"><input
+                          #permission_settings_payments_value
+                          [(ngModel)]="permission_settings_payments"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_settings_payments"
+                          class="permission_settings"
+                          type="checkbox"/>
+                    <label for="permission_settings_payments">Payments</label>
+                  </div>
+                  <div class="form_users_check_item" [class.activate]="premissions_arr['permission_settings']"><input
+                          #permission_settings_system_value
+                          [(ngModel)]="permission_settings_system"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_settings_system"
+                          class="permission_settings"
+                          type="checkbox"/>
+                    <label for="permission_settings_system">System</label>
+                  </div>
+                  <div class="form_users_check_item" [class.activate]="premissions_arr['permission_settings']"><input
+                          #permission_settings_faq_value
+                          [(ngModel)]="permission_settings_faq"
+                          [ngModelOptions]="{standalone:true}"
+                          (click)="checking($event)"
+                          id="permission_settings_faq"
+                          class="permission_settings"
+                          type="checkbox"/>
+                    <label for="permission_settings_faq">F.A.Q</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="form_offer_btn">
+        <button *ngIf="offer_ok" type="submit" class="form_offer_btn_ok" (click)="send()"></button>
+        <button *ngIf="offer_ch" type="submit" class="form_offer_btn_ch" (click)="sendOk()"></button>
+        <button type="reset" class="form_offer_btn_cancel" (click)="clear()"></button>
+      </div>
+    </form>
+  </div>
+</div>

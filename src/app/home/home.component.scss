@@ -1,0 +1,14 @@
+.page{
+  &-table{
+   &_body{
+     overflow-y: unset;
+     position: unset;
+   }
+    &_sort{
+      &_wr{
+        margin: -4px -10px -6px -10px;
+        padding: 4px 25px 6px 10px;
+      }
+    }
+  }
+}

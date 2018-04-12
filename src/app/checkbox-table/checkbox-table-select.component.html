@@ -1,0 +1,4 @@
+<div class="page_info_selected">Selected<span class="page_info_selected_number">{{selected}}</span></div>
+<div class="page_info_choose">
+    <app-select-box (pushOnSelected)="pushOnSelected($event)" [(model)]="value" [values]="values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
+</div>

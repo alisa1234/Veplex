@@ -1,0 +1,65 @@
+%main_w {
+    margin: 0 auto;
+    @include xl {
+        width: 1170px;
+    }
+    @include lg {
+        width: 940px;
+    }
+    @include md {
+        width: 740px;
+    }
+    @include sm {
+        width: 460px;
+    }
+    @include xs {
+        width: 300px;
+    }
+}
+%message {
+    &:before {
+        display: none;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 5px;
+        z-index: 999;
+        color: #000;
+        text-shadow: 0 0 5px #fff;
+        @include xl {
+            content: '#{$xl}';
+        }
+        @include lg {
+            content: '#{$lg}';
+        }
+        @include md {
+            content: '#{$md}';
+        }
+        @include sm {
+            content: '#{$sm}';
+        }
+        @include xs {
+            content: '#{$xs}';
+        }
+    }
+}
+%set:after { height: 0; overflow: hidden; clear: both; font-size: 0; line-height: 0; display: block; content: ''; }
+%ulli { list-style: outside none none; padding: 0; margin: 0; }
+@mixin placeholder {
+    &::-webkit-input-placeholder { @content }
+    &::-moz-placeholder { @content }
+    &:-moz-placeholder { @content }
+    &:-ms-input-placeholder { @content }
+}
+@mixin ie {
+    @media screen and (min-width: 0 \0) and (min-resolution: +72dpi) {
+        @content;
+    }
+}
+@mixin text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

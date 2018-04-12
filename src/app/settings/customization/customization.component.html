@@ -1,0 +1,96 @@
+
+<div class="page page-settings">
+  <h1>Customization</h1>
+  <div class="form_offer">
+    <form
+            name="customization-form"
+            id="customization-form"
+            novalidate>
+      <ul class="form_offer_list">
+        <li>
+          <div class="form_offer_link active input-wr  customization_interface">
+            <input
+                    #color_value
+                    (keyup)="keypress($event)"
+                    name="color"
+                    [(ngModel)]="color"
+                    [ngModelOptions]="{standalone:true}"
+                    id="color"
+                    type="text"
+                    placeholder="Interface color"
+                    required/>
+          </div>
+          <div class="form_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </div>
+        </li>
+        <li>
+          <div class="form_offer_browse customization">
+            <div class="form_offer_browse_upload" id="form_offer_logo_upload">
+              <span class="form_offer_browse_upload_btn">
+                <input
+                        #logo_upload
+                        [(ngModel)]="file_logo"
+                        [ngModelOptions]="{standalone:true}"
+                        (change)="uploading_logo($event)"
+                        (click)="keypress($event)"
+                        id="file_logo"
+                        type="file"
+                        class="input_offer_upload"
+                        placeholder="Logo"
+                        accept="image/jpeg,image/png"/>
+              </span>
+              <span class="form_offer_browse_upload_placeholder" [style.display] = "flags['form_offer_browse-logo'] ? 'none' : 'block'">Logo</span>
+              <!--<span class="form_offer_browse_upload_placeholder" *ngIf="flag_logo">{{logo}}</span>-->
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="form_offer_browse customization">
+            <div class="form_offer_browse_upload" id="form_offer_favicon_upload">
+              <span class="form_offer_browse_upload_btn">
+                <input
+                        #favicon_upload
+                        name="file_favicon"
+                        [(ngModel)]="file_favicon"
+                        [ngModelOptions]="{standalone:true}"
+                        (click)="keypress($event)"
+                        id="file_favicon"
+                        type="file"
+                        (change)="uploading_favicon($event)"
+                        placeholder="Favicon"
+                        accept="image/ico,image/png"/>
+              </span>
+              <span class="form_offer_browse_upload_placeholder" [style.display]="flags['form_offer_browse-favicon'] ? 'none' : 'block'">Favicon</span>
+              <!--<span class="form_offer_browse_upload_placeholder" *ngIf="flag_favicon">{{favicon}}</span>-->
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="form_offer_access">
+            <!--<select-->
+                    <!--[(ngModel)]="timezone_value"-->
+                    <!--[ngModelOptions]="{standalone: true}"-->
+                    <!--id="timeZone"-->
+                    <!--*ngIf="timezonesLoaded"-->
+                    <!--class="form_offer_access_select"-->
+                    <!--name="timeZone"-->
+                    <!--data-placeholder="Choose time zone">-->
+              <!--<option value="null"  disabled selected>Choose time zone</option>-->
+              <!--<option-->
+                      <!--*ngFor="let key of getTimezoneKey()"-->
+                      <!--value="{{key}}">{{timezone[key]}}</option>-->
+            <!--</select>-->
+            <app-select-box [(model)]="timezone_value" [values]="timezone" [option_value_var]="'id'" [option_text_var]="'title'" [click_event]="true" [_parent]="this"></app-select-box>
+            <div class="question">
+              <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="form_offer_btn">
+        <button type="submit" class="form_offer_btn_ch inactive" (click)="send()"></button>
+        <button type="reset" class="form_offer_btn_cancel" (click)="clear()"></button>
+      </div>
+    </form>
+  </div>
+</div>
+

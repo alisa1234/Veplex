@@ -1,0 +1,50 @@
+<div class="popup_wr3" [hidden]="hidden">
+  <!--<div  class="popup popup_invoice"  >-->
+    <div #popup_reports class="popup_invoice_cont_wr" id="reports_dialog">
+      <div class="popup popup_report">
+        <h3>{{list.total_count.user_name}}</h3>
+        <div class="popup_report_table">
+          <div class="popup_report_table_head">
+            <table>
+              <tr>
+                <td class="td8_1">Offer</td>
+                <td class="td8_2">Leads</td>
+                <td class="td8_3">CPA</td>
+                <td class="td8_4">Period</td>
+                <td class="td8_5">Revenue</td>
+              </tr>
+            </table>
+          </div>
+          <div class="popup_report_table_body">
+            <table>
+              <tr *ngFor="let data of list.rows">
+                <td class="td8_1">{{data.name}}</td>
+                <td class="td8_2">{{data.leads}}</td>
+                <td class="td8_3">{{data.cpa}}</td>
+                <td class="td8_4">{{data.period}}</td>
+                <td class="td8_5">{{data.revenue}}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="popup_report_correct">
+            <div class="popup_report_correct_data">Corrections: {{list.total_count.corrections}}</div>
+            <div class="popup_report_correct_tx">{{list.total_count.corrections_comment}}</div>
+          </div>
+          <div class="popup_report_table_foot">
+            <table>
+              <tr>
+                <td class="td8_1">Total amount:</td>
+                <td class="td8_2">{{list.total_count.leads}}</td>
+                <td class="td8_3"> </td>
+                <td class="td8_4"> </td>
+                <td class="td8_5">{{list.total_count.revenue}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="popup_report_btn">
+          <a class="download" (click)="downloadCsv(list.uuid)" title="#"></a>
+          <a (click)="resend(list.uuid)" title="#" class="resend"></a></div>
+      </div>
+    </div>
+</div>

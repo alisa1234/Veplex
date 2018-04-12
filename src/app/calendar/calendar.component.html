@@ -1,0 +1,14 @@
+<div [hidden]="inner_custom" [class.data_range]="!inner_custom" >
+  <div class="date1"><input [id]="new_datepicker_id" [(ngModel)]="start_day" [class]="new_datepicker"  type="text" /></div>
+  <div class="dash">-</div>
+  <div class="date1"><input [id]="new_datepicker_id2" [(ngModel)]="end_day" [class]="new_datepicker" type="text" /></div>
+  <div class="calendar_ok hidden_calendar_ok" (click)="sendDate()"></div>
+</div>
+
+<!--<div [hidden]="inner_custom2" [class.data_range]="!inner_custom2" >-->
+  <!--<div class="date1"><input id="correction_start_day10" [(ngModel)]="correction_start_day" class="new_datepicke" type="text" /></div>-->
+  <!--<div class="dash">-</div>-->
+  <!--<div class="date1"><input id="correction_end_day10" [(ngModel)]="correction_end_day"  class="new_datepicke" type="text" /></div>-->
+  <!--<div class="calendar_ok hidden_calendar_ok" (click)="sendDate()"></div>-->
+<!--</div>-->
+<!--<div class="tick" style="display: none"><a href="#" title="#"></a></div>-->

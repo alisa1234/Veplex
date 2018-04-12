@@ -1,0 +1,109 @@
+<!--<div class="info-block">-->
+  <!--<div class="info-block_time"><span class="info-block_time_title">Server Time:</span> 01/08/2015 16:40:49</div>-->
+  <!--<div class="breadcrumbs">-->
+    <!--<ul>-->
+      <!--<li><a title="Home">Home</a></li>-->
+      <!--<li><a title="Users">Users</a></li>-->
+      <!--<li>Users</li>-->
+      <!--<li>{{user_name}}</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="page page-offer-bundle">
+  <div class="page_header">
+    <h1>Payouts - Partner ID{{offer_id}}</h1>
+  </div>
+  <div class="page_info">
+    <app-checkbox-table-select [_parent]="this" [attr]="'access'"></app-checkbox-table-select>
+    <div class="page_info_result"
+         [hidden] = "displaying">
+      Displaying {{display_from}}
+      -
+      {{display_to}} of {{display_of}} results</div>
+  </div>
+  <div class="page-grid js-page-grid">
+    <div class="page-table page-table_offers">
+      <div class="page-table_head">
+        <table>
+          <tr>
+            <td class="checkbox_field t9_1">
+              <app-checkbox-table-all></app-checkbox-table-all>
+            </td>
+            <td class="t9_2">
+              <div class="page-table_sort_wr">
+                <a class="page-table_sort" (click)="sort('name')" id="name_sort">Offer name</a>
+                <button #ba2 (click)="ti2.Toggle()" class="search-table" [class.actives]="ti2.isActive" value="name"></button>
+                <app-text-input #ti2 [clicker]="ba2" [_parent]="this" [search]="name"></app-text-input>
+              </div>
+            </td>
+            <td class="t9_3">
+              <div class="page-table_sort_wr">
+                <a class="page-table_sort" (click)="sort('rpa')" id="rpa_sort">RPA</a>
+              </div>
+            </td>
+            <td class="t9_4">
+              <div class="page-table_sort_wr">
+                <a class="page-table_sort" (click)="sort('default_cpa')" id="default_cpa_sort">Default CPA</a>
+              </div>
+            </td>
+            <td class="t9_5">
+              <div class="page-table_sort_wr">
+                <a class="page-table_sort" (click)="sort('cpa')" id="cpa_sort">Partner CPA</a>
+              </div>
+            </td>
+            <td class="t9_6">
+              <div class="page-table_sort_wr"><a class="page-table_sort" (click)="sort('access')" id="access_sort">Offer access</a>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="page-table_body_wrap">
+        <div class="page-table_body">
+          <table>
+            <tr *ngIf="this.not_found_result" style="text-align: center"><td>Not found results</td></tr>
+            <tr class="visible-row" *ngFor="let data of list.rows">
+              <td class="checkbox_field t9_1">
+                <app-checkbox-table-one [id]="data.id"></app-checkbox-table-one>
+              </td>
+              <td class="t9_2">{{data.name}}</td>
+              <td class="t9_3"><span
+                      id="rpa"
+                      data-name="RPA"
+                      data-type="">{{data.rpa}}</span></td>
+
+              <td class="t9_4"><span
+                      id="default_cpa"
+                      data-name="CPA"
+                      data-type="Default">{{data.default_cpa}}</span></td>
+
+              <td class="t9_5"><span
+                      class="page-table_prc"
+                      id="cpa"
+                      data-name="CPA"
+                      data-type=""
+                      (click)="chooseField($event,data.id,data.user_id,data.offer_id,data.cpa,data.cpa,'cpa','input',data)">{{data.cpa}}</span></td>
+              <td class="t9_6"><span
+                      data-type="Select"
+                      data-name="Access"
+                      class="page-table_prc"
+                      id="access"
+                      (click)="chooseField($event,data.id,data.user_id,data.offer_id,data.access,data.access,'user_access','select',data)">{{popupChange.typeEncode(data.access,'user_access')}}</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <div class="pagination">
+        <div class="next-disabled"> <span [hidden]= "page_button_next_disabled">Next</span></div>
+        <div class="next"> <span  (click)="next()" [hidden]= "page_button_next">Next</span></div>
+        <div class="first"><span title="On the first" (click)="first()" [hidden] = "page_button_first"></span></div>
+        <div class="prev"><span title="Previous" (click)="prev()" [hidden] = "page_button_prev"></span></div>
+        <div class="current_page"><span  [hidden]= "current_page">{{currentPage}}</span></div>
+        <div class="next_arrow"> <span title="Next" (click)="next()" [hidden]= "page_button_next_arrow"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-popup-table #popup (ch)="changeField($event)" [(inner_hidden)]="popupChange.hidden" [top]="popupChange.top" [left]="popupChange.left" [(value)]="popupChange.value_id"  [values]="popupChange.values" [type]="popupChange.type" [title]="popupChange.field"></app-popup-table>

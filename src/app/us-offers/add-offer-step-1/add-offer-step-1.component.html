@@ -1,0 +1,168 @@
+<!--<div class="info-block">-->
+  <!--<div class="info-block_time"><span class="info-block_time_title">Server Time:</span> 01/08/2015 16:40:49</div>-->
+  <!--<div class="breadcrumbs">-->
+    <!--<ul>-->
+      <!--<li><a title="User">User</a></li>-->
+      <!--<li>Add offers</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="page page-offer-bundle">
+  <div class="page_header">
+    <div class="page_header_cell"><h1>Add offers</h1></div>
+    <div class="page_header_steps page_header_cell">
+      <ul>
+        <li class="activated"><a href="#" title="#">1</a></li>
+        <li><a href="#" title="#">2</a></li>
+        <!--<li><a href="#" title="#">3</a></li>-->
+      </ul>
+    </div>
+    <!--<div class="page_header_case page_header_cell">-->
+      <!--<div class="page_info_selected">Selected<span class="page_info_selected_number">3</span></div>-->
+      <!--<a href="#" title="#" class="button-next"></a>-->
+    <!--</div>-->
+  </div>
+  <div class="page_info">
+    <div class="page_info_result"
+       [hidden] = "displaying">
+    Displaying {{display_from}}
+    -
+    {{display_to}} of {{display_of}} results</div>
+  </div>
+  <div class="page-grid js-page-grid">
+    <div class="page-table page-table_offers page-table_offers_step">
+      <div class="page-table_head">
+        <table>
+          <tr>
+            <td class="t3_1"></td>
+            <td class="t3_2">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('id')" id="id_sort" class="page-table_sort">ID</a>
+                <button #ba1 (click)="ti.Toggle()" class="search-table" [class.actives]="ti.isActive" value="id"></button>
+                <app-text-input #ti [clicker]="ba1" [_parent]="this" [search]="id"></app-text-input>
+              </div>
+            </td>
+            <td class="t3_3">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('name')" id="name_sort" class="page-table_sort">Offer</a>
+                <button #ba2 (click)="ti2.Toggle()" class="search-table" [class.actives]="ti2.isActive" value="name"></button>
+                <app-text-input #ti2 [clicker]="ba2" [_parent]="this" [search]="name"></app-text-input>
+              </div>
+            </td>
+            <td class="t3_4">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('type')" id="type_sort" class="page-table_sort">Type</a>
+                <button #ba3 (click)="chi3.Toggle()" class="search-table" [class.actives]="chi3.isActive" value="type"></button>
+                <app-chosen-input #chi3 [clicker]="ba3" [_parent]="this"></app-chosen-input>
+              </div>
+            </td>
+            <td class="t3_5">
+              <div class="page-table_sort_wr">
+                Category
+                <button #ba4 (click)="ti4.Toggle()" class="search-table" [class.actives]="ti4.isActive" value="category_id"></button>
+                <app-chosen-input #ti4 [clicker]="ba4" [_parent]="this" ></app-chosen-input>
+              </div>
+            </td>
+            <td class="t3_5">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('geo')" id="geo_sort" class="page-table_sort">GEO</a>
+                <button #ba5 (click)="ti5.Toggle()" class="search-table" [class.actives]="ti5.isActive" value="countries"></button>
+                <app-chosen-input #ti5 [clicker]="ba5" [_parent]="this"></app-chosen-input>
+              </div>
+            </td>
+            <td class="t3_6">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('device')" id="device_sort" class="page-table_sort">Device</a>
+                <button #ba6 (click)="ti6.Toggle()" class="search-table" [class.actives]="ti6.isActive" value="device"></button>
+                <app-chosen-input #ti6 [clicker]="ba6" [_parent]="this"></app-chosen-input>
+              </div>
+            </td>
+            <td class="t3_7">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('cpa')" id="cpa_sort" class="page-table_sort">CPA</a>
+                <!--<button #ba7 (click)="ti7.Toggle()" class="search-table" [class.actives]="ti7.isActive" value="cpa"></button>-->
+                <!--<app-text-input #ti7 [clicker]="ba7" [_parent]="this"></app-text-input>-->
+              </div>
+            </td>
+            <td class="t3_8">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('platform')" id="platform_sort" class="page-table_sort">Platform(s)</a>
+                <button #ba8 (click)="ti8.Toggle()" class="search-table" [class.actives]="ti8.isActive" value="platform"></button>
+                <app-text-input #ti8 [clicker]="ba8" [_parent]="this" [search]="platform"></app-text-input>
+              </div>
+            </td>
+            <td class="t3_9">
+              <div class="page-table_sort_wr">
+                <a (click)="sort('carrier')" id="carrier_sort" class="page-table_sort">Carrier(s)</a>
+                <button #ba9 (click)="ti9.Toggle()" class="search-table" [class.actives]="ti9.isActive" value="carrier"></button>
+                <app-text-input #ti9 [clicker]="ba9" [_parent]="this" [search]="carrier"></app-text-input>
+              </div>
+            </td>
+            <td class="checkbox_field t3_1"> </td>
+          </tr>
+        </table>
+      </div>
+      <div class="page-table_body_wrap">
+        <div class="page-table_body">
+          <table>
+            <tr *ngIf="this.not_found_result" style="text-align: center"><td>Not found results</td></tr>
+            <tr *ngFor="let data of list.rows">
+              <td class="t3_1">
+                <ul class="page-table_infoprev">
+                  <li *ngIf="isInfo[data.id]"><a  (click)="popupInformationService.showInformation(data.id,data.name,data.information)" [class.info-btn]="isInfo[data.id]" [class.info-btn_disable]="!isInfo[data.id]" title="#"></a></li>
+                  <li *ngIf="!isInfo[data.id]"><a  [class.info-btn]="isInfo[data.id]" [class.info-btn_disable]="!isInfo[data.id]" title="#"></a></li>
+                  <li *ngIf="isScreen[data.id]"><a   (click)="popupScreensService.showScreens(data.id,data.name,data.pics_url)" [class.prev-btn]="isScreen[data.id]" [class.prev-btn_disable]="!isScreen[data.id]" title="#"></a></li>
+                  <li *ngIf="!isScreen[data.id]"><a   [class.prev-btn]="isScreen[data.id]" [class.prev-btn_disable]="!isScreen[data.id]" title="#"></a></li>
+                </ul>
+              </td>
+              <td class="t3_2">{{data.id}}</td>
+              <td class="t3_3">{{data.name}}</td>
+              <td class="t3_4">{{popupChange.typeEncode(data.type,'type')}}</td>
+              <td class="t3_5">{{data.category_title}}</td>
+              <td class="t3_5">{{data.countries}}</td>
+              <td class="t3_6">{{popupChange.typeEncode(data.device,'device')}}</td>
+              <td class="t3_7">{{data.cpa}}</td>
+              <td class="t3_8">{{data.platforms}}</td>
+              <td class="t3_9">{{data.carriers}}</td>
+              <td class="checkbox_field t3_1" >
+                <span *ngIf="data.access==0&&data.user_access==1||data.access==1&&data.user_access==1" ><a  class="offer-del"  (click)="add(data.id)" title="Add"></a></span>
+                 <span  *ngIf="data.access==0&&data.user_access==0"><a class=" offer-lock" (click)="getUnlock(data.id)"   title=""></a></span>
+                 <span *ngIf="data.access==0&&data.user_access==2"><a  class=" offer-wait"   title=""></a></span>
+              </td>
+
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-table_foot">
+        <table>
+          <tr>
+            <td class="t3_1"> </td>
+            <td class="t3_2"> </td>
+            <td class="t3_3"> </td>
+            <td class="t3_4"> </td>
+            <td class="t3_5"> </td>
+            <td class="t3_5"> </td>
+            <td class="t3_6"> </td>
+            <td class="t3_7"> </td>
+            <td class="t3_8"> </td>
+            <td class="t3_9"> </td>
+            <td class="t3_1"> </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="page-footer">
+      <div class="pagination">
+        <div class="next-disabled"> <span [hidden]= "page_button_next_disabled">Next</span></div>
+        <div class="next"> <span  (click)="next()" [hidden]= "page_button_next">Next</span></div>
+        <div class="first"><span title="On the first" (click)="first()" [hidden] = "page_button_first"></span></div>
+        <div class="prev"><span title="Previous" (click)="prev()" [hidden] = "page_button_prev"></span></div>
+        <div class="current_page"><span  [hidden]= "current_page">{{currentPage}}</span></div>
+        <div class="next_arrow"> <span title="Next" (click)="next()" [hidden]= "page_button_next_arrow"></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-popup-information [(hidden)]="popupInformationService.hidden" [(name)]="popupInformationService.name" [(id)]="popupInformationService.id" [(information)]="popupInformationService.information"></app-popup-information>
+<app-popup-screens [(hidden)]="popupScreensService.hidden" [(name)]="popupScreensService.name" [(id)]="popupScreensService.id" [(pics_url)]="popupScreensService.pics"></app-popup-screens>

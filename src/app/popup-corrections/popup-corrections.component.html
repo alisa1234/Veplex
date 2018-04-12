@@ -1,0 +1,44 @@
+<div class="popup_wr3" [hidden]="hidden">
+  <div class="popup popup_invoice" #popup_corrections id="icorrection_dialog">
+    <div class="popup_invoice_cont_wr">
+      <div class="input-wr_first">
+        <app-select-box (pushOnSelected)="pushOnDate($event)" [(model)]="value" [values]="values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
+      </div>
+      <app-calendar  [(inner_custom)]="calendarPopupService.custom2" [(new_datepicker)]="calendarPopupService.name_class" [(new_datepicker_id)]="calendarPopupService.id" [(new_datepicker_id2)]="calendarPopupService.id2"  [_parent]="this" [start_day]="calendarPopupService.start_day"  [end_day]="calendarPopupService.end_day"></app-calendar>
+      <app-calendar-popup [(inner_custom)]="calendarPopupService.custom" [_parent]="this" [start_day]="calendarPopupService.start_day"  [end_day]="calendarPopupService.end_day"></app-calendar-popup>
+      <div class="form_users_input input-wr ">
+        <input
+              [(ngModel)]="leads"
+              [ngModelOptions]="{standalone:true}"
+              (keyup)="keypress($event)"
+              (click)="keypress($event)"
+              id="leads"
+              type="text"
+              placeholder="Leads"/>
+      </div>
+      <div class="form_users_input input-wr">
+        <input
+                [(ngModel)]="count"
+                [ngModelOptions]="{standalone:true}"
+                (keyup)="keypress($event)"
+                (click)="keypress($event)"
+                id="count"
+                type="text"
+                placeholder="Count"/>
+      </div>
+      <div class="form_users_input input-wr"><input
+              [(ngModel)]="comment"
+              [ngModelOptions]="{standalone:true}"
+              (keyup)="keypress($event)"
+              (click)="keypress($event)"
+              id="comment"
+              type="text"
+              placeholder="Comment"/>
+      </div>
+    </div>
+    <div class="popup_report_btn">
+      <button type="submit" class="form_offer_btn_ch inactive" (click)="send()"></button>
+      <button type="reset" class="form_offer_btn_cancel" (click)="clear()"></button>
+    </div>
+  </div>
+</div>

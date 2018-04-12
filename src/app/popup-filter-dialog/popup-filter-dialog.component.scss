@@ -1,0 +1,81 @@
+.filter-dialog{
+  width: 182px;
+  border: 1px solid #cbcbca;
+  padding: 6px 9px 9px 9px;
+  background: #ffffff;
+  min-height: 225px;
+  max-height: 325px;
+
+  position: absolute;
+  left: 300px;
+  top: 300px;
+
+  &_search{
+    border: 1px solid #d9d9d8;
+    width: 182px;
+    color: #2a2a2a;
+    padding: 4px 4px 4px 16px;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    height: 34px;
+  }
+  &_checkbox{
+
+    overflow: hidden;
+    position: relative;
+    max-height: 178px;
+    &_table{
+      position: relative;
+      overflow-y: scroll;
+      height: 100%;
+      max-width: 100%;
+      outline: 0;
+      direction: ltr;
+
+      ul{
+        padding: 0;
+        margin: 6px 0 6px 2px;
+        max-height: 115px;
+
+        li{
+          line-height: 25px;
+          font-size: 14px;
+          color: #2a2a2a;
+          list-style: none;
+        }
+      }
+    }
+  }
+  &_cansel-but{
+    margin-right: 8px;
+    background-color: #474747;
+    border: 0px;
+    border-radius: 0px !important;
+    line-height: 31px;
+    color: #fff;
+    height: 31px;
+    font-size: 14px;
+    width: 83px;
+    font-weight: bold;
+    padding: 0;
+    float: right;
+  }
+  &_ok-but{
+    background-color: #41bdc8;
+    border: 0px;
+    border-radius: 0px !important;
+    line-height: 31px;
+    color: #fff;
+    height: 31px;
+    font-size: 14px;
+    width: 47px;
+    font-weight: bold;
+    padding: 0;
+    float: right;
+  }
+  .form_offer_btn{
+    bottom: 10px;
+    position: absolute;
+    right: 5px;
+  }
+}

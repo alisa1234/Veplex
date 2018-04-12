@@ -1,0 +1,10 @@
+<div [hidden]="hidden" class="dropdown search-table_dropdown" id="{{clicker.value}}_dropdown">
+  <input type="hidden">
+  <select
+          class="search-table_dropdown chosen-class"
+          id="{{clicker.value}}_search"
+          data-placeholder=" "
+          multiple>
+    <option *ngFor="let data of elements" [value]="data.id">{{data.title}}</option>
+  </select>
+</div>
