@@ -88,11 +88,6 @@ export const AppRoutes: Routes = [
             name:'Add offer'
         }
     },
-    // { path: 'offer/offer-list/update', component: AddOfferComponent,
-    //     data: {
-    //         breadcrumb: 'Update',
-    //     }
-    // },
     { path: 'offer/offer-list/update/:id', component: AddOfferComponent,
         data: {
             breadcrumb: '',
@@ -159,7 +154,6 @@ export const AppRoutes: Routes = [
     },
     { path: 'users/publisher-list/update/:id', component: PublishersComponent,
         data: {
-            // breadcrumb: 'Update '+ localStorage.getItem("user_name"),
             breadcrumb: '',
             name:'Update publisher'
         }

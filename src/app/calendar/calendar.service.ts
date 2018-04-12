@@ -23,9 +23,6 @@ export class CalendarService{
     mm:number;
     yy:number;
     constructor(){
-        // this.id='id_';
-        // this.id2='id2_';
-        debugger;
         this.today = new Date();
         this.dd = this.today.getDate();
         this.mm = this.today.getMonth() + 1;
@@ -45,16 +42,9 @@ export class CalendarService{
     
     showCalendar(){
         this.custom=false;
-        console.log(this.start_day,this.end_day);
-        // this.id='id_'+this.name_class;
-        // this.id2='id2_'+this.name_class;
-       
-     
-      
     }
     hideCalendar(){
         this.custom=true;
-       
     }
  
 }

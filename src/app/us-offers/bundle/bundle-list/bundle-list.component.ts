@@ -124,15 +124,10 @@ list_offer:{[index:string]:any}={};
         .subscribe(
             res=> {
               this.list = res;
-                
-
-                console.log('this.list_offer5',this.list.rows.length);
 
                 if(this.list.rows.length==0){
                     this.not_found_result=true;
                 }else{
-                    this.checkboxTableService.Create(this.list);
-                    console.log(this.list);
                     this.eventEmitter$.emit(this.list.rows);
 
                     this.value=this.list.filterTime.type;
@@ -142,8 +137,6 @@ list_offer:{[index:string]:any}={};
                         this.calendarService.start_day=this.list.filterTime.start;
                         this.calendarService.end_day=this.list.filterTime.end;
                     }
-                    
-                    // this.total_type= this.list.rows[0].total_type;
                     this.total_share= this.list.total_count.share;
                     this.total_raw= this.list.total_count.raw;
                     this.total_uniques= this.list.total_count.uniques;
@@ -201,7 +194,6 @@ list_offer:{[index:string]:any}={};
                         this.display_of = this.list.pagination.totalCount;
                     }
                 }
-              // console.log('this.list_offer',this.list_offer)
               
             },
             (err) => {
@@ -222,25 +214,16 @@ list_offer:{[index:string]:any}={};
             });
   }
     getListOffer(id){
-      
-        
-        // this.show_offer[id]=true;
-        // this.show_offer[id]=true;
-        // this.hide_offer[id]=true;
-        console.log('id bundle',id)
         if(this.show_offer[id]==true) {
             this.show_offer[id]=false;
         
             for (let i = 0; i < this.list.rows.length; i++) {
-                // console.log('this.list_offer2',this.list.rows[i]);
                 if (id == this.list.rows[i].bundle_id) {
                     let arr=[];
                   
                     for (let key in this.list.rows[i]) {
                         if (key == 'offers') {
-                            // console.log('this.list_offer4',this.list.rows[i][key]);
                             this.list_offer[this.list.rows[i].bundle_id] = this.list.rows[i][key];
-                            console.log('this.list_offer', this.list_offer)
                             this.offer_list_get = false;
                          
 
@@ -253,8 +236,6 @@ list_offer:{[index:string]:any}={};
 
                         arr.push(key);
                     }
-                        // console.log('last',this.list_offer[key.length-1].offer_id)
-                        // console.log('last',this.list_offer[this.list.rows[i].bundle_id][key])
 
                       
                         for(let i=0;i<arr.length;i++){
@@ -448,8 +429,6 @@ getResults(list){
         this.total_revenue=this.list.total_count.revenue;
         this.total_cr=this.list.total_count.cr;
         this.total_epv=this.list.total_count.epv;
-      
-      console.log('filter')
         for(let i=0;i<this.list.rows.length;i++){
             this.show_offer[this.list.rows[i].bundle_id]=false;
             
@@ -488,36 +467,10 @@ getResults(list){
         .subscribe(
             res=> {
               this.list = res;
-              
-                // for(let i=0;i<this.list.rows.length;i++){
-                //     debugger;
-                //     // for (let key in this.list.rows[i]) {
-                //     //     if (key == 'offers') {
-                //     //         // console.log('this.list_offer4',this.list.rows[i][key]);
-                //     //         this.list_offer[this.list.rows[i].bundle_id] = this.list.rows[i][key];
-                //     //         console.log('this.list_offer', this.list_offer)
-                //     //         this.offer_list_get = false;
-                //     //
-                //     //
-                //     //     }
-                //     //
-                //     //
-                //     // }
-                //     this.show_offer[this.list.rows[i].bundle_id]=false;
-                //     debugger;
-                //    this.getListOffer(this.list.rows[i].bundle_id);
-                //  
-                // }
-               // for(let i=0;i<this.list.rows.length;i++){
-               //     this.getListOffer(this.list.rows[i].bundle_id);
-               //    
-               // }
             },
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     localStorage.clear();
                     this.globalLogin.serverTime=false;
@@ -530,7 +483,6 @@ getResults(list){
   }
 
   enter_search(value, object) {
-      console.log('this.list_offer', this.list_offer,this.list);
       for(let i=0;i<this.list.rows.length;i++){
           for(let key in this.list_offer){
               if(key==this.list.rows[i].bundle_id)  {
@@ -548,24 +500,6 @@ getResults(list){
             this.list = res;
 
             this.list_offer = {};
-            // for(let i=0;i<this.list.rows.length;i++){
-            //     for (let key in this.list.rows[i]) {
-            //         if (key == 'offers') {
-            //             console.log('this.list_offer', this.list_offer)
-            //             debugger;
-            //             this.show_offer[this.list.rows[i].bundle_id]=false;
-            //             this.getListOffer(this.list.rows[i].bundle_id);
-            //             // console.log('this.list_offer4',this.list.rows[i][key]);
-            //             // this.list_offer[this.list.rows[i].bundle_id] = this.list.rows[i][key];
-            //             //
-            //             // this.offer_list_get = false;
-            //             // debugger;
-            //         }
-            //     }
-            //   
-            //   
-            //
-            // }
             this.checkboxTableService.Create(this.list);
             this.eventEmitter$.emit(this.list.rows);
             this.total_share= this.list.total_count.share;
@@ -576,12 +510,8 @@ getResults(list){
             this.total_cr=this.list.total_count.cr;
             this.total_epv=this.list.total_count.epv;
             if (typeof this.list.filterParams != 'undefined') {
-
-                // jQuery('button[value="' + value + '"]').addClass('active');
                 object.hidden_delete = false;
             } else {
-
-                // jQuery('button[value="' + value + '"]').removeClass('active')
                 object.hidden_delete = true;
             }
             object.hidden = true;
@@ -605,7 +535,6 @@ getResults(list){
       }
   
   clear(value:string,object){
-      console.log('this.list_offer', this.list_offer,this.list);
       for(let i=0;i<this.list.rows.length;i++){
           for(let key in this.list_offer){
               if(key==this.list.rows[i].bundle_id)  {
@@ -619,7 +548,6 @@ getResults(list){
       }
     this.filters.clears(value,this.urlGetList).subscribe(
         res=>{this.list=res;
-            console.log(this.list_offer)
       
             this.list_offer={};
           this.checkboxTableService.Create(res);
@@ -636,10 +564,7 @@ getResults(list){
             for(let i=0;i<this.list.rows.length;i++){
                 for (let key in this.list.rows[i]) {
                     if (key == 'offers') {
-                        // console.log('this.list_offer4',this.list.rows[i][key]);
                         this.list_offer[this.list.rows[i].bundle_id] = this.list.rows[i][key];
-            
-                        console.log('this.list_offer', this.list_offer)
                         this.offer_list_get = false;
 
 

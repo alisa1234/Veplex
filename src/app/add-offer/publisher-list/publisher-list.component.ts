@@ -38,7 +38,6 @@ export class PublisherListComponent implements OnInit {
   field_name: string;
   params: string;
   body:any;
-  // offerLisrResult:any;
 
   domain:string;
   url:string;
@@ -105,7 +104,6 @@ id:number;
     }
     
     this.renderOffer=renderOffer;
-    console.log('hhhhh',this.offer_name);
 
     this.renderOffer.eventEmitters2.subscribe(item=>{
       
@@ -148,12 +146,10 @@ id:number;
     this._http.get(this.domain + this.csrf)
         .map((res: Response) => {
           this.body = res.json();
-          console.log('csrf=',this.body.csrf)
         })
         .subscribe(
             res=>this.result=res
         );
-    console.log('this is offer-list id',this.renderOffer.offer_publisherList)
   
   }
   savePage(item){
@@ -167,14 +163,11 @@ id:number;
     this.route
         .params
         .subscribe(params => {
-          console.log(params);
           this.id = params['id'];
           this.offer_id = params['id'];
           this.publisher_id = params['id'];
       
           this.renderOffer.getPublishers(this.offer_id,this.offer_name);
-          // this.code = params['code'];
-          // this.userEmail = params['email'];
         });
   }
 
@@ -186,8 +179,6 @@ id:number;
   }
 
   sort(value:string){
-    
-    // console.log(this.list.rows[0].proffer_id)
     this.filters.sorts(value,this.urlGetList+this.id)
         .subscribe(
             res=>{this.list=res;
@@ -218,11 +209,8 @@ id:number;
             (err) => {
               let error=err.json();
               if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                // localStorage.clear();
                 localStorage.setItem('current_url',this.router.url);
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
                 this.globalLogin.serverTime=false;
@@ -236,7 +224,6 @@ id:number;
   next(){
     this.filters.nexts(this.urlGetList+this.id,this).subscribe(
         res=>{this.list=res;
-          console.log('next',this.list);
        
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
@@ -248,11 +235,8 @@ id:number;
         (err) => {
           let error=err.json();
           if(error.logged==false){
-
-            // window.location.replace(this.domain);
             this.router.navigate(['/']);
             let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-            // localStorage.clear();
             localStorage.setItem('current_url',this.router.url);
             localStorage.setItem('current_breadcrumb',current_breadcrumb);
             this.globalLogin.serverTime=false;
@@ -279,7 +263,6 @@ id:number;
   prev(){
     this.filters.prevs(this.urlGetList+this.id,this).subscribe(
         res=>{this.list=res;
-          console.log('prev',this.list);
         
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
@@ -288,11 +271,8 @@ id:number;
         (err) => {
           let error=err.json();
           if(error.logged==false){
-
-            // window.location.replace(this.domain);
             this.router.navigate(['/']);
             let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-            // localStorage.clear();
             localStorage.setItem('current_url',this.router.url);
             localStorage.setItem('current_breadcrumb',current_breadcrumb);
             this.globalLogin.serverTime=false;
@@ -323,7 +303,6 @@ id:number;
     this.currentPage=1;
     this.filters.firsts(this.urlGetList+this.id,this).subscribe(
         res=>{this.list=res;
-          console.log('prev',this.list);
       
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
@@ -332,11 +311,8 @@ id:number;
         (err) => {
           let error=err.json();
           if(error.logged==false){
-
-            // window.location.replace(this.domain);
             this.router.navigate(['/']);
             let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-            // localStorage.clear();
             localStorage.setItem('current_url',this.router.url);
             localStorage.setItem('current_breadcrumb',current_breadcrumb);
             this.globalLogin.serverTime=false;

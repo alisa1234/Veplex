@@ -81,8 +81,6 @@ export class AddBundleStep2Component implements OnInit {
     this.renderUsOffer=renderUsOffer;
 
       this.renderUsOffer.list_step1.rows=[];
-    // this.renderUsOffer.eventEmitter$.subscribe(item=>{
-    //   this.list=this.renderUsOffer.list_step2;
     if(this.renderUsOffer.update2==true){
         debugger;
         this.update=this.renderUsOffer.update2;
@@ -99,7 +97,6 @@ export class AddBundleStep2Component implements OnInit {
                 if (this.list.rows.length == 0) {
                     this.not_found_result = true;
                 } else {
-                    // this.eventEmitter$.emit(this.list_filter);
                     this.bundle_name=this.list.data.name;
                     this.popupFilterDialogService.getAllBundleFilters(this.list);
                     this.sortGroup(this.list);
@@ -133,7 +130,6 @@ export class AddBundleStep2Component implements OnInit {
 
                             this.geo_filter = true;
                             this.offer_name_style = false;
-                            console.log('geo', this.geo)
                         }else{this.geo_filter = false;}
                         if (typeof this.list.filterParams.browser_name != 'undefined') {
 
@@ -159,21 +155,16 @@ export class AddBundleStep2Component implements OnInit {
                         }
                     }
                 }
-                // }
             })
         }else{
           debugger;
             this.renderUsOffer.eventEmitter$.subscribe(item=> {
-                debugger;
                 this.list = item;
                 this.update=this.renderUsOffer.update2;
-             
-        
                 this.bundle_id_update='Update bundle ID'+this.renderUsOffer.bundle_id;
                 if (this.list.rows.length == 0) {
                     this.not_found_result = true;
                 } else {
-                    // this.eventEmitter$.emit(this.list_filter);
                     this.bundle_name=this.list.data.name;
                     this.popupFilterDialogService.getAllBundleFilters(this.list);
 
@@ -207,7 +198,6 @@ export class AddBundleStep2Component implements OnInit {
 
                             this.geo_filter = true;
                             this.offer_name_style = false;
-                            console.log('geo', this.geo)
                         }else{this.geo_filter = false;}
                         if (typeof this.list.filterParams.browser_name != 'undefined') {
                            
@@ -235,13 +225,10 @@ export class AddBundleStep2Component implements OnInit {
                         }
                     }
                 }
-                // }
             })
         }
     }else {
-        debugger;
         if (this.renderUsOffer.trigger != true){
-            debugger;
             this._http.get(this.domain + this.urlUpdateAllBundle + '?step=2&offers_id=[' + this.renderUsOffer.array_offers + ']' + '&id=' + this.renderUsOffer.bundle_id)
                 .map((res:Response)=> {
                     return res.json();
@@ -249,13 +236,9 @@ export class AddBundleStep2Component implements OnInit {
                 .subscribe(data=> {
                         this.list = data;
                         this.update = this.renderUsOffer.update;
-
-                        debugger;
-
                         if (this.list.rows.length == 0) {
                             this.not_found_result = true;
                         } else {
-                            // this.eventEmitter$.emit(this.list_filter);
                             this.bundle_name = this.list.data.name;
                             this.popupFilterDialogService.getAllBundleFilters(this.list);
 
@@ -288,8 +271,7 @@ export class AddBundleStep2Component implements OnInit {
                                 if (typeof this.list.filterParams.country_name != 'undefined') {
 
                                     this.geo_filter = true;
-                                    this.offer_name_style = false;
-                                    console.log('geo', this.geo)
+                                    this.offer_name_style = false;ё
                                 } else {
                                     this.geo_filter = false;
                                 }
@@ -321,11 +303,7 @@ export class AddBundleStep2Component implements OnInit {
                     (err) => {
                         let error = err.json();
                         if (error.logged == false) {
-                            debugger;
-                            // window.location.replace(this.domain);
                             this.router.navigate(['/']);
-                            // let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                            // localStorage.setItem('current_breadcrumb',current_breadcrumb);
                             localStorage.setItem('current_url', this.router.url);
                             this.globalLogin.serverTime = false;
                             this.globalLogin.role = null;
@@ -337,7 +315,6 @@ export class AddBundleStep2Component implements OnInit {
             debugger;
             this.renderUsOffer.trigger=false;
             this.renderUsOffer.eventEmitter$.subscribe(item=> {
-                debugger;
                 this.list = item;
                 this.update=this.renderUsOffer.update2;
 
@@ -346,7 +323,6 @@ export class AddBundleStep2Component implements OnInit {
                 if (this.list.rows.length == 0) {
                     this.not_found_result = true;
                 } else {
-                    // this.eventEmitter$.emit(this.list_filter);
                     this.bundle_name=this.list.data.name;
                     this.popupFilterDialogService.getAllBundleFilters(this.list);
                     this.sortGroup(this.list);
@@ -380,7 +356,6 @@ export class AddBundleStep2Component implements OnInit {
 
                             this.geo_filter = true;
                             this.offer_name_style = false;
-                            console.log('geo', this.geo)
                         }else{this.geo_filter = false;}
                         if (typeof this.list.filterParams.browser_name != 'undefined') {
 
@@ -408,14 +383,9 @@ export class AddBundleStep2Component implements OnInit {
                         }
                     }
                 }
-                // }
             })
         }
     }
-
-    
-    
-    console.log('res',this.list)
     let result:any;
 
     this._http.get(this.domain + this.csrf)
@@ -432,9 +402,6 @@ export class AddBundleStep2Component implements OnInit {
         })
         .subscribe(
             res=>{this.list_filter=res;
-              console.log('filters',this.list_filter);
-               
-            
             }
         );
   }
@@ -445,21 +412,16 @@ export class AddBundleStep2Component implements OnInit {
         let index=0;
         for(let i=0;i<list.rows.length;i++){
             let a=list.rows[0].gr;
-            // this.group=a;
-            debugger;
             if(a==list.rows[i].gr){
 
                 list.rows[i].gr=i+1;
-                debugger;
             }else{
                 a=list.rows[i].gr;
                 list.rows[i].gr=index+1;
                 index=list.rows[i].gr;
-                debugger;
             }
         }
         this.list=list;
-        debugger;
     }
   selectCheck(event,field){
      
@@ -468,7 +430,6 @@ export class AddBundleStep2Component implements OnInit {
   send(){
     let filter='';
     let result;
-    console.log('send',this.popupFilterDialogService.checkbox_arr[this.popupFilterDialogService.field],this.popupFilterDialogService.field);
     if(this.popupFilterDialogService.checkbox_arr[this.popupFilterDialogService.field].length==0) {
         
         filter += "&filter[" + this.popupFilterDialogService.field + "][params][0][id]=" + this.popupFilterDialogService.checkbox_arr[this.popupFilterDialogService.field];
@@ -480,8 +441,6 @@ export class AddBundleStep2Component implements OnInit {
 
         }
     }
-
-    console.log('send2',filter);
     this._http.get(this.domain + this.urlUpdateAllBundle+'?step=2&offers_id=['+this.renderUsOffer.array_offers+']'+'&id='+this.renderUsOffer.bundle_id+ filter)
         .map((res: Response) => {
           return res.json();
@@ -495,7 +454,6 @@ export class AddBundleStep2Component implements OnInit {
 
                 this.geo_filter=true;
                 this.offer_name_style=false;
-                console.log('geo',this.geo)
               }else{
                   this.geo_filter=false;
               }
@@ -546,8 +504,6 @@ export class AddBundleStep2Component implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -569,19 +525,16 @@ export class AddBundleStep2Component implements OnInit {
 
     ValueCheckbox(id){
     this.checkbox_arr.push(id);
-    console.log('ValueCheckbox', this.checkbox_arr)
   }
 
   sort(value:string){
 
     this.filters.sorts(value,this.urlGetList)
         .subscribe(
-            res=>{console.log(res);this.list=res;this.sortGroup(this.list);console.log('sort',this.list);},
+            res=>{this.list=res;this.sortGroup(this.list);},
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -640,8 +593,6 @@ export class AddBundleStep2Component implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -691,8 +642,6 @@ export class AddBundleStep2Component implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -719,8 +668,6 @@ export class AddBundleStep2Component implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -760,8 +707,6 @@ export class AddBundleStep2Component implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -802,8 +747,6 @@ export class AddBundleStep2Component implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);

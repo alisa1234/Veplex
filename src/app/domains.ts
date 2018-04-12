@@ -24,7 +24,6 @@ export class Domains{
     urlUsers:string='/api/';
   
     urlUpdate:string='/update/';
-    // urlGetUpdateUsoffer:string='/api/offers/usoffers/update';
     urlUsersAdvertisersList:string='/api/usersa/index/';
    
 
@@ -70,7 +69,6 @@ export class Domains{
     getAdvertiserInvoice:string='/api/payments/usersa/invoice?uuid=';
 
     urlGetListOffersPublishers:string='/api/filter/columns?filterModel=home&attr=publishersoffers';
-    // urlGetListPublishers:string='/api/filter/columns?filterModel=home&attr=listpublishers';
 
     getStatisticHome:string='/api/filter/columns?filterModel=home&attr=publishersoffers';
     sendStatistic:string='api/home/index/metricgraphs';
@@ -91,6 +89,4 @@ export class Domains{
     resendCSVPublisher:string='/api/payments/publisher/sendover?uuid=';
     resendCSVAdvertiser:string='/api/payments/usersa/sendover?uuid=';
     getPublisherListCorrections:string='/api/payments/publisher/cor?uuid=';
-    // getStatisticOffers:string='/api/filter/columns?filterModel=ho
-    // getTame&attr=listpublishers&offer_id=';
 }

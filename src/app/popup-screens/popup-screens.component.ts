@@ -19,11 +19,8 @@ export class PopupScreensComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.elRef.nativeElement.contains(event.target) || event.target.closest('.prev-btn')) {
-      // console.log("chosen clicked inside");
-      // this.countr=1;
    
     } else {
-      // console.log("chosen clicked outside");
       this.hidden = true;
       this.hiddenChange.emit(this.hidden);
       this.countr=1;
@@ -39,13 +36,8 @@ export class PopupScreensComponent implements OnInit {
     this.hidden = true;
     this.hiddenChange.emit(this.hidden);
   }
-  // slides: any[];
   selectedIndex: number;
   countr:number;
-  // constructor() {
-  //   this.selectedIndex = 0;
-  //   this.slides = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-  // }
 
   next() {
     
@@ -73,7 +65,6 @@ export class PopupScreensComponent implements OnInit {
       --this.selectedIndex;
    
       if(this.selectedIndex==0){
-        // this.selectedIndex=this.pics_url.length-1;
         this.countr=this.selectedIndex+1;}else{--this.countr;}
    
     

@@ -47,12 +47,9 @@ export class CheckboxTableSelect implements OnInit{
   }
 
   pushOnSelected(value){
-    console.log(this.selected)
-    debugger;
     if(this.selected==0){
       alert('Please, choose elements in table!')
     }else{
-      debugger;
       this.checkboxTableService.SendMulti(value, this._parent.body.csrf,  this._parent.domain, this._parent.urlGetList, this._parent.list, this.attr,this._parent.publisher_id);  
     }
     

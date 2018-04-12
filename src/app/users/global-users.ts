@@ -24,7 +24,6 @@ const STATUS: Stats[]=[
 ];
 
 @Component({
-    // providers:[FormstylerPipe]
     template:''
 })
 export class GlobalUsers implements OnInit,AfterViewInit{
@@ -50,7 +49,6 @@ export class GlobalUsers implements OnInit,AfterViewInit{
     city:string='';
     country:string='choose_country';
     zip:string='';
-    // manager:number;
 
     countr: Dictionary;
     countr2: any=[];
@@ -62,7 +60,6 @@ export class GlobalUsers implements OnInit,AfterViewInit{
     password:null;
     countries=[];
     id:number;
-    // country:string;
 
     someVar:Object;
     saving_system:boolean=false;
@@ -88,28 +85,20 @@ export class GlobalUsers implements OnInit,AfterViewInit{
     
     item_list:any;
     constructor(protected router:Router,http: Http,public route: ActivatedRoute,domains: Domains, public _countrieService: CountriesService, public usersService:UsersService,public location: Location) {
-        
-        // this._this=document.getElementById('country');
 
         this._http = http;
-        // this.url = domains.url;
         this.domain = domains.domain;
         this.csrf = domains.csrf;
         this.urlUpdate=domains.urlUpdate;
         this.urlUsers=domains.urlUsers;
-        // this.urlUsersAdvertisersAdd=domains.urlUsersAdvertisersAdd;
         this._countrieService = _countrieService;
         this.countriesLoaded=_countrieService.countriesLoaded;
         this.usersService=usersService;
-        // this.urlUsersAdvertizer=domains.urlUsersAdvertizer;
         
         this.tittle="Add Account";
 
         this.offer_ch = false;
         this.offer_ok = true;
-        
-        // this.status=null;
-        // this.manager=null;
 
         this.user_id=localStorage.getItem("user_id");
         this.user_name=localStorage.getItem("user_name");
@@ -122,20 +111,6 @@ export class GlobalUsers implements OnInit,AfterViewInit{
             .subscribe(
                 res =>this.result = res
             );
-     
-
-//
-//          this._countrieService.eventEmitter$.subscribe((data) => {
-// debugger;
-             // this.countries = data.countries;
-             // let dataAr=data.countries;
-             // let dataAr1=Object.keys(data.countries);
-             // // let DataAr2=[];
-             //
-             // for(let key in dataAr){
-             //     this.countries.push({'value':key,'name':dataAr[key]})
-             //     debugger;
-             // }
 if(typeof this._countrieService.countries!='undefined') {
  
     this.countr = this._countrieService.countries;
@@ -268,16 +243,13 @@ if(typeof this._countrieService.countries!='undefined') {
     }
     check(){
         let chbox = <HTMLInputElement>document.getElementById('notifications');
-        console.log('chboxs',chbox)
         if(chbox.checked == true){
-            console.log('checked')
             this.notifications = 1;
         }else{
             this.notifications = 0;
         }
     }
         send(item_name,module_name,formData:FormData=new FormData()){
-// console.log('global',item_name,module_name,this.country,this.manager)
             if(this.item_name==''&& this.module_name==''){
                this.item_name=item_name;
                this.module_name=module_name;
@@ -285,18 +257,6 @@ if(typeof this._countrieService.countries!='undefined') {
             if(this.notifications == 1){
       this.notifications = 1;
     }else{this.notifications = 0;}
-             // if(
-             //     this.name=''||
-             //         this.address=''||
-             //         this.city=''||
-             //         this.email=''||
-             //         this.zip=''||
-             //         this.status=''||
-             //         this.password=''||
-             //         this.repeatPassword=''
-             // ){
-             //
-             // }
 
             let xhr: XMLHttpRequest = new XMLHttpRequest();
             let name=this.name;
@@ -305,23 +265,13 @@ if(typeof this._countrieService.countries!='undefined') {
             let email=this.email;
             let zip=this.zip;
             let status=this.status;
-          
-            // let carriers=this.carriers;
-            // let platforms=this.platforms;
             let notifications=this.notifications;
             let password=this.password;
             let repeatPassword=this.repeatPassword;
-            // let information=this.information;
-            // let device_value=this.device_value;
             let country=this.country;
             let  module_names=this.module_name;
             let  item_names=this.item_name;
-            // let  manager=this.manager;
             let csrf=this.body.csrf;
-            // let usersService=this.usersService.item_name;
-            // let router=this.router.navigate(['/users/'+item_names+'-list']);
-            // let formData:FormData=new FormData();
-            // console.log('fuck',usersService)
             formData.append("_csrf",csrf);
             
             this.FormDataCreate(
@@ -340,22 +290,15 @@ if(typeof this._countrieService.countries!='undefined') {
                     
                 }
             );
-
-            // headers.append('Content-type', 'multipart/form-data');
-
             xhr.open('POST',this.domain+ this.urlUsers+module_names+this.urlUpdate+(this.id?this.id:''),true);
-            // xhr.setRequestHeader("Content-type", 'multipart/form-data');
-            xhr.send(formData)
+            xhr.send(formData)ж
             
             let self=this;
             xhr.onreadystatechange=function () {
-                console.log(formData)
                
                 if(xhr.readyState==XMLHttpRequest.DONE){
                     let res=xhr.response;
-                    let body=JSON.parse(res);
-                 
-                    console.log(body)
+                    let body=JSON.parse(res);\
                     if(typeof body.logged!='undefined'&& body.logged==false){
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
@@ -381,19 +324,14 @@ if(typeof this._countrieService.countries!='undefined') {
                       for(let key in self.item_list){
                           jQuery("#"+key).parent().append("<span class='ok' id='ok"+key+"'></span>");
                       }
-                        // console.log('bls',usersService)
-                        console.log('fuck',item_names)
                         self.offer_ok=false;
                         self.offer_ch=true;
                        
-                    }else{console.log('hren')}
+                    }else{}
 
                     if(body.validation.length === 0){jQuery('.form_offer_btn_ch').addClass('inactive');jQuery('.form_offer_btn_ch').prop('disabled',true);}
                 }
             }.bind(this);
-            // this.addOffer.render_offer_results=null;
-
-            // console.log('fjfjfjf',this.offer_ok,this.offer_ch)
 
             jQuery(".Error").remove();
             jQuery(".error").remove();
@@ -415,7 +353,6 @@ if(typeof this._countrieService.countries!='undefined') {
 
     }
     FormDataCreateManagers(formData:FormData,values:any,values1:any,values2:any){
-        console.log('FormDataCreateManagers',values,values1,values2)
         for(let key in values){
             let value = values[key];
             formData.append('UpdateForm['+key+']', value);
@@ -428,20 +365,9 @@ if(typeof this._countrieService.countries!='undefined') {
                
             }
         }
-            // for(let key in values1){
-            //     for(let val in values2){
-            //         let id=values1[key];
-            //         let value=values2[val]
-            //         formData.append('UpdateForm['+id+']', value);
-            //     }
-            // }
     }
     sendOk(){
-        
-        // this.renderOffer.offerResult=undefined;
         this.usersService.usersResult=undefined;
-        console.log('offer results',this.usersService.usersResult);
-        // this.router.navigate(['/users/publishers-list']);
         this.router.navigate(['/users/'+this.item_name+'-list']);
 
     }

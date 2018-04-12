@@ -18,7 +18,6 @@ export class PopupInvoiceService {
     hidden:boolean=true;
     constructor(http: Http,domains: Domains){
         this._http = http;
-        // this.url = domains.url;
         this.domain = domains.domain;
         this.csrf = domains.csrf;
         this.getAdvertiserInvoice = domains.getAdvertiserInvoice;
@@ -31,14 +30,8 @@ export class PopupInvoiceService {
 
             })
             .subscribe(data=>{
-                // this.list=data;
-                // debugger;
                 this.hidden=false;
             });
-        // this.id=id;
-        // this.name=name;
-        // this.information=information;
-
 
     }
 }

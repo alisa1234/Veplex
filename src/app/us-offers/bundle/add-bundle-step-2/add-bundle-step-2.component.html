@@ -1,12 +1,4 @@
-<!--<div class="info-block">-->
-  <!--<div class="info-block_time"><span class="info-block_time_title">Server Time:</span> 01/08/2015 16:40:49</div>-->
-  <!--<div class="breadcrumbs">-->
-    <!--<ul>-->
-      <!--<li><a href="#" title="#">Home</a></li>-->
-      <!--<li>Offers bundle</li>-->
-    <!--</ul>-->
-  <!--</div>-->
-<!--</div>-->
+
 <div class="page page-offer-bundle">
   <div class="page_header">
     <div class="page_header_cell"><h1>{{bundle_id_update}}</h1></div>
@@ -23,20 +15,6 @@
     </div>
   </div>
   <div class="page_info">
-    <!--<div class="page_info_input"><input [(ngModel)]="bundle_name"-->
-                                        <!--[ngModelOptions]="{standalone:true}" type="text" placeholder="Bundle name"/></div>-->
-    <!--<div class="question">-->
-      <!--<div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>-->
-    <!--</div>-->
-    <!--<div class="page_info_input">-->
-      <!--<select class="page_info_choose_select" name="">-->
-        <!--<option value="">Auto optimization</option>-->
-        <!--<option value="">Manual</option>-->
-      <!--</select>-->
-    <!--</div>-->
-    <!--<div class="question">-->
-      <!--<div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>-->
-    <!--</div>-->
     <div class="page_info_check">
       <div class="question">
         <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
@@ -56,15 +34,7 @@
       <button class="page_info_check_filters" (click)="selectCheck($event,'os_name')" [class.filter]="os_filter">
         OS
       </button>
-      <!--<div class="page_info_check_item"><input id="ch1" type="checkbox"/><label for="ch1">GEO</label></div>-->
-      <!--<div class="page_info_check_item"><input id="ch2" type="checkbox"/><label for="ch2">Browser</label></div>-->
-      <!--<div class="page_info_check_item"><input id="ch3" type="checkbox"/><label for="ch3">OS</label></div>-->
-      <!--<div class="page_info_check_item"><input id="ch4" type="checkbox"/><label for="ch4">Daytime</label></div>-->
-      <!--<div class="page_info_check_item"><input id="ch5" type="checkbox"/><label for="ch5">Day</label></div>-->
-    </div>
-    <!--<div class="question">-->
-      <!--<div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>-->
-    <!--</div>-->
+     </div>
     <div class="page_info_input"><input type="text" placeholder="avg.CPC"/></div>
     <div class="question">
       <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
@@ -82,10 +52,6 @@
           <tr>
             <td class="t8_2">Rank</td>
             <td class="t8_3">
-                <!--[class.t4_2]="offer_name_style"-->
-                <!--[class.t4_13]="one"-->
-                <!--[class.t4_14]="two"-->
-                <!--[class.t4_15]="three"-->
 
               <div class="page-table_sort_wr">
                 <a title="#" class="page-table_sort" (click)="sort('name')" id="name_sort">Offer</a>
@@ -109,18 +75,7 @@
             <tr *ngFor="let data of list.rows" [class.group]="data.gr==1">
               <td class="t8_2">{{data.gr}}</td>
               <td class="t8_3">{{data.offer_name}}</td>
-                  <!--[class.t4_2]="offer_name_style"-->
-                  <!--[class.t4_13]="one"-->
-                  <!--[class.t4_14]="two"-->
-                  <!--[class.t4_15]="three"-->
-
-              <!--<td class="t4_2" *ngIf="geo_filter || browser_filter || os_filter" [style.width.%]="14">{{data.offer_name}}</td>-->
-              <!--<td class="t4_2" *ngIf="browser_filter && geo_filter || browser_filter && os_filter || os_filter && geo_filter" [style.width.%]="30">{{data.offer_name}}</td>-->
-              <!--<td class="t4_2" *ngIf="os_filter && browser_filter && geo_filter" [style.width.%]="40">{{data.offer_name}}</td>-->
-
-              <!--<td class="t4_2" *ngIf="browser_filter" *ngStyle="{'width':'65%'}">{{data.offer_name}}</td>-->
-              <!--<td class="t4_2" *ngIf="os_filter" *ngStyle="{'width':'60%'}">{{data.offer_name}}</td>-->
-              <td #geo class="t8_4" *ngIf="geo_filter">{{data.country_name}}</td>
+                 <td #geo class="t8_4" *ngIf="geo_filter">{{data.country_name}}</td>
               <td #browser class="t8_4" *ngIf="browser_filter">{{data.browser_name}}</td>
               <td #os class="t8_4" *ngIf="os_filter">{{data.os_name}}</td>
               <td class="t8_4"> <span class="page-table_prc" id="category_id" data-name="Category" data-type="Select"

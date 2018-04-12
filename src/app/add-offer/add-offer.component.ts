@@ -5,7 +5,6 @@ import {Domains} from '../domains';
 import {RenderOffer} from './render-offer';
 import {GlobalLogin} from '../global-login';
 import {Location} from '@angular/common';
-import {CheckboxTableService} from "../checkbox-table/checkbox-table.service";
 import {OfferTypeService} from '../offerType.service';
 
 declare var jQuery:any;
@@ -77,8 +76,7 @@ offer_id:string;
         this.typeOffer['2']=false;
         this.typeOffer['3']=false;
         this.typeOffer['4']=false;
-        
-        // this.offer_value=null;
+
         this.offer_ch=false;
         this.offer_ok=true;
         this.tittle='Add Offer';
@@ -87,8 +85,6 @@ offer_id:string;
         localStorage.setItem("offer_value",  this.tittle);
         this.offer_id=localStorage.getItem("offer_id");
         this.offer_name=localStorage.getItem("offer_name");
-        // this.offer_id=localStorage.getItem("offer_id");
-        // this.tittle_id=+localStorage.getItem("offer_id");
         this.renderOffer=renderOffer;
         this.offer_value='choose_type';
         
@@ -104,46 +100,29 @@ offer_id:string;
                 res =>this.result = res
              
             );
-     console.log(this.types_values, this.offer_value);
-        // debugger;
         this.offerTypeService.getTypeOfferService().subscribe(data=>{
            
            this.offersType.availableTypes=data.availableTypes;
 
             this.offerKeys = Object.keys(data.availableTypes);
             this.offerKeys=Object.keys(this.offersType.availableTypes);
-            // this.offerValues=Object.values(this.offersType.availableTypes);
             for(let key in this.offersType.availableTypes){
                 this.offerValues.push(this.offersType.availableTypes[key])
                
             }
             this.types_values.push({'id':'choose_type','title':'Choose type'});
-            // this.offer_value='choose_type';
-            // debugger;
             for (let i=0;i<this.offerValues.length;i++){
-            
-                //     for(let y=0;y<this.countr3.length;y++) {
-                // console.log( this.offerValues[i],this.offerKeys[i])
                 this.types_values.push({'title':this.offerValues[i],'id':this.offerKeys[i]});
                 this.offer_value='choose_type';
              this.last=true;
             }
-            // if (this.saving_system === false){
-            //
-            //     this.saving_system = true;
-            // }
-            
-            // this.offer_value='choose_type';
            
         },
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                    // localStorage.clear();
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
                     localStorage.setItem('current_url',this.router.url);
                     this.globalLogin.serverTime=false;
@@ -151,17 +130,7 @@ offer_id:string;
                 }
 
 
-            })
-
-        // if(typeof this.offer_id !='undefined') {
-        //     this.renderOffer.renderUpdate(this.offer_id);
-        
-        
-            // this.renderOffer.renderUpdate(this.offer_id);
-
-            // this.renderOffer.renderUpdate(this.offer_id);
-           
-            // if (typeof this.renderOffer.offerResult != 'undefined') {
+            });
                 this.renderOffer.eventEmitters.subscribe(item=> {
                
                 localStorage.setItem("offer_value", 'Update offer');
@@ -169,7 +138,6 @@ offer_id:string;
                 this.render_offer_results = item.offer;
                     
                 this.offersType.availableTypes = item.availableTypes;
-                // this.offerKeys = Object.keys(this.offersType.availableTypes);
                     this.offer_value=item.offer.type;
 
                 for (let key in this.typeOffer) {
@@ -179,17 +147,14 @@ offer_id:string;
                 this.location.replaceState("/offer/offer-list/update/"+this.offer_id);
                 this.offer_ch = true;
                 this.offer_ok = false;
-                // }
                 })
-            // }
-        // }
+
     }
   ngOnInit(){
       if(this.offer_id != null){
       this.route
           .params
           .subscribe(params => {
-              console.log(params);
               
               this.offer_id = params['id'];
             
@@ -199,30 +164,14 @@ offer_id:string;
       }
 }
     initStyler(){
-        // let params3 = (<HTMLSelectElement>document.getElementById('domains'));
-        //     console.log((<HTMLSelectElement>document.getElementById('domains')).length);
-        //     jQuery(params3).styler();
-        // console.log('init styler call')
         if (this.saving_system === false){
 
             this.saving_system = true;
-            // setTimeout(function(){
-            //     let params3 = (<HTMLSelectElement>document.getElementById('domains'));
-            //     let formAccess = (<HTMLSelectElement[]><any>document.getElementsByClassName('form_offer_access_select'));
-            //     console.log('init styler call',params3);
-            //     jQuery(params3).styler();
-            //     jQuery(formAccess).styler();
-            // },0);
         }
     }
     changeSelect(){
- console.log(this.offer_value);
-      
-        // let val=jQuery( '#offer_value option:selected' ).val();
-        // let text=jQuery( '#offer_value option:selected' ).text();
        
             for(let key in this.typeOffer){
-                // console.log(val)
                 this.typeOffer[key]=false;
                 this.typeOffer[this.offer_value]=true;
             }

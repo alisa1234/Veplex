@@ -39,7 +39,6 @@
                         accept="image/jpeg,image/png"/>
               </span>
               <span class="form_offer_browse_upload_placeholder" [style.display] = "flags['form_offer_browse-logo'] ? 'none' : 'block'">Logo</span>
-              <!--<span class="form_offer_browse_upload_placeholder" *ngIf="flag_logo">{{logo}}</span>-->
             </div>
           </div>
         </li>
@@ -60,25 +59,11 @@
                         accept="image/ico,image/png"/>
               </span>
               <span class="form_offer_browse_upload_placeholder" [style.display]="flags['form_offer_browse-favicon'] ? 'none' : 'block'">Favicon</span>
-              <!--<span class="form_offer_browse_upload_placeholder" *ngIf="flag_favicon">{{favicon}}</span>-->
             </div>
           </div>
         </li>
         <li>
           <div class="form_offer_access">
-            <!--<select-->
-                    <!--[(ngModel)]="timezone_value"-->
-                    <!--[ngModelOptions]="{standalone: true}"-->
-                    <!--id="timeZone"-->
-                    <!--*ngIf="timezonesLoaded"-->
-                    <!--class="form_offer_access_select"-->
-                    <!--name="timeZone"-->
-                    <!--data-placeholder="Choose time zone">-->
-              <!--<option value="null"  disabled selected>Choose time zone</option>-->
-              <!--<option-->
-                      <!--*ngFor="let key of getTimezoneKey()"-->
-                      <!--value="{{key}}">{{timezone[key]}}</option>-->
-            <!--</select>-->
             <app-select-box [(model)]="timezone_value" [values]="timezone" [option_value_var]="'id'" [option_text_var]="'title'" [click_event]="true" [_parent]="this"></app-select-box>
             <div class="question">
               <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>

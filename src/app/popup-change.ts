@@ -199,9 +199,6 @@ constructor(http: Http,domains: Domains,public router: Router, public globalLogi
         }
 
         this.value_id = value_id;
-      
-       
-        console.log('click work',field_named,value,field,type);
 
         this.id=id;
 
@@ -219,14 +216,8 @@ constructor(http: Http,domains: Domains,public router: Router, public globalLogi
         this.offer_id=proffer_id;
         this.user_id=user_id;
         this.hidden = false;
-        // top: jQuery(event.target).offset().top - window.scrollY - 60,
-            //     left: jQuery(event.target).offset().left - window.scrollX + (jQuery(event.target).width() / 2),
         this.top =jQuery(event.target).offset().top - window.scrollY - 100;
-        console.log('bla1',jQuery(event.target).offset().top,window.scrollY)
-        // this.top = event.target.parentNode.offsetTop - window.scrollY - 10;
-        this.left = jQuery(event.target).offset().left - window.scrollX + (jQuery(event.target).width() / 2);
-        console.log('bla2',jQuery(event.target).offset().left,window.scrollX + (jQuery(event.target).width()));
-        // this.left = event.target.offsetParent.offsetLeft + event.target.offsetParent.offsetWidth/2;
+        this.left = jQuery(event.target).offset().left - window.scrollX + (jQuery(event.target).width() / 2);ё
     }
 
     changedField(value,list,csrf,url){
@@ -254,8 +245,6 @@ constructor(http: Http,domains: Domains,public router: Router, public globalLogi
                 (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);

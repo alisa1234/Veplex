@@ -22,41 +22,26 @@ export class TextInputComponent {
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.eRef.nativeElement.contains(event.target) || event.target == this.clicker) {
-      // console.log("clicked inside");
     } else {
       if(typeof this.search !='undefined'){
-       
-        console.log('text input searc',this.search)
         this.isActive=true;
       }else{
      
         this.isActive=false;
       }
       this.hidden = true;
-      // 
-      // console.log("clicked outside");
     }
   }
   ngOnChanges(changes: {[propName: string]: SimpleChange}) {
-    console.log('ngOnChanges - value = ', changes);
     if(typeof changes.search.currentValue!='undefined'){
-      // debugger;
-      // if(typeof changes.search.cerrentValue!='undefined'){
         this.isActive=true;
         this.hidden_delete=false;
-        // debugger;
-      // }
-
     }
    
   }
 
   Toggle(){
-  
-    console.log(this.search);
     if(typeof this.search !='undefined'){
-
-      console.log('text input searc',this.search)
       this.isActive=true;
     }else{
      
@@ -64,9 +49,6 @@ export class TextInputComponent {
     }
    
     this.hidden = !this.hidden;
-     
-    // debugger;
-    
   }
   enter(value){
     

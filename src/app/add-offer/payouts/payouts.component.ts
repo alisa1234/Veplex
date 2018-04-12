@@ -33,7 +33,6 @@ export class PayoutsComponent implements OnInit {
   field_name: string;
   params: string;
   body:any;
-  // offerLisrResult:any;
 
   domain:string;
   url:string;
@@ -69,7 +68,6 @@ export class PayoutsComponent implements OnInit {
   
   private name:any;
   public eventEmitter$: EventEmitter<any>;
-  // public eventEmitter_offer$: EventEmitter<any>;
   @ViewChild('popup') popup:PopupChange;
   constructor(protected router:Router,public route: ActivatedRoute,http: Http,domains:Domains,public renderOffer:RenderOffer,public filters:Filters,public popupChange:PopupChange,public checkboxTableService:CheckboxTableService, public globalLogin:GlobalLogin) {
     
@@ -159,13 +157,9 @@ export class PayoutsComponent implements OnInit {
 
   }
   ngOnInit() {
-    // this.popupChange.ngOnInit();
-    //
-    // jQuery('.popup_link').css('display','none');
     this.route
         .params
         .subscribe(params => {
-          console.log(params);
           this.offer_id = params['id'];
           this.renderOffer.getsPayouts(this.offer_id,this.user_name);
 
@@ -174,8 +168,6 @@ export class PayoutsComponent implements OnInit {
    
   }
   ngAfterViewInit(){
-    // this.filters.ngAfterViewInit();
-    // this.popupChange.ngAfterViewInit();
   }
   chooseField(event,id,user_id,proffer_id,value,value_id,field,type,data) {
     this.popupChange.choosenField(event, id, user_id, proffer_id, value, this.field_name, field, type, this.type_field, null, this.list, this.popup, value_id, data)
@@ -185,8 +177,6 @@ export class PayoutsComponent implements OnInit {
   }
 
   sort(value:string){
-
-    // console.log(this.offer_publisherList.rows[0].proffer_id)
     this.filters.sorts(value,this.urlGetList+this.offer_id)
         .subscribe(
             res=>{this.list=res;
@@ -217,11 +207,8 @@ export class PayoutsComponent implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                    // localStorage.clear();
                     localStorage.setItem('current_url',this.router.url);
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
                     this.globalLogin.serverTime=false;
@@ -262,15 +249,10 @@ export class PayoutsComponent implements OnInit {
             this.display_of = this.list.pagination.totalCount;
           }
           if(typeof this.list.filterParams != 'undefined'){
-            // this.search_field[value]=false;
-            // jQuery('button[value="'+value+'"]').addClass('active');
             object.hidden_delete=false;
           }else{
-            // this.search_field[value]=true;
-            // jQuery('button[value="'+value+'"]').removeClass('active')
             object.hidden_delete=true;
           }
-          //
           object.hidden=true;
 
           return true;
@@ -279,11 +261,8 @@ export class PayoutsComponent implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                // localStorage.clear();
                 localStorage.setItem('current_url',this.router.url);
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
                 this.globalLogin.serverTime=false;
@@ -298,7 +277,6 @@ export class PayoutsComponent implements OnInit {
 
   }
   clear(value:string,object){
-    console.log('clear')
     this.filters.clears(value,this.urlGetList+this.offer_id).subscribe(
         res=>{
           this.list=res;
@@ -329,18 +307,12 @@ export class PayoutsComponent implements OnInit {
           object.hidden_delete=true;
           object.hidden=true;
           object.isActive=false;
-
-
-          // jQuery('button[value="'+value+'"]').removeClass('active')
         },
     (err) => {
           let error=err.json();
           if(error.logged==false){
-
-              // window.location.replace(this.domain);
               this.router.navigate(['/']);
               let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-              // localStorage.clear();
               localStorage.setItem('current_url',this.router.url);
               localStorage.setItem('current_breadcrumb',current_breadcrumb);
               this.globalLogin.serverTime=false;
@@ -355,7 +327,6 @@ export class PayoutsComponent implements OnInit {
     this.filters.nexts(this.urlGetList+this.offer_id,this).subscribe(
         res=>{
           this.list=res;
-          console.log('next',this.list);
          
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
@@ -367,11 +338,8 @@ export class PayoutsComponent implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                // localStorage.clear();
                 localStorage.setItem('current_url',this.router.url);
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
                 this.globalLogin.serverTime=false;
@@ -400,7 +368,6 @@ export class PayoutsComponent implements OnInit {
     this.filters.prevs(this.urlGetList+this.offer_id,this).subscribe(
         res=>{
           this.list=res;
-          console.log('prev',this.list);
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -408,11 +375,8 @@ export class PayoutsComponent implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                // localStorage.clear();
                 localStorage.setItem('current_url',this.router.url);
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
                 this.globalLogin.serverTime=false;
@@ -443,7 +407,6 @@ export class PayoutsComponent implements OnInit {
     this.currentPage=1;
     this.filters.firsts(this.urlGetList+this.offer_id,this).subscribe(
         res=>{this.list=res;
-          console.log('prev',this.list);
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -451,11 +414,8 @@ export class PayoutsComponent implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                // localStorage.clear();
                 localStorage.setItem('current_url',this.router.url);
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
                 this.globalLogin.serverTime=false;

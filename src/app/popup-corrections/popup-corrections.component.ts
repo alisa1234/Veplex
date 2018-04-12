@@ -32,9 +32,7 @@ export class PopupCorrectionsComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.elRef.nativeElement.contains(event.target) || event.target.closest('.proffers-stat')) {
-      // console.log("chosen clicked inside");
     } else {
-      // console.log("chosen clicked outside");
       this.hidden = true;
       this.hiddenChange.emit(this.hidden);
     }
@@ -48,8 +46,6 @@ export class PopupCorrectionsComponent implements OnInit {
   ngOnInit() {
   }
   pushOnDate($event){
-    console.log(this.value);
-
     if(this.value=='date'){
       this.today = new Date();
       this.dd = this.today.getDate();
@@ -63,7 +59,6 @@ export class PopupCorrectionsComponent implements OnInit {
         this.mm =+ '0' + this.mm;
       }
       this.start_day2=this.mm+'/'+this.dd+'/'+this.yy;
-      // this.end_day=this.mm+'/'+this.dd+'/'+this.yy;
       jQuery( ".datepicker2" ).datepicker( "setDate", this.start_day2 );
  
       this.calendarPopupService.showCalendar();
@@ -89,7 +84,6 @@ export class PopupCorrectionsComponent implements OnInit {
     }
   }
   sendDate(start,end){
-    debugger;
   }
   close(){
     this.hidden = true;

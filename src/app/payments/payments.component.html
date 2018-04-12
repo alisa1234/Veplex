@@ -31,7 +31,6 @@
             </td>
             <td class="t6_3">Period</td>
             <td class="t6_4">Amount</td>
-            <!--<td class="t6_5">Corrections</td>-->
             <td class="t6_6">Total Amount</td>
             <td class="t6_7">
              Status
@@ -49,7 +48,6 @@
               <td class="t6_2">{{data.user_name}}</td>
               <td class="t6_3">{{data.period}}</td>
               <td class="t6_4">{{data.revenue}}</td>
-              <!--<td class="t6_5">{{data.corrections}}<a href="#" title="#" class="page-table_cplus"></a></td>-->
               <td class="t6_6">{{data.total_amount}}</td>
               <td class="t6_7">
                 <span class="page-table_prc" id="payment_status" data-name="Payment status" data-type="Select"
@@ -77,7 +75,6 @@
             <td class="t6_5">{{total_total_amount}}</td>
             <td class="t6_6"> </td>
             <td class="t6_7"> </td>
-            <!--<td class="t6_8"> </td>-->
           </tr>
         </table>
       </div>
@@ -97,4 +94,3 @@
 <app-popup-invoice [(hidden)]="popupInvoiceService.hidden" [downloadPDF]="downloadPDF" [resendPDF]="resendPDF"></app-popup-invoice>
 <app-popup-reports [(hidden)]="popupReportsService.hidden" [list]="popupReportsService.list" [downloadCSV]="downloadCSV" [resendCSV]="resendCSV"></app-popup-reports>
 <app-popup-table #popup (ch)="changeField($event)" [(inner_hidden)]="popupChange.hidden" [top]="popupChange.top" [left]="popupChange.left" [(value)]="popupChange.value_id"  [values]="popupChange.values" [type]="popupChange.type" [title]="popupChange.field"></app-popup-table>
-<!--[(name)]="popupInvoiceService.name" [(id)]="popupInvoiceService.id" [(information)]="popupInvoiceService.information"-->

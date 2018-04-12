@@ -81,11 +81,9 @@ export class StatisticComponent {
     
   constructor(http:Http, domains:Domains, public router:Router, public popupChange:PopupChange, public filters:Filters, public initChosen:InitChosen, public calendarService:CalendarService, public renderStatistic:RenderStatistic, public globalLogin:GlobalLogin,public popupCorrectionsService:PopupCorrectionsService) {
     this._http = http;
-    // this.url = domains.url;
     this.domain = domains.domain;
     this.csrf = domains.csrf;
     this.urlGetList = domains.urlGetOfferStatisticList;
-      // this.renderStatistic=renderStatistic;
       this.calendarService.name_class='statistic_calendar';
       this.calendarService.id='id_statistic_calendar';
       this.calendarService.id2='id2_statistic_calendar';
@@ -123,8 +121,6 @@ this.checked['type']=true;
                   this.calendarService.start_day = this.list.filterTime.start;
                   this.calendarService.end_day = this.list.filterTime.end;
                 }
-
-                // this.total_type= this.list.rows[0].total_type;
                 this.total_type = this.list.total_count.type;
                 this.total_raw = this.list.total_count.raw;
                 this.total_uniques = this.list.total_count.uniques;
@@ -185,8 +181,6 @@ this.checked['type']=true;
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -245,8 +239,6 @@ this.checked['type']=true;
           (err) => {
               let error=err.json();
               if(error.logged==false){
-
-                  // window.location.replace(this.domain);
                   this.router.navigate(['/']);
                   let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                   localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -271,8 +263,6 @@ this.checked['type']=true;
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -329,8 +319,6 @@ this.checked['type']=true;
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -374,8 +362,6 @@ this.checked['type']=true;
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -403,8 +389,6 @@ this.checked['type']=true;
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -442,8 +426,6 @@ this.checked['type']=true;
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -485,8 +467,6 @@ this.checked['type']=true;
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -514,8 +494,6 @@ this.checked['type']=true;
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -543,8 +521,6 @@ this.checked['type']=true;
               (err) => {
                   let error=err.json();
                   if(error.logged==false){
-
-                      // window.location.replace(this.domain);
                       this.router.navigate(['/']);
                       let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                       localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -555,14 +531,12 @@ this.checked['type']=true;
 
 
               });
-    console.log(jQuery('#'+value),this.checked[value],check);
 
 
 }
     getConversions(id,name){
         localStorage.setItem('statistic_offer_name',name);
         localStorage.setItem('statistic_offer_id',id);
-        // this.renderStatistic.getOfferConversions(id);
         this.router.navigate(['/statistic/offers-list/conversions',id]);
         
         
@@ -570,8 +544,6 @@ this.checked['type']=true;
     getDetail(id,name){
         localStorage.setItem('statistic_offer_name',name);
         localStorage.setItem('statistic_offer_id',id);
-     
-        // this.renderStatistic.getOfferDetail(id);
         this.router.navigate(['/statistic/offers-list/detail-statistic',id]);
       
     }

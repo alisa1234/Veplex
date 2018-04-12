@@ -54,7 +54,6 @@ export class CompanyProfileComponent implements OnInit{
     id:string;
 
     public values=[];
-    // public values:any=[];
     public value:string='choose_country';
     public myModel = '';
     public maskPhone = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
@@ -65,7 +64,6 @@ export class CompanyProfileComponent implements OnInit{
     this.csrf = domain.csrf;
     this.urlSaveSettings = domain.urlSaveSettings;
     this._countrieService = _countrieService;
-    // this.country_value = null;
     let result: any;
 
     
@@ -119,8 +117,6 @@ export class CompanyProfileComponent implements OnInit{
                       (err) => {
                           let error=err.json();
                           if(error.logged==false){
-
-                              // window.location.replace(this.domain);
                               this.router.navigate(['/']);
                               let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                               localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -172,8 +168,6 @@ export class CompanyProfileComponent implements OnInit{
                           (err) => {
                               let error=err.json();
                               if(error.logged==false){
-
-                                  // window.location.replace(this.domain);
                                   this.router.navigate(['/']);
                                   let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                                   localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -192,15 +186,6 @@ export class CompanyProfileComponent implements OnInit{
   }
     
     ngOnInit(){
-        // jQuery('.form_offer_access').trigger("refresh");
-       
-            // this.getCountries();
-    
-        // this.getCountries();
-    // let formAccess = (<HTMLSelectElement[]><any>document.getElementsByClassName('form_offer_access'));
-    // for (let i = 0; i < formAccess.length; i++){
-    //   jQuery(formAccess[i]).find('select').styler();
-    // }
   }
     
     keypress(event: any){
@@ -217,7 +202,6 @@ export class CompanyProfileComponent implements OnInit{
 
     
     send(){
-    // this.countrKey=jQuery("#country").val();
     let profile =
         "CompanyProfileForm[company_name]=" + this.company_name
         + "&CompanyProfileForm[address]=" + this.address

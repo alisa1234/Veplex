@@ -98,7 +98,6 @@ export class ConversionComponent implements OnInit {
 
     constructor(http:Http, domains:Domains, public router:Router, public route:ActivatedRoute, public popupChange:PopupChange, public filters:Filters, public initChosen:InitChosen, public calendarService:CalendarService, public renderStatistic:RenderStatistic, public globalLogin:GlobalLogin) {
         this._http = http;
-        // this.url = domains.url;
         this.domain = domains.domain;
         this.csrf = domains.csrf;
         this.urlGetList = domains.urlGetOfferConversions;
@@ -134,8 +133,6 @@ export class ConversionComponent implements OnInit {
                     this.calendarService.start_day = this.list.filterTime.start;
                     this.calendarService.end_day = this.list.filterTime.end;
                 }
-
-                // this.total_type= this.list.rows[0].total_type;
                 this.total_type = this.list.total_count.type;
                 this.total_raw = this.list.total_count.raw;
                 this.total_uniques = this.list.total_count.uniques;
@@ -208,13 +205,8 @@ export class ConversionComponent implements OnInit {
         this.route
             .params
             .subscribe(params => {
-                console.log(params);
                 this.tittle_id = params['id'];
-                // this.offer_id = params['id'];
-                // this.publisher_id = params['id'];
                 this.renderStatistic.getOfferConversions(this.tittle_id);
-                // this.code = params['code'];
-                // this.userEmail = params['email'];
             });
     }
 
@@ -253,8 +245,6 @@ export class ConversionComponent implements OnInit {
                 (err) => {
                     let error = err.json();
                     if (error.logged == false) {
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -279,8 +269,6 @@ export class ConversionComponent implements OnInit {
                 (err) => {
                     let error = err.json();
                     if (error.logged == false) {
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -307,12 +295,8 @@ export class ConversionComponent implements OnInit {
                 this.total_cr = this.list.total_count.cr;
                 this.total_epv = this.list.total_count.epv;
                 if (typeof this.list.filterParams != 'undefined') {
-
-                    // jQuery('button[value="' + value + '"]').addClass('active');
                     object.hidden_delete = false;
                 } else {
-
-                    // jQuery('button[value="' + value + '"]').removeClass('active')
                     object.hidden_delete = true;
                 }
                 object.hidden = true;
@@ -322,8 +306,6 @@ export class ConversionComponent implements OnInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -357,8 +339,6 @@ export class ConversionComponent implements OnInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -375,8 +355,6 @@ export class ConversionComponent implements OnInit {
         this.filters.nexts(this.urlGetList, this).subscribe(
             res=> {
                 this.list = res;
-
-
                 this.display_from = this.list.pagination.pageSize * (this.list.pagination.page + 1) - (this.list.pagination.pageSize - 1);
                 this.display_to = this.list.pagination.pageSize * (this.list.pagination.page + 1);
                 this.display_of = this.list.pagination.totalCount;
@@ -387,8 +365,6 @@ export class ConversionComponent implements OnInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -427,8 +403,6 @@ export class ConversionComponent implements OnInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -470,8 +444,6 @@ export class ConversionComponent implements OnInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -500,8 +472,6 @@ export class ConversionComponent implements OnInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);

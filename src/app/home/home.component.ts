@@ -6,7 +6,6 @@ import {Domains} from '../domains';
 import {CheckboxTableService} from "../checkbox-table/checkbox-table.service";
 import {GlobalLogin} from '../global-login';
 import { Router } from '@angular/router';
-// require('highcharts/modules/exporting')(Highcharts);
 
 declare var jQuery:any;
 declare var Highcharts:any;
@@ -128,7 +127,6 @@ export class HomeComponent implements OnInit {
     this._http.get(this.domain + this.csrf)
         .map((res: Response) => {
           this.body = res.json();
-          console.log('csrf=',this.body.csrf)
         })
         .subscribe(
             res=>this.result=res
@@ -153,26 +151,19 @@ export class HomeComponent implements OnInit {
                 this.calendarService.start_day=res.filterTime.start;
                 this.end_day=res.filterTime.end;
                 this.calendarService.end_day=res.filterTime.end;
-              
-                // jQuery( ".datepicker" ).datepicker( "setDate", this.start_day );
-                // jQuery('.calendar_ok').addClass('hidden_calendar_ok');
                 jQuery('.hidden_calendar_ok').hide();
                 this.calendarService.showCalendar();
                 this.hide_calendar=false;
-                this.sendStatistic();
-                // this.sendChartStatistic(this.chart_value);
+                this.sendStatistic();;
               }else{
                 this.calendar_data=false;
                 this.sendStatistic();
-                // this.sendChartStatistic('hour');
               }
     
             },
             (err) => {
               let error=err.json();
               if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -184,22 +175,10 @@ export class HomeComponent implements OnInit {
 
             }
         );
-
-
-    // this._http.get(this.domain + this.urlGetListPublishers)
-    //     .map((res: Response) => {
-    //       return res.json();
-    //
-    //     })
-    //     .subscribe(
-    //         res=>{this.publisher_values=res.listpublishers;this.publisher_values.unshift({'id':'0','title':'All accounts'})}
-    //     );
-
     setTimeout(() => {
       if (Highcharts) {
         this.roda = true;
       } else {
-        console.log(`Highcharts is not defined`);
       }
     }, 1000);
   }
@@ -250,9 +229,6 @@ ngAfterViewInit(){
 
         tooltip: {
           enabled: false
-          // headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-          // pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
-          
         },
         series: [{
           name: '',
@@ -285,13 +261,10 @@ ngAfterViewInit(){
   })
 }
   ngOnInit() {
-    console.log(this.globalLogin);
-
     for(let i=0;i<this.field_arr.length;i++){
       this.chartData2[this.field_arr[i]]=new Highcharts.chart(this.field_arr[i],{
 
         chart: {
-          // zoomType: 'x',
           type: 'line',
           plotBorderWidth: 0,
           margin: [0, 0, 0, 0],
@@ -304,8 +277,6 @@ ngAfterViewInit(){
           text: ''
         },
         subtitle: {
-          // text: document.ontouchstart === undefined ?
-          //     'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
         },
         xAxis: {
           type: 'datetime',
@@ -322,10 +293,6 @@ ngAfterViewInit(){
             text: '',
 
           },
-          // min: 0,
-          // startOnTick: false,
-          // endOnTick: false,
-          // max:100,
           labels: {
             enabled: false
           },
@@ -349,12 +316,6 @@ ngAfterViewInit(){
           },
           area: {
             fillColor: {
-              // linearGradient: {
-              //   x1: 0,
-              //   y1: 0,
-              //   x2: 0,
-              //   y2: 1
-              // },
               stops: [
                 [0, Highcharts.getOptions().colors[0]],
                 [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
@@ -399,7 +360,6 @@ ngAfterViewInit(){
           type: 'area',
           name: this.field_arr[i],
           color: '#43c9e0',
-          // data: [303836,172013,152132,151974,152089]
         }],
         navigation: {
           buttonOptions: {
@@ -414,16 +374,6 @@ ngAfterViewInit(){
 
         tooltip: {
           enabled: false
-        //   formatter: function() {
-        //     var r = (this.points[0].y/this.points[1].y * 100 - 100);
-        //     if(r > 0){
-        //       return '<span style="color: blue">'  + r.toFixed(2) + '%</span>';
-        //     }
-        //     else {
-        //       return '<span style="color: red">' + r.toFixed(2) + '%</span>';
-        //     }
-        //   },
-        //   shared: true
         }
       });
     }
@@ -433,62 +383,27 @@ ngAfterViewInit(){
       type: 'line',
       marginLeft: 0,
       spacingLeft: 10,
-      // margin: [0, 0, 0, 0],
-      // spacingRight: 0,
-      // marginRight: 0,
       
       events: {
         load: function(chart) {
-          console.log(typeof chart)
          if(typeof chart.type=='undefined' ){
-      
-        
-          // var chart = this;
-         
           jQuery.each(chart.legend.allItems, function(i, item){
-          
-            // let check = jQuery(item.checkbox),
             let check = jQuery(item.checkbox),
                
                 left = parseFloat(check.css('left')),
                 right = parseFloat(check.css('right')),
                 label = item.legendItem;
-          
-              //   check.css({
-              // left: '',
-              // righdebugger;t: 155 + 'px'
               check.css({
             left: ((left+right)-137)+'px'
-            // right: 155 + 'px'
           
             });
-          
-            console.log('check',check);
-            console.log(chart);
           });
         
         }
         }
       }
-      // colors: ['#7cb5ec', '#434348', '#90ed7d', '#f7a35c', '#8085e9',
-      //   '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1']
     },
-    // responsive: {
-    //   rules: [{
-    //     // condition: {
-    //     //   maxWidth: 500
-    //     // },
-    //     chartOptions: {
-    //       legend: {
-    //         align: 'right',
-    //         // verticalAlign: 'bottom',
-    //         // layout: 'horizontal'
-    //       }
-    //     }
-    //   }]
-    // },
     xAxis: {
-      // title:'Periode',
       categories:this.period_arr['hour_arr'],
       labels: {
         enabled: false
@@ -507,9 +422,7 @@ ngAfterViewInit(){
     legend: {
       layout: 'vertical',
       align: 'right',
-      // itemWidth : 100,
       width : 134,
-      // verticalAlign: 'middle',
       itemMarginBottom: 7,
       floating:false,
       x: 10,
@@ -524,31 +437,21 @@ ngAfterViewInit(){
           
     }
     },
-    // tooltip: {
-    //   xDateFormat: '%hour',
-    //   shared: false
-    // },
     plotOptions: {
       series: {
         showCheckbox: true,
         pointStart: 0,
         marker:{
-          // lineWidth: 50,
-          // lineColor: '#FFFFFF',
           radius: 5
         },
-        
-        // seriespointInterval: 1,
         events: {
           checkboxClick: function (event) {
             if (!event.checked) {
 
               this.hide();
-              // this.legendSymbol.hide();
             } else {
 
               this.show();
-              // this.legendSymbol.hide();
             }
 
           }
@@ -560,14 +463,6 @@ ngAfterViewInit(){
       text:''
     },
     series: [
-      // {
-      //   name:'Profit margin',
-      //   lineWidth: 3.5,
-      //   marker: {
-      //     lineWidth: 2,
-      //     lineColor: "#ffffff"
-      //   },
-      // }
     ],
     navigation: {
       buttonOptions: {
@@ -578,13 +473,8 @@ ngAfterViewInit(){
       enabled: false
     },
   });
-
-  console.log(this.chartData);
-       
-    // let self=this;
     jQuery("."+self.calendarService.name_class).datepicker({
       onSelect:function(d,t){
-        // self.start_day=
     
         if(t.id==self.calendarService.id){
           self.start_day=d;
@@ -599,45 +489,9 @@ ngAfterViewInit(){
     
   }
   pushOnOffers($event){
-    // let data='MetricGraphs[offer_id]='+this.offer_value+'&_csrf='+this.body.csrf;
-    // let headers=new Headers();
-    // headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    // if(this.offer_value=='0'){
-    //   this._http.get(this.domain + this.urlGetListOffersPublishers)
-    //       .map((res: Response) => {
-    //         return res.json();
-    //
-    //       })
-    //       .subscribe(
-    //           res=>{
-    //             this.offer_values=res.listoffers;
-    //             this.offer_values.unshift({'id':'0','title':'All offers'});
-    //             this.offer_value='0';
-    //             this.publisher_values=res.listpublishers;
-    //             this.publisher_values.unshift({'id':'0','title':'All accounts'});
-    //             this.publisher_value='0';
-    //           }
-    //       );
-    // }else{
-    //   this._http.get(this.domain + this.getStatisticHome+'&offer_id='+this.offer_value)
-    //       .map((res: Response) => {
-    //         return res.json();
-    //
-    //       })
-    //       .subscribe(
-    //           res=>{this.publisher_values=res.listpublishers;
-    //             this.publisher_values.unshift({'id':'0','title':'All accounts'});
-    //             this.publisher_value='0';
-    //           }
-    //       );
-    // }
-   
+
   }
   pushOnPublishers($event){
- 
-    // let data='MetricGraphs[user_id]='+this.publisher_value+'&_csrf='+this.body.csrf;
-    // let headers=new Headers();
-    // headers.append('Content-Type', 'application/x-www-form-urlencoded');
     if(this.publisher_value=='0'){
       this._http.get(this.domain + this.urlGetListOffersPublishers)
           .map((res: Response) => {
@@ -656,8 +510,6 @@ ngAfterViewInit(){
               (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                  // window.location.replace(this.domain);
                   this.router.navigate(['/']);
                   let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                   localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -680,8 +532,6 @@ ngAfterViewInit(){
               (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                  // window.location.replace(this.domain);
                   this.router.navigate(['/']);
                   let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                   localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -718,11 +568,7 @@ ngAfterViewInit(){
                 for(let key in res.graphs){
 
                   this.chartData2[key].series[0].setData(res.graphs[key][0].data);
-                
-                  // this.chartData2[key].series[1].setData(res.graphs[key][1].data);
-                  // this.chartData2[key].options.plotOptions.series.pointStart=res.graphs[key][1].start;
                   this.chartData2[key].options.plotOptions.series.pointStart=res.graphs[key][0].start;
-                  // this.chartData2[key].options.plotOptions.series.seriespointInterval=res.graphs[key][1].step*1000;
                   this.chartData2[key].options.plotOptions.series.seriespointInterval=res.graphs[key][0].step*1000;
                   if(res.graphs[key][1].total=='0'){
                     this.chartData2['percent_'+key]='0';
@@ -737,8 +583,6 @@ ngAfterViewInit(){
               (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                  // window.location.replace(this.domain);
                   this.router.navigate(['/']);
                   let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                   localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -776,12 +620,6 @@ ngAfterViewInit(){
 
         })
         .subscribe(data=>{
-          // if(this.chartData.series.length!=0){
-          //     for(let i=this.chartData.series.length - 1; i > -1; i--){
-          //       this.chartData.series[i].remove(true);
-          //       debugger;
-          //     }
-          // }
           for(let key in data.chartgraph){
             if(key=='profit_margin'){
               key='profit margin';
@@ -802,30 +640,6 @@ ngAfterViewInit(){
             });
                
             this.chartData.options.chart.events.load(this.chartData);
-            // for(let i=0;i <this.chartData.series.length;i++){
-              // this.chartData.series[i].visible=false;
-              // this.chartData.series[i].userOptions.visible=true;
-              // lineWidth: 3.5,
-                  //   color: '#2F4F4F',
-                  //   marker: {
-                  //     lineWidth: 2,
-                  //     lineColor: "#ffffff"
-                  //   },
-              // this.chartData.series.name=key;
-              // this.chartData.series.lineWidth=3.5;
-              // this.chartData.series.color='#2F4F4F';
-              // this.chartData.series.marker.lineWidth=2;
-              // this.chartData.series.marker.lineColor='#ffffff';
-              // this.chartData.series[key.userOptions.showInLegend=false;
-              // if(this.chartData.series[i].userOptions.alias==key){
-          
-                // this.chartData.series.setData(data.chartgraph[key]);
-                // this.chartData.series[i].visible=true;
-                // this.chartData.series[i].userOptions.visible=true;
-                // this.chartData.series[i].userOptions.showInLegend=true;
-              
-              // }
-            // }
           }
           this.chartData.xAxis[0].setCategories(this.period_arr[value+'_arr']);
            
@@ -833,8 +647,6 @@ ngAfterViewInit(){
             (err) => {
               let error=err.json();
               if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -872,28 +684,14 @@ ngAfterViewInit(){
             for(let i=0;i<this.list.rows.length;i++){
             
               this.ShareData[this.list.rows[i].name].series[0].setData([parseFloat(this.list.rows[i].share),100-parseFloat(this.list.rows[i].share)]);
-              // this.ShareData[this.list.rows[i].name].series[0].setData([100-this.list.rows[i].share]);
          
             }
 
           },1000);
-
-      
-          
-          // for(let key in data.chartgraph){
-          //   for(let i=0;i <this.chartData.series.length;i++){
-          //     if(this.chartData.series[i].userOptions.alias==key){
-          //       this.chartData.series[i].setData(data.chartgraph[key]);
-          //     }
-          //   }
-          // }
-          // this.chartData.xAxis[0].setCategories(this.period_arr[value+'_arr']);
         },
             (err) => {
               let error=err.json();
               if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -906,8 +704,6 @@ ngAfterViewInit(){
             })
   }
   change(){
-    // this.chartData.series[0].data=this.some_data;
-    // this.chartData2.series[0].data=this.some_data;
     let chart = new Highcharts.Chart(this.chartData);
     let chart2 = new Highcharts.Chart(this.chartData2);
     let chart3 = new Highcharts.Chart(this.chartData2);
@@ -923,7 +719,6 @@ ngAfterViewInit(){
     this.calendar_value=value;
     if (value == 'custom') {
       this.calendar_data=true;
-      // jQuery('.calendar_ok').addClass('hidden_calendar_ok');
       jQuery('.hidden_calendar_ok').hide();
       this.today = new Date();
       this.dd = this.today.getDate();
@@ -946,42 +741,11 @@ ngAfterViewInit(){
     }else{
       this.calendarService.hideCalendar();
       this.calendar_data=false;
-      // this.filters.filterPeriods(value,this.urlsendStatistic).subscribe(res=>{
-      //  
-      //   this.sendStatistic();
-      //   // this.list=res;
-      //   // this.total_revenue = this.list.total_count.revenue;
-      //   // this.total_cost = this.list.total_count.cost;
-      //   // this.total_profit = this.list.total_count.profit;
-      //   // this.total_profit_margin = this.list.total_count.profit_margin;
-      //
-      //   console.log('filter')
-      // })
     }
   }
   sendDate(start_day,end_day){
-   
-    // this.filters.sendDate(this.urlsendStatistic,start_day,end_day).subscribe(
-    //     res=> {
-    //       // this.list = res;
-    //       // for(let i=0;i<this.list.rows.length;i++){
-    //       //   this.show_offer[this.list.rows[i].bundle_id]=false;
-    //       //   this.getListOffer(this.list.rows[i].bundle_id);
-    //       //
-    //       // }
-    //     })
   }
   sort(value:string) {
-    // for(let i=0;i<this.list.rows.length;i++){
-    //   for(let key in this.list_offer){
-    //     if(key==this.list.rows[i].bundle_id)  {
-    //
-    //       this.show_offer[this.list.rows[i].bundle_id]=false;
-    //       this.getListOffer(this.list.rows[i].bundle_id);
-    //     }
-    //   }
-    //
-    // }
     this.filters.sorts(value, this.urlgetTableStatistic)
         .subscribe(
             res=> {
@@ -990,34 +754,10 @@ ngAfterViewInit(){
                 for(let i=0;i<this.list.rows.length;i++){
 
                   this.ShareData[this.list.rows[i].name].series[0].setData([parseFloat(this.list.rows[i].share),100-parseFloat(this.list.rows[i].share)]);
-                  // this.ShareData[this.list.rows[i].name].series[0].setData([100-this.list.rows[i].share]);
 
                 }
 
               },1000);
-              // for(let i=0;i<this.list.rows.length;i++){
-              //     debugger;
-              //     // for (let key in this.list.rows[i]) {
-              //     //     if (key == 'offers') {
-              //     //         // console.log('this.list_offer4',this.list.rows[i][key]);
-              //     //         this.list_offer[this.list.rows[i].bundle_id] = this.list.rows[i][key];
-              //     //         console.log('this.list_offer', this.list_offer)
-              //     //         this.offer_list_get = false;
-              //     //
-              //     //
-              //     //     }
-              //     //
-              //     //
-              //     // }
-              //     this.show_offer[this.list.rows[i].bundle_id]=false;
-              //     debugger;
-              //    this.getListOffer(this.list.rows[i].bundle_id);
-              //  
-              // }
-              // for(let i=0;i<this.list.rows.length;i++){
-              //     this.getListOffer(this.list.rows[i].bundle_id);
-              //    
-              // }
             }
         );
   }

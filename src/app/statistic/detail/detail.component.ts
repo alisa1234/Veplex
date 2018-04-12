@@ -190,13 +190,8 @@ export class DetailComponent implements OnInit {
       this.route
           .params
           .subscribe(params => {
-              console.log(params);
               this.tittle_id = params['id'];
-              // this.offer_id = params['id'];
-              // this.publisher_id = params['id'];
               this.renderStatistic.getOfferDetail(this.tittle_id);
-              // this.code = params['code'];
-              // this.userEmail = params['email'];
           });
   }
     

@@ -26,16 +26,13 @@ export class PopupTable implements OnChanges{
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.eRef.nativeElement.contains(event.target) || event.target.closest('.page-table_prc')) {
-        // console.log("chosen clicked inside");
     } else {
-        // console.log("chosen clicked outside");
         this.inner_hidden = true;
         this.inner_hiddenChange.emit(this.inner_hidden);
     }
   }
 
     ngOnChanges(changes: {[propName: string]: SimpleChange}) {
-        console.log('ngOnChanges - value = ', changes);
     }
 
   constructor(public eRef: ElementRef) {

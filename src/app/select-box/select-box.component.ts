@@ -28,15 +28,9 @@ export class SelectBox implements OnChanges, AfterViewChecked{
     @Output() pushOnSelected:any = new EventEmitter();
     
     ngOnChanges(changes: {[propName: string]: SimpleChange}) {
-        console.log('ngOnChanges - value = ', changes,this.model);
       
         if(typeof changes.model!='undefined'){
-
-            
-            // if(typeof changes.model != 'undefined'){
                 let a = this.eRef.nativeElement.querySelector('select').querySelector('option[value="'+changes.model.currentValue+'"]');
-           
-                console.log('a',a);
             if(this.click_event==true){
            
                 if(typeof changes.model.previousValue!='object' && changes.model.previousValue!=null && changes.model.previousValue!='null' && changes.model.previousValue!='All' && changes.model.currentValue!=changes.model.previousValue){
@@ -56,37 +50,21 @@ export class SelectBox implements OnChanges, AfterViewChecked{
                        
                     },0);
                 }
-            // }
            
         }
-        
-      
-        // if(changes.model.currentValue =='custom'){
-        //     console.log('ngOnChanges2 - value = ',this.calendar.custom);
-        //     debugger;
-        //     this.custom=true;
-        //     console.log('ngOnChanges2 - value = ',this.calendar.custom);
-        // }
-
         if(typeof changes.values != 'undefined'){
             this.values_change = true;
-            // debugger;
         }
     }
 
     ngOnInit(){
         
         jQuery(this.el.nativeElement).styler();
-        // debugger;
-        // jQuery( "#domains option[value!='tracking_domain']" ).prop('disabled', 'disabled');
-        // jQuery(jQuery(this.el.nativeElement)).css('overflow','scroll');
         let self = this;
         jQuery(this.el.nativeElement).change((e) => {
             self.model = e.currentTarget.value;
             self.modelChange.emit(self.model);
             self.pushOnSelected.emit(self.model);
-        
-            
            
         });
     }
@@ -94,21 +72,14 @@ export class SelectBox implements OnChanges, AfterViewChecked{
     ngAfterViewChecked(){
        
         if(this.values_change){
-            // debugger;
             jQuery(this.el.nativeElement).styler();
-            // debugger;
-            // jQuery( "#domains option[value!='tracking_domain']" ).prop('disabled', 'disabled');
             let a = this.eRef.nativeElement.querySelector('select').querySelector('option[value="'+this.model+'"]');
-            console.log(a)
-            // debugger;
-          
             if(a != null){
 
                 this.eRef.nativeElement.querySelector('.jq-selectbox__select-text').innerHTML = a.text;
             }
             this.values_change = false;
             setTimeout(()=>{
-                // debugger;
                 jQuery(this.el.nativeElement).trigger('refresh');
                 jQuery('.jq-selectbox__dropdown').css('width','100%');
            

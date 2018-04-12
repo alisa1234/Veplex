@@ -22,7 +22,6 @@ export class PopupReportsService {
     list={rows:[],pagination:(<any>Object),sort:Object,filterParams:[], total_count:Object};
     constructor(http: Http,domains: Domains){
         this._http = http;
-        // this.url = domains.url;
         this.domain = domains.domain;
         this.csrf = domains.csrf;
         this.getAdvertiserListReports = domains.getAdvertiserListReports;
@@ -40,10 +39,6 @@ export class PopupReportsService {
                 debugger;
                 this.hidden=false;
             });
-        // this.id=id;
-        // this.name=name;
-        // this.information=information;
-
 
     }
     showReportsPublisher(uuid){
@@ -57,10 +52,5 @@ export class PopupReportsService {
                 debugger;
                 this.hidden=false;
             });
-        // this.id=id;
-        // this.name=name;
-        // this.information=information;
-        
-
     }
 }

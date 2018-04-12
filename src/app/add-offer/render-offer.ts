@@ -31,7 +31,6 @@ export class RenderOffer  {
     public eventEmitters: EventEmitter<any>;
     public eventEmitters2: EventEmitter<any>;
     public eventEmitters3: EventEmitter<any>;
-    // public eventEmitters2: EventEmitter<any>;
     
     constructor(http: Http,public router: Router,domains:Domains, public checkboxTableService:CheckboxTableService, public globalLogin:GlobalLogin){
         this._http = http;
@@ -45,7 +44,6 @@ export class RenderOffer  {
         this.eventEmitters = new EventEmitter();
         this.eventEmitters2 = new EventEmitter();
         this.eventEmitters3 = new EventEmitter();
-        // this.eventEmitters2 = new EventEmitter();
     }
     renderUpdate(id){
 
@@ -63,10 +61,7 @@ export class RenderOffer  {
                     (err) => {
                         let error=err.json();
                         if(error.logged==false){
-
-                            // window.location.replace(this.domain);
                             this.router.navigate(['/']);
-                            // localStorage.clear();
                             localStorage.setItem('current_url','offer/offer-list/update/'+id);
                             let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                             localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -78,8 +73,6 @@ export class RenderOffer  {
                     });
         }
     renderUpdateUsoffer(id,offer_id){
-      
-        // this.id=offer_id;
        
         this._http.get(this.domain + this.urlGetUsOfferStep_1+id+'?step=2&offer_id='+offer_id)
             .map((res: Response) => {
@@ -93,11 +86,7 @@ export class RenderOffer  {
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
-                        // localStorage.clear();
-                        // let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_url','/users/usoffer-list');
                         localStorage.setItem('current_breadcrumb','[{"label":"Offers","params":{},"url":"/users/usoffer-list"}]');
                         this.globalLogin.serverTime=false;
@@ -123,12 +112,8 @@ export class RenderOffer  {
                   (err) => {
                       let error=err.json();
                       if(error.logged==false){
-
-                          // window.location.replace(this.domain);
                           this.router.navigate(['/']);
                           let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                          
-                          // localStorage.clear();
                           localStorage.setItem('current_url','offer/offer-list/publisher-list/'+id);
                           localStorage.setItem('current_breadcrumb',current_breadcrumb);
                           this.globalLogin.serverTime=false;
@@ -152,10 +137,7 @@ export class RenderOffer  {
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
-                        // localStorage.clear();
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_url','users/publisher-list/payouts/'+id);
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -168,14 +150,6 @@ export class RenderOffer  {
     }
     addOffer(id){
         this.id=id;
-        console.log('dsac',this.id)
-        
-        // this._http.get(this.domain+this.urlGetUsOfferStep_1+id)
-        //     .map((res: Response) =>{return res.json()})
-        //     .subscribe(
-        //         res=>{this.offer_payoutsList=res.data;
-        //             this.eventEmitters2.emit(this.offer_payoutsList);
-        //         })
         this.router.navigate(['users/usoffer-list/add-usoffer-step-2'])
     }
 }

@@ -87,7 +87,6 @@ export class AddBundleStep3Component extends GlobalUsOffer implements OnInit {
     this.route
         .params
         .subscribe(params => {
-          console.log(params);
           this.bundle_id = params['id'];
           this.renderUsOffer.getStep3(this.bundle_id,true);
 
@@ -100,85 +99,47 @@ export class AddBundleStep3Component extends GlobalUsOffer implements OnInit {
       this.offer_ch=false;
       this.offer_ok=true;
     }
-    // if(jQuery("#ip_whitelist").val() != ''){jQuery(".form_offer_act_add").css('display','block')}
   }
   addReturn(e){
-    // let input=jQuery('.form_offer_link').children('input');
     if(jQuery('#'+e.target.id).hasClass('form_offer_act_del')){
       if(e.target.id=='add_tid'){
-        // for(let i=0;i<input.length;i++){
-        //   let str=input[i].value;
-        // this.postback_url='{TID}';
         this.postback_url=this.postback_url.replace('{TID}','');
-        // }
       }
       if(e.target.id=='add_sid'){
-        // for(let i=0;i<input.length;i++){
-        //   let str=input[i].value;
         this.postback_url=this.postback_url.replace('{SID}','');
         // }
       }
       if(e.target.id=='add_subid'){
-        // for(let i=0;i<input.length;i++){
-        //   let str=input[i].value;
         this.postback_url=this.postback_url.replace('{SUBID}','');
-        // }
       }
       if(e.target.id=='add_subid2'){
-        // for(let i=0;i<input.length;i++){
-        //   let str=input[i].value;
         this.postback_url=this.postback_url.replace('{SUBID2}','');
-        // }
       }
       if(e.target.id=='add_subid3'){
-        // for(let i=0;i<input.length;i++){
-        //   let str=input[i].value;
         this.postback_url=this.postback_url.replace('{SUBID3}','');
-        // }
       }
       if(e.target.id=='add_subid4'){
-        // for(let i=0;i<input.length;i++){
-        //   let str=input[i].value;
         this.postback_url=this.postback_url.replace('{SUBID4}','');
-        // }
       }
       jQuery('#'+e.target.id).removeClass('form_offer_act_del');
     }else{
       if(e.target.id=='add_tid'){
-        console.log('fsdfds',this.postback_url)
-        // for(let i=0;i<input.length;i++){
         this.postback_url+='{TID}';
-        // }
       }
       if(e.target.id=='add_subid'){
-        // for(let i=0;i<input.length;i++){
         this.postback_url+='{SUBID}';
-        // }
       }
-      //   if(e.target.id=='subid'){
-      //     for(let i=0;i<input.length;i++){
-      //       input[i].value+='{SUBID}';
-      //     }
-      //   }
       if(e.target.id=='add_subid2'){
-        // for(let i=0;i<input.length;i++){
         this.postback_url+='{SUBID2}';
-        // }
       }
       if(e.target.id=='add_subid3'){
-        // for(let i=0;i<input.length;i++){
         this.postback_url+='{SUBID3}';
-        // }
       }
       if(e.target.id=='add_subid4'){
-        // for(let i=0;i<input.length;i++){
         this.postback_url+='{SUBID4}';
-        // }
       }
       if(e.target.id=='add_sid'){
-        // for(let i=0;i<input.length;i++){
         this.postback_url+='{SID}';
-        // }
       }
       jQuery('#'+e.target.id).addClass('form_offer_act_del');
     }
@@ -186,11 +147,6 @@ export class AddBundleStep3Component extends GlobalUsOffer implements OnInit {
   }
 
   send(formData:FormData=new FormData()){
-
-
-    // if(this.remove_refferal == 1){
-    //   this.remove_refferal = 1;
-    // }else{this.remove_refferal = 0;}
 
     let xhr: XMLHttpRequest = new XMLHttpRequest();
     let name=this.name;
@@ -200,7 +156,6 @@ export class AddBundleStep3Component extends GlobalUsOffer implements OnInit {
     let subid3=this.subid3;
     let subid4=this.subid4;
     let postback_url=this.postback_url;
-    // let remove_referral=this.remove_refferal;
     let csrf=this.body.csrf;
 
     formData.append("_csrf",csrf);
@@ -215,7 +170,6 @@ export class AddBundleStep3Component extends GlobalUsOffer implements OnInit {
           subid3:subid3,
           subid4:subid4,
           postback_url:postback_url,
-          // remove_referral:remove_referral,
 
         }
     );
@@ -231,7 +185,6 @@ export class AddBundleStep3Component extends GlobalUsOffer implements OnInit {
       if(xhr.readyState==XMLHttpRequest.DONE){
         let res=xhr.response;
         let body=JSON.parse(res);
-        console.log('result body',body)
         if(typeof body.logged!='undefined'&& body.logged==false){
           self.router.navigate(['/']);
           let current_breadcrumb=localStorage.getItem('breadcramb_arr');
@@ -267,7 +220,6 @@ export class AddBundleStep3Component extends GlobalUsOffer implements OnInit {
         if(body.validation.length === 0){jQuery('.form_offer_btn_ch').addClass('inactive');}
       }
     }
-    // this.addOffer.render_offer_results=null;
 
     jQuery(".Error").remove();
     jQuery(".error").remove();

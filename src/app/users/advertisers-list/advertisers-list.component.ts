@@ -97,20 +97,16 @@ change_status:any;
 
     not_found_result=false;
     public eventEmitter$: EventEmitter<any>;
-    // public eventEmitter_publisher$: EventEmitter<any>;
     @ViewChild('popup') popup:PopupChange;
 
   constructor(protected router:Router,http: Http,domains: Domains,public filters:Filters, public usersService:UsersService,public statusService:StatusService,public popupChange:PopupChange, public checkboxTableService:CheckboxTableService, public calendarService:CalendarService, public globalLogin:GlobalLogin) {
-    console.log('dsfsdf')
     this._http = http;
-    // this.url = domains.url;
     this.domain = domains.domain;
     this.csrf = domains.csrf;
     this.urlGetList=domains.urlUsersAdvertisersList;
     this.urlGetStatus=domains.urlGetStatus;
     this.urlUsers=domains.urlUsers;
     this.urlUpdate=domains.urlUpdate;
-    // this.urlUsersAdvertisersAdd=domains.urlUsersAdvertisersAdd;
       this.usersService=usersService;
       this.statusService=statusService;
       this.filters=filters;
@@ -133,7 +129,6 @@ change_status:any;
     this._http.get(this.domain + this.csrf)
         .map((res: Response) => {
           this.body = res.json();
-            console.log('csrf',this.body)
         })
         .subscribe(
             res =>this.result = res
@@ -152,10 +147,7 @@ change_status:any;
                     this.not_found_result=true;
                 }else {
                     this.checkboxTableService.Create(this.list);
-                    console.log(this.list);
                     this.eventEmitter$.emit(this.list.rows);
-                    console.log('data', data)
-                    // for(let i=0;i<this.list.rows.length;i++){
                     this.value=this.list.filterTime.type;
                     if (this.value == 'custom') {
 
@@ -182,8 +174,6 @@ change_status:any;
                     if (this.currentPage <= this.page_count) {
                         this.displaying = false;
                     }
-
-                    console.log('dsafs', this.total_revenue)
                     if (typeof this.list.filterParams != 'undefined') {
                         this.eventEmitter$.emit(this.list.filterParams);
                     }
@@ -218,8 +208,6 @@ change_status:any;
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -262,13 +250,10 @@ change_status:any;
             this.total_cost = this.list.total_count.cost;
             this.total_profit = this.list.total_count.profit;
             this.total_profit_margin = this.list.total_count.profit_margin;
-            console.log('filter')
         },
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -282,21 +267,9 @@ change_status:any;
         }
     }
   ngOnInit() {
-      // this.popupChange.ngOnInit();
-      // this.filters.ngOnInit();
-      // // jQuery('.popup_link').css('display','none');
-      // this.JqueryStatusSubscribe();
-      // let self=this;
-      // jQuery('.selection-block_form_date').change(function (e) {
-      //     console.log('change',e.target.value);
-      //     self.filterPeriod(e.target.value);
-      // })
-
   }
 
     ngAfterViewInit(){
-        // this.filters.ngAfterViewInit();
-        // this.popupChange.ngAfterViewInit();
     }
 
     chooseField(event,id,user_id,proffer_id,value,value_id,field,type,data) {
@@ -306,18 +279,15 @@ change_status:any;
         this.popupChange.changedField(value,this.list,this.body.csrf,this.urlGetList);
     }
     focus(){
-        // console.log('focus',document.getElementsByClassName('search-field')[0].childNodes,jQuery('.search-field input'));
         jQuery('.search-field input').focus();
     }
     sort(value:string){
         this.filters.sorts(value,this.urlGetList)
             .subscribe(
-            res=>{this.list=res;console.log('sort',this.list);},
+            res=>{this.list=res;},
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -330,20 +300,12 @@ change_status:any;
                 }
         );
     }
-    // search(value:string){
-    //     this.filters.searches(value,this.urlGetAllOffer).subscribe(
-    //         res=>{this.list=res.data;console.log('sort',this.list)}
-    //     );
-    // }
     search_status(value:string){
         this.filters.searches_status(value,this.urlGetList,this.status_search_send).subscribe(
-            res=>{this.list=res;
-                console.log('sort',this.list,this.status_search)},
+            res=>{this.list=res;},
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -357,7 +319,6 @@ change_status:any;
         );
     }
     enter_search(value,object){
-        console.log('search')
         this.filters.searches(value,this.urlGetList).subscribe(
             res=>{
                 this.list=res;
@@ -385,7 +346,6 @@ change_status:any;
                     this.display_to = this.list.pagination.totalCount;
                     this.display_of = this.list.pagination.totalCount;
                 }
-                console.log('sort enter',this.list,res);
                 this.total_revenue = this.list.total_count.revenue;
                 this.total_offer = this.list.total_count.offer;
                 this.total_cost = this.list.total_count.cost;
@@ -393,16 +353,11 @@ change_status:any;
                 this.total_profit_margin = this.list.total_count.profit_margin;
 
                 if(typeof this.list.filterParams != 'undefined'){
-                    // this.search_field[value]=false;
-                    // jQuery('button[value="'+value+'"]').addClass('active');
                     object.hidden_delete=false;
                   
                 }else{
-                    // this.search_field[value]=true;
-                    // jQuery('button[value="'+value+'"]').removeClass('active')
                     object.hidden_delete=true;
                 }
-                //
                 object.hidden=true;
 
                 return true;
@@ -411,8 +366,6 @@ change_status:any;
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -424,12 +377,10 @@ change_status:any;
 
             }
         );
-        //
         return false;
 
     }
     clear(value:string,object){
-        console.log('clear')
         this.filters.clears(value,this.urlGetList).subscribe(
             res=>{
                 this.list=res;
@@ -463,8 +414,6 @@ change_status:any;
                 this.total_cost = this.list.total_count.cost;
                 this.total_profit = this.list.total_count.profit;
                 this.total_profit_margin = this.list.total_count.profit_margin;
-
-                console.log('sort',this.list);
                 object.hidden_delete=true;
                 object.hidden=true
 
@@ -473,8 +422,6 @@ change_status:any;
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -494,7 +441,6 @@ next(){
     this.filters.nexts(this.urlGetList,this).subscribe(
         res=>{
             this.list=res;
-            console.log('next',this.list);
             this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
             this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
             this.display_of=this.list.pagination.totalCount;
@@ -505,8 +451,6 @@ next(){
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -536,7 +480,6 @@ next(){
         this.filters.prevs(this.urlGetList,this).subscribe(
             res=>{
                 this.list=res;
-                console.log('prev',this.list);
                 this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
                 this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
                 this.display_of=this.list.pagination.totalCount;
@@ -544,8 +487,6 @@ next(){
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -578,7 +519,6 @@ next(){
         this.currentPage=1;
         this.filters.firsts(this.urlGetList,this).subscribe(
             res=>{this.list=res;
-                console.log('prev',this.list);
                 this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
                 this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
                 this.display_of=this.list.pagination.totalCount;
@@ -586,8 +526,6 @@ next(){
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -608,12 +546,10 @@ next(){
     }
     filterPeriod(value:string){
         this.filters.filterPeriods(value,this.urlGetList).subscribe(
-            res=>{this.list=res;console.log('prev',this.list);},
+            res=>{this.list=res;},
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -635,8 +571,6 @@ next(){
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -649,31 +583,11 @@ next(){
             })
     }
     update(id:string,item_name:string,value:string,name){
-        console.log(id)
-        console.log(item_name)
         localStorage.setItem("user_id", id.toString());
         localStorage.setItem("user_name", name);
-        // localStorage.setItem("users_value", value);
-        // debugger;
         this.usersService.usersEdit(id,item_name,this.module_name);
         this.router.navigate(['/users/'+item_name+'-list/update',id]);
-        // this.id=id;
-        // this.value=value;
-        // this.offer_ch=true;
-        // this.offer_ok=false;
-
-
-
-        // for(let i=0;i<this.type.length;i++){
-        //   if(value==this.type[i].value){
-        //
-        //     this.router.navigate(['/'+this.type[i].value]);
-        //   }
-        // }
 
     }
-    // close(){
-    //     this.popupChange.closing();
-    // }
     
 }

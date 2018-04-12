@@ -53,10 +53,6 @@ this.array_offers=array_offers;
             .subscribe(data=>{
                 this.list_step2=data;
                 this.list3=data;
-              
-               
-                // this.eventEmitter$.emit(this.list);
-                // this.list_step2=data;
                
                 if(this.list_step2.status=='ok'){
                
@@ -69,10 +65,7 @@ this.array_offers=array_offers;
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
-                        // let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb','[{"label":"Bundle offers","params":{},"url":"/users/bundle-list"},{"label":"Step 1","params":{},"url":"/users/bundle-list/add-bundle-step-1"}]');
                         localStorage.setItem('current_url','/users/bundle-list/add-bundle-step-1');
                      
@@ -87,8 +80,6 @@ this.array_offers=array_offers;
     }
     
     getStep3(bundle_id,update){
-      
-        // this.array_offers=array_offers;
         this._http.get(this.domain+this.urlGetList+'?step=3&id='+bundle_id)
             .map((res:Response)=>{
                 return res.json();
@@ -98,21 +89,10 @@ this.array_offers=array_offers;
                this.update=update;
                
                 this.eventEmitter$2.emit(this.list);
-                // this.list_step2=data;
-
-                // if(this.list.status=='ok'){
-                //
-                //
-                //     this.router.navigate(['/users/bundle-list/add-bundle-step-2']);
-                //
-                //
-                // }
             },
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -134,21 +114,16 @@ this.array_offers=array_offers;
                 return res.json();
             })
             .subscribe(data=> {
-              
-                // this.list=data;
                 this.list_step1=data;
                 this.list2=Object.assign({},this.list_step1);
                 this.bundle_id=bundle_id;
                 this.eventEmitter$3.emit(this.list_step1);
-                // this.eventEmitter$.emit(this.list);
 
 
             },
                 (err) => {
                     let error = err.json();
                     if (error.logged == false) {
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb', current_breadcrumb);

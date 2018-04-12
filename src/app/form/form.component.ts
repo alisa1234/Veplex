@@ -15,7 +15,7 @@ declare var jQuery:any;
   templateUrl: './form.component.html',
   providers:[Domains]
 })
-export class FormComponent {//implements  OnInit{
+export class FormComponent {
   result: any;
   _http: Http;
   urlCountries: string;
@@ -99,37 +99,16 @@ export class FormComponent {//implements  OnInit{
           .map((res: Response) => {
               this.body = res.json();
               this.csrfToken=true;
-              console.log('body.csrf')
-              // console.log(this.body.csrf);
               if( this.csrfToken===true && this.restore[''] !='undefined'){this.showPopup()}
           })
           .subscribe(
               res =>this.result = res
           );
-     
-      
-      // this.getCountries();
-
       jQuery(".page-login_form_input .error").hover(function () {
           jQuery(".Error").css('display','block');
       });
-      // jQuery("header").hide();
-       
-      console.log(this.restore);
-      
-      
-      
   }
     showPopup(){
-
-        
-        console.log('restore')
-        console.log(this.body.csrf)
-       
-     
-        
-            console.log('restore not empty' )
-            // console.log(this.body.csrf);
             this. forgetPass();
             this.lastStep();
             let result:any;
@@ -144,25 +123,12 @@ export class FormComponent {//implements  OnInit{
                 .subscribe(
                     res => result = res
                 );
-            console.log('workcxzczc')
         
     }
-
-  // getCountries(){
-  //     console.log('get countries')
-  //     this._countrieService.eventEmitter$.subscribe((data) => {
-  //     this.countr = data.countries;
-  //     this.countriesLoaded = true;
-  //   });
-  // }
-  // getCountriesKeys(){
-  //   return Object.keys(this.countr);
-  // }
 
   check(){
     let chbox = <HTMLInputElement[]><any>document.getElementsByClassName('remember');
     if(chbox[0].checked == true){
-        console.log('checked')
       this.rememberMe = 1;
     }else{
       this.rememberMe = 0;
@@ -177,7 +143,6 @@ export class FormComponent {//implements  OnInit{
         + "&LoginForm[password]=" + this.password
         + "&LoginForm[rememberMe]=" + this.rememberMe
         + "&_csrf=" + this.body.csrf;
-      console.log(this.body.csrf)
     let headers = new Headers();
      
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -190,7 +155,6 @@ export class FormComponent {//implements  OnInit{
         .map((res: Response) => {
           let body = res.json();
             if(body.logged == true){
-                console.log('success login')
                 
                 this.eventEmitter$.emit(body);
                 this.role_name=body.name;
@@ -202,14 +166,8 @@ export class FormComponent {//implements  OnInit{
                 let curr_breadcrumbs=localStorage.getItem('current_breadcrumb');
                
                 localStorage.setItem("breadcramb_arr",curr_breadcrumbs);
-            debugger;
                 this.globalLogin.show_elements(this.role_name,this.role,this.login,localStorage.getItem('current_url'));
-           
-                
-                
-                // console.log('form',this.name,this.role);
-                
-                
+
           }else{
                 this.valid = body.validation;
                 for(this.key in this.valid){
@@ -292,8 +250,6 @@ export class FormComponent {//implements  OnInit{
   }
     
    forgetPass() {
-      console.log('forget pass')
-      
     jQuery('.popup_wr').show();
     jQuery(document).mouseup( function (e) {
       if (!jQuery('.popup_restore').is(e.target) && jQuery('.popup_wr').has(e.target).length === 0) {

@@ -32,7 +32,6 @@ export class PaymentComponent implements OnInit {
   currentPage: number;
 
   result: any;
-  // list={rows:[],pagination:(<any>Object),sort:Object,filterParams:[]};
   list={rows:[],pagination:(<any>Object),sort:(<any>Object),filterParams:(<any>Object), total_count:(<any>Object),filterTime:(<any>Object)};
 
   page:any;
@@ -99,14 +98,10 @@ export class PaymentComponent implements OnInit {
         .subscribe(
             data =>{
               this.list = data;
-              // this.list = data;
-              // this.module_name=data.module_name;
-              console.log('data23',data,this.list);
               if(this.list.rows.length==0){
                 this.not_found_result=true;
               }else {
                 this.checkboxTableService.Create(this.list);
-                console.log(this.list);
                   this.sortGroup(this.list);
                 this.eventEmitter$.emit(this.list.rows);
 
@@ -120,8 +115,6 @@ export class PaymentComponent implements OnInit {
 
                 this.total_amount = this.list.total_count.revenue;
                 this.total_total_amount = this.list.total_count.total_amount;
-                // this.total_profit = this.list.total_count.profit;
-                // this.total_profit_margin = this.list.total_count.profit_margin;
 
                 this.currentPage = this.list.pagination.page + 1;
                 this.page_count = this.list.pagination.pageCount;
@@ -134,13 +127,9 @@ export class PaymentComponent implements OnInit {
                 if (this.currentPage <= this.page_count) {
                   this.displaying = false;
                 }
-
-
-                // console.log('dsafs', this.total_revenue)
                 if (typeof this.list.filterParams != 'undefined') {
                   this.eventEmitter$.emit(this.list.filterParams);
                 }
-                // this.CreateCheckBox();
                 if (this.list.pagination.totalCount > 100) {
 
                   this.display_from = this.list.pagination.pageSize * (this.list.pagination.page + 1) - (this.list.pagination.pageSize - 1);
@@ -157,11 +146,8 @@ export class PaymentComponent implements OnInit {
             (err) => {
               let error=err.json();
               if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                // localStorage.clear();
                 localStorage.setItem('current_url',this.router.url);
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
                 this.globalLogin.serverTime=false;
@@ -178,21 +164,16 @@ export class PaymentComponent implements OnInit {
         let index=0;
         for(let i=0;i<list.rows.length;i++){
             let a=list.rows[0].gr;
-            // this.group=a;
-            debugger;
             if(a==list.rows[i].gr){
 
                 list.rows[i].gr=i+1;
-                debugger;
             }else{
                 a=list.rows[i].gr;
                 list.rows[i].gr=index+1;
                 index=list.rows[i].gr;
-                debugger;
             }
         }
         this.list=list;
-        debugger;
     }
   chooseField(event,id,user_id,proffer_id,value,value_id,field,type,data) {
     this.popupChange.choosenField(event, id, user_id, proffer_id, value, 'payment_status', field, type, 'select', '', this.list, this.popup, value_id, data)
@@ -226,12 +207,6 @@ export class PaymentComponent implements OnInit {
       this.list=res;
         this.sortGroup(this.list);
       this.not_found_result=false;
-      // this.total_revenue = this.list.total_count.revenue;
-      // this.total_cost = this.list.total_count.cost;
-      // this.total_profit = this.list.total_count.profit;
-      // this.total_profit_margin = this.list.total_count.profit_margin;
-
-      console.log('filter')
     })
     }
   }
@@ -327,11 +302,8 @@ export class PaymentComponent implements OnInit {
             (err) => {
               let error=err.json();
               if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                // localStorage.clear();
                 localStorage.setItem('current_url',this.router.url);
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
                 this.globalLogin.serverTime=false;
@@ -360,11 +332,8 @@ export class PaymentComponent implements OnInit {
         (err) => {
           let error=err.json();
           if(error.logged==false){
-
-            // window.location.replace(this.domain);
             this.router.navigate(['/']);
             let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-            // localStorage.clear();
             localStorage.setItem('current_url',this.router.url);
             localStorage.setItem('current_breadcrumb',current_breadcrumb);
             this.globalLogin.serverTime=false;
@@ -411,8 +380,6 @@ export class PaymentComponent implements OnInit {
         (err) => {
           let error=err.json();
           if(error.logged==false){
-
-            // window.location.replace(this.domain);
             this.router.navigate(['/']);
             let current_breadcrumb=localStorage.getItem('breadcramb_arr');
             localStorage.setItem('current_breadcrumb',current_breadcrumb);

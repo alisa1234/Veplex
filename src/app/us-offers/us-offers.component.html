@@ -1,14 +1,4 @@
 
-<!--<div class="info-block">-->
-  <!--<div class="info-block_time"><span class="info-block_time_title">Server Time:</span> 01/08/2015 16:40:49</div>-->
-  <!--<div class="breadcrumbs">-->
-    <!--<ul>-->
-      <!--<li><a title="Home">Home</a></li>-->
-      <!--<li><a title="Users">Users</a></li>-->
-      <!--<li>Offers</li>-->
-    <!--</ul>-->
-  <!--</div>-->
-<!--</div>-->
 <div class="page page-offer-bundle">
   <div class="page_header">
     <h1>Offers</h1>
@@ -18,14 +8,7 @@
         <app-select-box (pushOnSelected)="pushOnDate($event)" [(model)]="value" [values]="values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>
 
       </div>
-      <!--<div class="data_range" >-->
-        <!--<div class="date1"><input class="datepicker" type="text" value="01/07/2015"/></div>-->
-        <!--<div class="dash">-</div>-->
-        <!--<div class="date1"><input class="datepicker" type="text" value="01/07/2015"/></div>-->
-      <!--</div>-->
-      <!--<div class="tick" style="display: none"><a href="#" title="#"></a></div>-->
      <app-calendar [(inner_custom)]="calendarService.custom" [_parent]="this" [start_day]="calendarService.start_day" [end_day]="calendarService.end_day"  [(new_datepicker)]="calendarService.name_class" [(new_datepicker_id)]="calendarService.id" [(new_datepicker_id2)]="calendarService.id2"></app-calendar>
-
     </div>
   </div>
   <div class="page_info">

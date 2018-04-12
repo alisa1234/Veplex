@@ -71,7 +71,6 @@ export class BundleStatisticComponent{
   private checked:{[index:string]:any}={};
   constructor(http:Http, domains:Domains, public router:Router, public popupChange:PopupChange, public filters:Filters, public initChosen:InitChosen, public calendarService:CalendarService, public globalLogin:GlobalLogin) {
     this._http = http;
-    // this.url = domains.url;
     this.domain = domains.domain;
     this.csrf = domains.csrf;
     this.urlGetList = domains.urlGetBundleStatisticList;
@@ -85,67 +84,6 @@ export class BundleStatisticComponent{
     this.checked['offer_name']=false;
     this.checked['user_name']=false;
     this.checked['type']=false;
-    // this._http.get(this.domain + this.csrf)
-    //     .map((res:Response) => {
-    //       this.body = res.json();
-    //     })
-    //     .subscribe(
-    //         res=>result = res
-    //     );
-    //
-    // this._http.get(this.domain + this.urlGetList)
-    //     .map((res:Response) => {
-    //       return res.json();
-    //
-    //     })
-    //     .subscribe(
-    //         res=> {
-    //           this.list = res;
-    //           if(this.list.rows.length==0){
-    //             this.not_found_result=true;
-    //           }else {
-    //             this.value = this.list.filterTime.type;
-    //             if (this.value == 'custom') {
-    //
-    //               this.calendarService.showCalendar();
-    //               this.calendarService.start_day = this.list.filterTime.start;
-    //               this.calendarService.end_day = this.list.filterTime.end;
-    //             }
-    //
-    //             // this.total_type= this.list.rows[0].total_type;
-    //             this.total_type = this.list.total_count.type;
-    //             this.total_raw = this.list.total_count.raw;
-    //             this.total_uniques = this.list.total_count.uniques;
-    //             this.total_leads = this.list.total_count.leads;
-    //             this.total_revenue = this.list.total_count.revenue;
-    //             this.total_cr = this.list.total_count.cr;
-    //             this.total_epv = this.list.total_count.epv;
-    //
-    //             this.currentPage = this.list.pagination.page + 1;
-    //             this.page_count = this.list.pagination.pageCount;
-    //             if (this.currentPage < this.page_count) {
-    //               this.page_button_next = false;
-    //             }
-    //             if (this.currentPage == this.page_count) {
-    //               this.page_button_next_disabled = false;
-    //             }
-    //             if (this.currentPage <= this.page_count) {
-    //               this.displaying = false;
-    //             }
-    //
-    //             if (this.list.pagination.totalCount > 100) {
-    //
-    //               this.display_from = this.list.pagination.pageSize * (this.list.pagination.page + 1) - (this.list.pagination.pageSize - 1);
-    //               this.display_to = this.list.pagination.pageSize * (this.list.pagination.page + 1);
-    //               this.display_of = this.list.pagination.totalCount;
-    //             } else {
-    //
-    //               this.display_from = this.list.pagination.pageSize * (this.list.pagination.page + 1) - (this.list.pagination.pageSize - 1);
-    //               this.display_to = this.list.pagination.totalCount;
-    //               this.display_of = this.list.pagination.totalCount;
-    //             }
-    //           }
-    //         })
   }
   pushOnDate(value) {
       if (value == 'custom') {
@@ -182,8 +120,6 @@ export class BundleStatisticComponent{
               (err) => {
                   let error = err.json();
                   if (error.logged == false) {
-
-                      // window.location.replace(this.domain);
                       this.router.navigate(['/']);
                       let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                       localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -208,8 +144,6 @@ export class BundleStatisticComponent{
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -237,12 +171,8 @@ export class BundleStatisticComponent{
           this.total_cr=this.list.total_count.cr;
           this.total_epv=this.list.total_count.epv;
           if (typeof this.list.filterParams != 'undefined') {
-
-            // jQuery('button[value="' + value + '"]').addClass('active');
             object.hidden_delete = false;
           } else {
-
-            // jQuery('button[value="' + value + '"]').removeClass('active')
             object.hidden_delete = true;
           }
           object.hidden = true;
@@ -252,8 +182,6 @@ export class BundleStatisticComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -287,8 +215,6 @@ export class BundleStatisticComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -305,7 +231,6 @@ export class BundleStatisticComponent{
     this.filters.nexts(this.urlGetList,this).subscribe(
         res=>{this.list=res;
 
-
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -316,8 +241,6 @@ export class BundleStatisticComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -355,8 +278,6 @@ export class BundleStatisticComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -398,8 +319,6 @@ export class BundleStatisticComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -427,8 +346,6 @@ export class BundleStatisticComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -452,8 +369,6 @@ export class BundleStatisticComponent{
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -464,7 +379,6 @@ export class BundleStatisticComponent{
 
 
             });
-    console.log(jQuery('#'+value),this.checked[value],check);
 
 
   }

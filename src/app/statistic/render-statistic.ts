@@ -54,10 +54,6 @@ export class RenderStatistic {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
-                    
-                   
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -87,8 +83,6 @@ export class RenderStatistic {
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -116,8 +110,6 @@ export class RenderStatistic {
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -145,8 +137,6 @@ export class RenderStatistic {
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);

@@ -27,22 +27,6 @@ export class CalendarComponent implements AfterViewInit {
   @Input() _parent:any;
 
   constructor(private calendarService:CalendarService,public calendarPopupService:CalendarPopupService) {
-  //   this.today = new Date();
-  //   this.dd = this.today.getDate();
-  //   this.mm = this.today.getMonth() + 1;
-  //   this.yy = this.today.getFullYear();
-  //
-  //   if (this.dd < 10) {
-  //     this.dd =+ '0' + this.dd;
-  //   }
-  //   if (this.mm < 10){
-  //     this.mm =+ '0' + this.mm;
-  // }
-  // this.start_day=this.mm+'/'+this.dd+'/'+this.yy;
-  // this.end_day=this.mm+'/'+this.dd+'/'+this.yy;
- 
-    console.log('date',this.start_day,this.inner_custom,this.new_datepicker );
-    debugger;
 }
 
   ngAfterViewInit() {
@@ -50,12 +34,9 @@ export class CalendarComponent implements AfterViewInit {
     jQuery( "."+self.new_datepicker ).datepicker({
      
       showOn: "button",
-      /*    buttonImage: "images/School%20Calendar.png",*/
       buttonImageOnly: true,
       buttonText: "Select date",
       onSelect:function(d,t){
-        // self.start_day=
-      
         if(t.id==self.new_datepicker_id){
           self.start_day=d;
           self._parent.start_day=self.start_day;
@@ -63,38 +44,11 @@ export class CalendarComponent implements AfterViewInit {
           self.end_day=d;
           self._parent.end_day=self.end_day;
         }
-        console.log(self.start_day,self.end_day)
       }
       
     });
-    //
-    // jQuery( ".new_datepicke" ).datepicker({
-    //
-    //   showOn: "button",
-    //   /*    buttonImage: "images/School%20Calendar.png",*/
-    //   buttonImageOnly: true,
-    //   buttonText: "Select date",
-    //   onSelect:function(d,t){
-    //     // self.start_day=
-    //
-    //     if(t.id=='correction_start_day10'){
-    //       self.correction_start_day=d;
-    //     }else{
-    //       self.correction_end_day=d;
-    //       t.input.val(d);
-    //       debugger;
-    //     }
-    //     debugger;
-    //     console.log(self.correction_start_day,self.correction_end_day)
-    //   
-    //
-    //   }
-    // });
-// debugger;
   }
 sendDate(){
-  debugger;
   this._parent.sendDate(this.start_day,this.end_day);
-  console.log('change after;',this.start_day,this.end_day)
 }
 }

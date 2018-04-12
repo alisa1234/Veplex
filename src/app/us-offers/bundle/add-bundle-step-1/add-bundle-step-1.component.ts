@@ -75,8 +75,6 @@ export class AddBundleStep1Component implements OnInit {
     let result:any;
       this.filter_model='offer';
       this.eventEmitter$=new EventEmitter();
-   
-      // this.bundle_id=localStorage.getItem('bundle_id');
       this.renderUsOffer.list3.rows=[];
       
       
@@ -94,8 +92,6 @@ export class AddBundleStep1Component implements OnInit {
           this.update_bundle=true;
           
           if(this.renderUsOffer.list2.rows.length!=0 && this.renderUsOffer.list_step1.rows.length!=this.renderUsOffer.list2.rows.length ){
-              
-              // this.list=this.renderUsOffer.list2;
               this.renderUsOffer.renderUpdate(this.renderUsOffer.bundle_id,true);
             
               this.renderUsOffer.eventEmitter$3.subscribe(item=>{
@@ -160,23 +156,6 @@ export class AddBundleStep1Component implements OnInit {
                       }
                   }
 
-
-
-                  // else{
-                  //     this.renderUsOffer.renderUpdate(this.bundle_id,true);
-                  //     this.renderUsOffer.eventEmitter$3.subscribe(item=>{
-                  //         debugger;
-                  //         for(let i=0;i<item.rows.length;i++){
-                  //             if(item.rows[i].plus==true){
-                  //                 this.isChoose[item.rows[i].id] = false;
-                  //                 this.chooseOffer(item.rows[i].id);
-                  //                 debugger;
-                  //
-                  //             }
-                  //         }
-                  //     })
-                  // }
-
               }
               })
           }else {
@@ -184,15 +163,6 @@ export class AddBundleStep1Component implements OnInit {
               this.renderUsOffer.eventEmitter$3.subscribe(item=>{
 
                       this.list=item;
-                  // for(let i=0;i<item.rows.length;i++){
-                  //     if(item.rows[i].plus==true){
-                  //         this.isChoose[item.rows[i].id] = false;
-                  //         this.chooseOffer(item.rows[i].id);
-                  //       
-                  //
-                  //     }
-                  // }
-
                   if(this.list.rows.length==0){
                       this.not_found_result=true;
                   }else {
@@ -250,24 +220,6 @@ export class AddBundleStep1Component implements OnInit {
 
                           }
                       }
-
-
-
-                      // else{
-                      //     this.renderUsOffer.renderUpdate(this.bundle_id,true);
-                      //     this.renderUsOffer.eventEmitter$3.subscribe(item=>{
-                      //         debugger;
-                      //         for(let i=0;i<item.rows.length;i++){
-                      //             if(item.rows[i].plus==true){
-                      //                 this.isChoose[item.rows[i].id] = false;
-                      //                 this.chooseOffer(item.rows[i].id);
-                      //                 debugger;
-                      //
-                      //             }
-                      //         }
-                      //     })
-                      // }
-
                   }
               })    
           }
@@ -282,8 +234,6 @@ export class AddBundleStep1Component implements OnInit {
               })
               .subscribe(data=>{
                   this.list=data;
-                  // this.update_bundle=true;
-               
                   if(this.list.rows.length==0){
                       this.not_found_result=true;
                   }else {
@@ -342,23 +292,6 @@ export class AddBundleStep1Component implements OnInit {
                           }
                       }
 
-
-
-                      // else{
-                      //     this.renderUsOffer.renderUpdate(this.bundle_id,true);
-                      //     this.renderUsOffer.eventEmitter$3.subscribe(item=>{
-                      //         debugger;
-                      //         for(let i=0;i<item.rows.length;i++){
-                      //             if(item.rows[i].plus==true){
-                      //                 this.isChoose[item.rows[i].id] = false;
-                      //                 this.chooseOffer(item.rows[i].id);
-                      //                 debugger;
-                      //
-                      //             }
-                      //         }
-                      //     })
-                      // }
-
                   }
 
               },
@@ -384,16 +317,6 @@ export class AddBundleStep1Component implements OnInit {
   
   }
     ngAfterViewInit(){
-        // this.renderUsOffer.eventEmitter$.subscribe(item=>{
-        //     for(let i=0;i<item.rows.length;i++){
-        //         if(item.rows[i].plus==true){
-        //             this.isChoose[item.rows[i].id] = false;
-        //             // this.chooseOffer(item.rows[i].id);
-        //             
-        //         }
-        //     }
-        //
-        // })
     }
     
   sort(value:string){
@@ -403,8 +326,6 @@ export class AddBundleStep1Component implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -447,12 +368,8 @@ export class AddBundleStep1Component implements OnInit {
             }
 
           if(typeof this.list.filterParams != 'undefined'){
-
-            // jQuery('button[value="'+value+'"]').addClass('active');
             object.hidden_delete=false;
           }else{
-
-            // jQuery('button[value="'+value+'"]').removeClass('active')
             object.hidden_delete=true;
           }
           object.hidden=true;
@@ -462,8 +379,6 @@ export class AddBundleStep1Component implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -513,8 +428,6 @@ export class AddBundleStep1Component implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -531,7 +444,6 @@ export class AddBundleStep1Component implements OnInit {
     this.filters.nexts(this.urlGetList,this).subscribe(
         res=>{
           this.list=res;
-          console.log('next',this.list);
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -542,8 +454,6 @@ export class AddBundleStep1Component implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -573,7 +483,6 @@ export class AddBundleStep1Component implements OnInit {
     this.filters.prevs(this.urlGetList,this).subscribe(
         res=>{
           this.list=res;
-          console.log('prev',this.list);
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -581,8 +490,6 @@ export class AddBundleStep1Component implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -615,7 +522,6 @@ export class AddBundleStep1Component implements OnInit {
     this.currentPage=1;
     this.filters.firsts(this.urlGetList,this).subscribe(
         res=>{this.list=res;
-          console.log('prev',this.list);
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -623,8 +529,6 @@ export class AddBundleStep1Component implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -643,7 +547,6 @@ export class AddBundleStep1Component implements OnInit {
     }
   }
     chooseOffer(id){
-        console.log('id');
         let selected_count:number = 0;
         
         if(this.isChoose[id]==true){
@@ -654,16 +557,11 @@ export class AddBundleStep1Component implements OnInit {
                     this.array_offers.splice(i,1);
                     selected_count--;
                 }
-                // this.selected=this.array_offers.length;
             }
-            
-            console.log('arr del',this.array_offers);
         }else{
             this.isChoose[id]=true;
             this.array_offers.push(id);
             selected_count++;
-           
-            console.log('arr add',this.array_offers);
         }
         this.selected=this.array_offers.length;
         if(this.array_offers.length!=0){

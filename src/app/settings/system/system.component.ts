@@ -61,16 +61,9 @@ export class SystemComponent implements OnInit {
         .subscribe(
             res=> {
               this.result = res.data;
-
-
-              // this.tracking_domain=this.result.tracking_domain;
-              // this.tracking_domain2=this.result.tracking_domain2;
-              // this.tracking_domain3=this.result.tracking_domain3;
               this.callback_url=this.result.callback_url;
               this.server_ip=this.result.server_ip;
               this.fallback_url=this.result.fallback_url;
-              // this.timezone=this.result.timezone;
-
                 if(this.result.tracking_domain != null) {
                     for (let i = 0; i <this.result.tracking_domain.length; i++) {
                         this.tracking_domains.push(this.result.tracking_domain[i]);
@@ -85,8 +78,6 @@ export class SystemComponent implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -105,8 +96,6 @@ export class SystemComponent implements OnInit {
     addDomains(){
         jQuery('#form_offer_access-whitelist').parent('li').append("<div class='form_offer_access' id='"+this.tracking_domain+"'><span class='wr_inpt'><input type='hidden' value='x'><span class='fon_inpt1'>"+this.tracking_domain+"<a class='form_offer_browse_file_close' id='"+this.tracking_domain+"'></a></span></span> </div>")
         this.tracking_domains.push(this.tracking_domain);
-
-        console.log('addd ips',this.tracking_domains)
         this.addHtml(this.tracking_domain);
         this.tracking_domain='';
         jQuery(".form_offer_act_add").css('display','none');
@@ -116,7 +105,6 @@ export class SystemComponent implements OnInit {
         some.addEventListener('click',this.clearing.bind(this));
     }
     clearing(event){
-        console.log('clearing func')
         let id = event.target.getAttribute('id');
         let id2 = event.target.parentNode.parentNode.id;
         let id3 = event.target.parentNode.parentNode.parentNode.id;
@@ -126,8 +114,6 @@ export class SystemComponent implements OnInit {
 
                 if(id===this.tracking_domains[i]){
                     this.tracking_domains.splice(i,1);
-
-                    console.log('ips',this.tracking_domains)
                 }
             }
             document.getElementById(id).remove();
@@ -160,7 +146,6 @@ export class SystemComponent implements OnInit {
         this.FormDataCreate(
             formData,
             {
-                // tracking_domain:tracking_domain,
                 callback_url:callback_url,
                 server_ip:server_ip,
                 fallback_url:fallback_url
@@ -230,47 +215,6 @@ export class SystemComponent implements OnInit {
         }
 
     }
- 
-  // send(){
-  //     let system = 
-  //         "SystemForm[tracking_domain1]=" + this.tracking_domain
-  //         // + "&SystemForm[tracking_domain2]=" + this.tracking_domain2
-  //         // + "&SystemForm[tracking_domain3]=" + this.tracking_domain3
-  //         + "&SystemForm[callback_url]=" + this.callback_url 
-  //         + "&SystemForm[server_ip]=" + this.server_ip 
-  //         + "&SystemForm[fallback_url]=" + this.fallback_url 
-  //         + "&_csrf=" + this.body.csrf;
-  //     let tracking_domains;
-  //     for(let i=0;i<this.tracking_domains.length;i++){
-  //         tracking_domains += 'SystemForm[tracking_domain]'+ this.tracking_domains[i];
-  //     }
-  //    
-  //   let headers = new Headers();
-  //   headers.append('Content-Type', 'application/x-www-form-urlencoded');
-  //
-  //   this._http.post(this.domain + this.urlSaveSystem, system, {headers: headers})
-  //       .map((res: Response) => {
-  //         let body = res.json();
-  //         if(typeof body.validation != 'undefined'){
-  //           this.valid = body.validation;
-  //           for(this.key in this.valid){
-  //             let key = this.key;
-  //             this.flag = true; 
-  //             jQuery("#" + this.key).parent().append("<span class = 'error' id = 'error" + this.key + "'></span>");
-  //             jQuery("#" + this.key).parent().append("<span  class = 'Error' id = 'Error" + this.key + "'>" + this.valid[this.key] + "</span>");
-  //             jQuery("#error" + this.key).mouseenter( function () {
-  //               jQuery("#Error" + key).show();
-  //             }).mouseleave( function () {
-  //               jQuery("#Error" + key).hide();
-  //             })
-  //           }}
-  //         if(body.validation.length === 0){jQuery('.form_offer_btn_ch').addClass('inactive');}
-  //       })
-  //       .subscribe(res => this.result = res);
-  //  
-  //   jQuery(".Error").remove();
-  //   jQuery(".error").remove();
-  // // }
   
   clear(){
     this.trackingDomain1.nativeElement.value='';

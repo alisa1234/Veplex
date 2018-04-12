@@ -1,15 +1,4 @@
-<!--<div class="info-block">-->
-  <!--<div class="info-block_time"><span class="info-block_time_title">Server Time:</span> 01/08/2015 16:40:49</div>-->
-  <!--<div class="breadcrumbs">-->
-    <!--<ul>-->
-      <!--<li><a title="Home">Home</a></li>-->
-      <!--<li><a title="Users">Users</a></li>-->
-      <!--<li><a>Advertisers</a></li>-->
-      <!--<li>{{tittle}}</li>-->
-      <!--<li>{{tittle_name}}</li>-->
-    <!--</ul>-->
-  <!--</div>-->
-<!--</div>-->
+
 <div class="page page-offer">
   <h1>{{tittle}} {{tittle_id}}</h1>
   <div class="form_users">
@@ -83,20 +72,6 @@
         <li>
           <div class="form_offer_access  form_users_input">
             <app-select-box [(model)]="country" [values]="countries" [option_value_var]="'value'" [option_text_var]="'name'" [click_event]="true"></app-select-box>
-            <!--<select-->
-                    <!--[ngModel]="country"-->
-                    <!--(ngModelChange)="country=$event"-->
-                    <!--[ngModelOptions]="{standalone:true}"-->
-                    <!--class="form_offer_access_select"-->
-                    <!--id="country"-->
-                    <!--name=""-->
-                    <!--data-placeholder="Choose country">-->
-              <!--<option value="">Choose country</option>-->
-              <!--<option-->
-                      <!--*ngFor="let country of countries|formstyler:'country':_this:'country'"-->
-                      <!--value="{{country.key}}" >{{country.value}}</option>-->
-
-            <!--</select>-->
             <div class="question">
               <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
             </div>
@@ -150,16 +125,6 @@
         <li>
           <div class="form_offer_access  form_users_input">
             <app-select-box [(model)]="status" [values]="status_arr" [option_value_var]="'value'" [option_text_var]="'name'" [click_event]="true" [_parent]="this"></app-select-box>
-            <!--<select-->
-                    <!--#status_value-->
-                    <!--[(ngModel)]="status"-->
-                    <!--[ngModelOptions]="{standalone:true}"-->
-                    <!--class="form_offer_access_select form_users_select"-->
-                    <!--id="status"-->
-                    <!--name="" data-placeholder="Status">-->
-              <!--<option value="null" selected disabled>Status</option>-->
-              <!--<option *ngFor="let status of status_arr" value="{{status.key}}">{{status.value}}</option>-->
-            <!--</select>-->
             <div class="question">
               <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
             </div>

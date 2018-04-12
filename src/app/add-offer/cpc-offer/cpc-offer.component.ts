@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import {Http, Response, Headers} from '@angular/http';
 import {Domains} from '../../domains';
 import {CountriesService} from '../../countries.service';
-import {OfferListComponent} from '../offer-list/offer-list.component';
 import {AddOfferComponent} from '../add-offer.component';
 import {RenderOffer} from '../render-offer';
 import {GlobalOffer} from '../global-offer';
@@ -39,13 +38,11 @@ export class CpcOfferComponent extends GlobalOffer{
   
   }
   send(formData:FormData=new FormData()){
-    // this.device_value=jQuery("#device_value").val();
     let carriers=this.carriers;
     let platforms=this.platforms;
     let transaction_life=this.transaction_life;
     let information=this.information;
     let device_value=this.device_value;
-    console.log('inform bla'+this.information, typeof this.information, typeof information)
     formData.append("Offer[device][]",this.device_value);
     this.FormDataCreate(formData,{
       // device:device_value,

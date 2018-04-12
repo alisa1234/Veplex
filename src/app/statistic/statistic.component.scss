@@ -7,10 +7,8 @@
   flex-direction: column;
   -webkit-flex-grow: 10;
   -ms-flex-positive: 10;
-  /* flex-grow: 10; */
   min-height: 200px;
   position: relative;
-  //z-index: 0;
 }
 .page-table_offers {
   .page-table_head {
@@ -31,9 +29,6 @@
           padding: 7px 11px 5px;
         }
       }
-      /*.t2_2, .t2_3, .t3_2, .t3_3, .t3_4, .t3_5, .t3_6, .t3_8, .t3_9 {
-
-      }*/
     }
   }
   .page-table_body {

@@ -41,12 +41,5 @@ export class GlobalLogin {
             this.router.navigate(['/home']);
       
         }
-       
-    
-        // this.hidden=false;
-     
-        // this.headerComponent.name=this.name;
-        // this.headerComponent.role=this.role;
-        // this.headerComponent.login=this.login;
     }
 }

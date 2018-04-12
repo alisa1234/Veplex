@@ -39,7 +39,6 @@ export class CheckboxTableService{
         if (item.rows[i].id != null) {
 
           this.checkbox[item.rows[i].id] = 0;
-          // debugger;
 
         }
       }
@@ -98,14 +97,12 @@ export class CheckboxTableService{
 
   ClickCheckbox(id:number):void{
     this.id=id;
-    console.log('ClickCheckbox id: '+ id);
     if(this.checkbox[id] == 1){
       this.checkbox[id] = 0;
     }else{
       this.checkbox[id] = 1;
     }
     this.TempCheckboxInsert();
-    console.log('ClickCheckbox count id: '+ Object.keys(this.checkbox).length);
    
   }
 
@@ -130,15 +127,12 @@ export class CheckboxTableService{
   }
 
   SendMulti(value, csrf, domain, urlGetList, offer_list, attr, publisher_id){
-    debugger;
     let selected_elements:any = {};
     let query_selected_elements:string = "";
 
     if(value == "choose_action"){
       return false;
     }
-
-    console.log("JqueryStatusSubscribe selected: "+value);
 
     for(let i=0;i<Object.keys(this.checkbox).length;i++){
       if(this.checkbox[Object.keys(this.checkbox)[i]] === 1){
@@ -149,7 +143,6 @@ export class CheckboxTableService{
     }
 
     if(Object.keys(selected_elements).length > 0) {
-      console.log("JqueryStatusSubscribe selected elements: "+value);
       let headers = new Headers();
       let result:any;
       let changed = 'attr='+attr+'&value=' + value + query_selected_elements + '&_csrf=' + csrf+'&user_id='+publisher_id+'&offer_id='+publisher_id;
@@ -157,28 +150,19 @@ export class CheckboxTableService{
 
       this._http.post(domain + urlGetList + 'multiField', changed, {headers: headers}).map((res:Response)=> {
         let body = res.json();
-        console.log(body);
-        console.log(offer_list.rows);
       
         if(body.saved == 'ok'){
-          
-          console.log('saved ok',selected_elements);
           for (let id of Object.keys(selected_elements)){
            
             let offer_id = selected_elements[id];
             let map;
           if(attr=='payment_status'){
-            debugger;
             map = offer_list.rows.map(function(offer) {return offer.id} ).indexOf(offer_id);
           }
             else{
-            debugger;
             map = offer_list.rows.map(function(offer) {return offer.id} ).indexOf(Number(offer_id));
           }
-            debugger;
             offer_list.rows[map][attr] = value;
-            
-           
           }
           this.eventEmitterResult$.emit("choose_action");
           this.Clear(offer_list);

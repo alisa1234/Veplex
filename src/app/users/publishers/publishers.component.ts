@@ -8,7 +8,6 @@ import {UsersService} from '../users.service';
 import {FormstylerPipe} from '../../formstyler.pipe';
 import {Location} from '@angular/common';
 import {UsersBreadcrumbsService} from '../../users-breadcrumbs.service';
-// import Result = jasmine.Result;
 
 declare var jQuery:any;
 
@@ -41,21 +40,13 @@ export class PublishersComponent extends GlobalUsers implements OnInit,AfterView
   constructor(protected router:Router,http: Http,public route: ActivatedRoute,domains: Domains, public _countrieService: CountriesService, public usersService:UsersService,public location: Location,public usersBreadcrumbsService:UsersBreadcrumbsService) {
     super(router, http,route, domains, _countrieService, usersService,location);
     this.urlGetManagersList = domains.urlGetManagersList;
-    // this.router.navigate(['users/add-publisher']);
     this._this = this;
     this.item_name='publisher';
     localStorage.setItem("users_value",  'Add account');
-    // this.usersBreadcrumbsService.setBreadcrumbs(this.item_name);
     if(this.route.snapshot.data['name']=='Update '+this.item_name){
   
       this.route.snapshot.data['breadcrumb']='Update '+this.item_name;
     }
-   
-    // if(this.route.snapshot.data['name']=='Add publisher'){
-    //   debugger;
-    //   this.route.snapshot.data['breadcrumb']='Add account';
-    // }
-   
 
     this._http.get(this.domain + this.urlGetManagersList)
         .map((res:Response)=> {
@@ -65,11 +56,6 @@ export class PublishersComponent extends GlobalUsers implements OnInit,AfterView
           
           this.managers_list = data.rows;
           this.managers_list.unshift({'id':'null','name':'Manager'});
-          // setTimeout(function () {
-          //   jQuery('.form_users_select').trigger('refresh');
-          // },0)
-        
-          console.log('data managers', this.managers_list)
         });
    
     this.usersService.eventEmitters.subscribe(item=>{
@@ -83,35 +69,16 @@ export class PublishersComponent extends GlobalUsers implements OnInit,AfterView
     
     
     });
-    
-    // }
-    // if (typeof this.usersService.usersResult != 'undefined') {
-    //
-    //
-    // }
-    
-  
-    // else{
       this.item_name='publisher';
       this.module_name='publishers';
-    // }
   }
   ngOnInit() {
     super.ngOnInit();
- 
-
-    
   }
   ngAfterViewInit(){
     super.ngAfterViewInit();
-  
-    // setTimeout(function () {
-    //   jQuery('.form_users_select').trigger('refresh');
-    // },0)
-
   }
   send(formData:FormData=new FormData()){
-    console.log(this.full_name,this.manager)
     let full_name=this.full_name;
     let phone=this.phone;
     let am_id=this.manager;

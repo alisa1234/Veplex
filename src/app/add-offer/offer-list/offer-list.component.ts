@@ -10,7 +10,6 @@
     import {InitChosen} from '../../initChosen';
     import {CheckboxTableService} from "../../checkbox-table/checkbox-table.service";
     import {GlobalLogin} from '../../global-login';
-    import {JwtInterceptor} from '../../jwt.interceptor';
     
     declare var jQuery:any;
     
@@ -168,11 +167,8 @@
                     (err) => {
                         let error=err.json();
                         if(error.logged==false){
-                            
-                            // window.location.replace(this.domain);
                             this.router.navigate(['/']);
                             let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                            // localStorage.clear();
                             localStorage.setItem('current_url',this.router.url);
                             localStorage.setItem('current_breadcrumb',current_breadcrumb);
                             this.globalLogin.serverTime=false;
@@ -211,11 +207,8 @@
                     (err) => {
                         let error=err.json();
                         if(error.logged==false){
-
-                            // window.location.replace(this.domain);
                             this.router.navigate(['/']);
                             let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                            // localStorage.clear();
                             localStorage.setItem('current_url',this.router.url);
                             localStorage.setItem('current_breadcrumb',current_breadcrumb);
                             this.globalLogin.serverTime=false;
@@ -243,11 +236,8 @@
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                        // localStorage.clear();
                         localStorage.setItem('current_url',this.router.url);
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
                         this.globalLogin.serverTime=false;
@@ -271,11 +261,8 @@
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                        // localStorage.clear();
                         localStorage.setItem('current_url',this.router.url);
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
                         this.globalLogin.serverTime=false;
@@ -300,11 +287,8 @@
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                        // localStorage.clear();
                         localStorage.setItem('current_url',this.router.url);
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
                         this.globalLogin.serverTime=false;
@@ -339,11 +323,8 @@
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                        // localStorage.clear();
                         localStorage.setItem('current_url',this.router.url);
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
                         this.globalLogin.serverTime=false;
@@ -383,11 +364,8 @@
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-                        // localStorage.clear();
                         localStorage.setItem('current_url',this.router.url);
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
                         this.globalLogin.serverTime=false;

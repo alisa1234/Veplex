@@ -61,7 +61,6 @@ export class PublishersListComponent implements OnInit, AfterViewChecked {
   chosen_value:any;
 
   result: any;
-  // list={rows:[],pagination:(<any>Object),sort:Object,filterParams:[]};
   list={rows:[],pagination:(<any>Object),sort:(<any>Object),filterParams:(<any>Object), total_count:(<any>Object),filterTime:(<any>Object)};
 
   chosenReady:boolean=false;
@@ -98,14 +97,12 @@ public name:string;
   public values=[{'id':'choose_action','title':'Choose action'},{'id':'today','title':'Today'},{'id':'yesterday','title':'Yesterday'},{'id':'this_w','title':'This week'},{'id':'last_w','title':'Last week'},{'id':'this_m','title':'This month'},{'id':'last_m','title':'Last month'},{'id':'this_y','title':'This year'},{'id':'last_y','title':'Last year'},{'id':'custom','title':'Custom'}]
 
   public eventEmitter$: EventEmitter<any>;
-  // public eventEmitter_publisher$: EventEmitter<any>;
   @ViewChild('popup') popup:PopupChange;
   
   constructor(public router:Router,http: Http,domains: Domains,public filters:Filters, public usersService:UsersService,public statusService:StatusService,public renderOffer:RenderOffer,public popupChange:PopupChange, public checkboxTableService:CheckboxTableService, public calendarService:CalendarService,public globalUsers:GlobalUsers,public location: Location, public globalLogin:GlobalLogin) {
 
 
     this._http = http;
-    // this.url = domains.url;
     this.domain = domains.domain;
     this.csrf = domains.csrf;
     this.urlGetList=domains.urlUsersPublishersList;
@@ -129,11 +126,7 @@ public name:string;
     this.type_field['status']=false;
       
       localStorage.removeItem('user_id');
-   
-    // this.type_field['input']=false;
-    // this.init_chos_status_search=this.initChosen.status_search_send;
     this.eventEmitter$ = new EventEmitter();
-    // this.eventEmitter_publisher$ = new EventEmitter();
 
     this._http.get(this.domain + this.csrf)
         .map((res: Response) => {
@@ -151,14 +144,11 @@ public name:string;
         .subscribe(
             data =>{
               this.list = data;
-              // this.list = data;
               this.module_name=data.module_name;
-              console.log('data23',data,this.list);
                 if(this.list.rows.length==0){
                     this.not_found_result=true;
                 }else {
                     this.checkboxTableService.Create(this.list);
-                    console.log(this.list);
                     this.eventEmitter$.emit(this.list.rows);
 
                     this.value=this.list.filterTime.type;
@@ -185,13 +175,6 @@ public name:string;
                     if (this.currentPage <= this.page_count) {
                         this.displaying = false;
                     }
-
-
-                    console.log('dsafs', this.total_revenue)
-                    // if (typeof this.list.filterParams != 'undefined') {
-                    //     this.eventEmitter$.emit(this.list.filterParams);
-                    // }
-                    // this.CreateCheckBox();
                     if (this.list.pagination.totalCount > 100) {
 
                         this.display_from = this.list.pagination.pageSize * (this.list.pagination.page + 1) - (this.list.pagination.pageSize - 1);
@@ -223,9 +206,6 @@ public name:string;
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-                    console.log(location,this.router.url);
-                   
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -236,7 +216,6 @@ public name:string;
 
 
             });
-      // this.location.replaceState("/users/publisher-list");
     
   }
     pushOnDate(value){
@@ -266,14 +245,10 @@ public name:string;
             this.total_cost = this.list.total_count.cost;
             this.total_profit = this.list.total_count.profit;
             this.total_profit_margin = this.list.total_count.profit_margin;
-
-            console.log('filter')
         },
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -287,30 +262,8 @@ public name:string;
         }
     }
   ngOnInit() {
-    // this.popupChange.ngOnInit();
-    // this.filters.ngOnInit();
-    // // jQuery('.popup_link').css('display','none');
-    // this.JqueryStatusSubscribe();
-    // let self=this;
-    // jQuery('.selection-block_form_date').change(function (e) {
-    //   console.log('change',e.target.value);
-    //   self.filterPeriod(e.target.value);
-    // })
-
-    // this.statusService.getStatusService().subscribe((res)=>{this.status_search=res.status;console.log('status search',this.status_search,res)
-    //   for(let i=0;i<this.status_search.length;i++){
-    //     console.log(this.status_search[i])
-    //   }
-    // })
   }
-    ngAfterViewChecked() {}
-  // getType(){
-  //   this.popupChange.getsType(this.list);
-  // }
   ngAfterViewInit(){
-    // this.filters.ngAfterViewInit();
-    // this.popupChange.ngAfterViewInit();
-    
   }
   chooseField(event,id,user_id,proffer_id,value,value_id,field,type,data) {
     this.popupChange.choosenField(event, id, user_id, proffer_id, value, this.field_name, field, type, this.type_field, null, this.list, this.popup, value_id, data)
@@ -319,21 +272,17 @@ public name:string;
     this.popupChange.changedField(value,this.list,this.body.csrf,this.urlGetList);
   }
   focus(){
-    // console.log('focus',document.getElementsByClassName('search-field')[0].childNodes,jQuery('.search-field input'));
     jQuery('.search-field input').focus();
   }
   sort(value:string,ti){
-      console.log('sort',ti);
     this.filters.sorts(value,this.urlGetList)
         .subscribe(
-            res=>{this.list=res;console.log('sort',this.list);
+            res=>{this.list=res;
         
             },
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -346,20 +295,12 @@ public name:string;
             }
         );
   }
-  // search(value:string){
-  //   this.filters.searches(value,this.urlGetAllOffer).subscribe(
-  //       res=>{this.list=res.data;console.log('sort',this.list)}
-  //   );
-  // }
   search_status(value:string){
     this.filters.searches_status(value,this.urlGetList,this.status_search_send).subscribe(
-        res=>{this.list=res;
-          console.log('sort',this.list,this.status_search)},
+        res=>{this.list=res;},
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -373,8 +314,6 @@ public name:string;
     );
   }
   enter_search(value,object){
-    console.log('search')
-      console.log(object.search);
       this.search=object.search;
     this.filters.searches(value,this.urlGetList).subscribe(
         res=>{
@@ -409,18 +348,11 @@ public name:string;
             this.total_cost = this.list.total_count.cost;
             this.total_profit = this.list.total_count.profit;
             this.total_profit_margin = this.list.total_count.profit_margin;
-          // jQuery('#'+value+'_dropdown').hide();
-          console.log('sort enter',this.list,res);
           if(typeof this.list.filterParams != 'undefined'){
-            // this.search_field[value]=false;
-            // jQuery('button[value="'+value+'"]').addClass('active');
             object.hidden_delete=false;
           }else{
-            // this.search_field[value]=true;
-            // jQuery('button[value="'+value+'"]').removeClass('active')
             object.hidden_delete=true;
           }
-          //
           object.hidden=true;
 
           return true;
@@ -429,8 +361,6 @@ public name:string;
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -442,16 +372,13 @@ public name:string;
 
         }
     );
-    //
     return false;
 
   }
   clear(value:string,object){
-    console.log('clear')
     this.filters.clears(value,this.urlGetList).subscribe(
         res=>{
           this.list=res;
-          console.log('sort',this.list);
             this.currentPage = this.list.pagination.page + 1;
             this.page_count = this.list.pagination.pageCount;
             if (this.currentPage < this.page_count) {
@@ -483,15 +410,10 @@ public name:string;
           object.hidden_delete=true;
           object.hidden=true;
             object.isActive=false;
-           
-
-          // jQuery('button[value="'+value+'"]').removeClass('active')
         },
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -511,7 +433,6 @@ public name:string;
     this.filters.nexts(this.urlGetList,this).subscribe(
         res=>{
           this.list=res;
-          console.log('next',this.list);
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -522,8 +443,6 @@ public name:string;
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -553,7 +472,6 @@ public name:string;
     this.filters.prevs(this.urlGetList,this).subscribe(
         res=>{
           this.list=res;
-          console.log('prev',this.list);
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -561,8 +479,6 @@ public name:string;
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -592,14 +508,11 @@ public name:string;
     }
   }
   filterPeriod(value:string){
-    console.log('prev')
     this.filters.filterPeriods(value,this.urlGetList).subscribe(
-        res=>{this.list=res.data;console.log('prev',this.list);},
+        res=>{this.list=res.data;},
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -616,7 +529,6 @@ public name:string;
     this.currentPage=1;
     this.filters.firsts(this.urlGetList,this).subscribe(
         res=>{this.list=res;
-          console.log('prev',this.list);
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -624,8 +536,6 @@ public name:string;
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -652,8 +562,6 @@ public name:string;
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -666,24 +574,15 @@ public name:string;
             })
     }
   update(id:string,item_name:string,name){
-    console.log(id)
-    console.log(item_name)
       localStorage.setItem("user_id", id.toString());
       localStorage.setItem("user_name", name);
     this.usersService.usersEdit(id,item_name,this.module_name);
       this.router.navigate(['/users/'+item_name+'-list/update',id]);
   }
   getPayouts(id,name){
-    console.log('name',name,id)
     localStorage.setItem("publisher_id", id.toString());
     localStorage.setItem("publisher_name", name);
-    // this.renderOffer.getsPayouts(id,name);
     this.router.navigate(['users/publisher-list/payouts',id]);
     
   }
-
-  // close(){
-  //   this.popupChange.closing();
-  // }
-  
 }

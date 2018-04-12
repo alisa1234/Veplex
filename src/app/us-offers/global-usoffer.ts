@@ -27,7 +27,6 @@ const TYPES:Types[]=[
 
 @Component({
     template:''
-    // providers:[FormstylerPipe]
 })
 
 export class GlobalUsOffer implements OnInit,AfterViewInit{
@@ -69,7 +68,6 @@ export class GlobalUsOffer implements OnInit,AfterViewInit{
     remove_refferal:number=0;
 
     public eventEmitter$: EventEmitter<any>;
-    // public eventEmitter_publisher$: EventEmitter<any>;
     @ViewChild('popup') popup:PopupChange;
 
     constructor(public router:Router,http: Http,domains: Domains, public _countrieService: CountriesService,public filters:Filters,public popupChange:PopupChange,public statusService:StatusService, public globalLogin:GlobalLogin){
@@ -84,63 +82,17 @@ export class GlobalUsOffer implements OnInit,AfterViewInit{
         this.remove_refferal=0;
         this.filters=filters;
         this.popupChange=popupChange;
-
-        // this._http.get(this.domain + this.csrf)
-        //     .map((res: Response) => {
-        //         this.body = res.json();
-        //     })
-        //     .subscribe(
-        //         res =>this.result = res
-        //     );
-        //
-        // this._http.get(this.domain+this.urlGetList)
-        //     .map((res:Response)=>{
-        //        return res.json();
-        //     })
-        //     .subscribe(data=>{
-        //         this.list=data;
-        //         console.log(this.list.rows,data)
-        //     },
-        //         (err) => {
-        //             let error=err.json();
-        //             if(error.logged==false){
-        //
-        //                 // window.location.replace(this.domain);
-        //                 this.router.navigate(['/']);
-        //                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
-        //                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
-        //                 localStorage.setItem('current_url',this.router.url);
-        //                 this.globalLogin.serverTime=false;
-        //                 this.globalLogin.role=null;
-        //             }
-        //
-        //
-        //         })
     }
 
     ngOnInit(){
-        // this._countrieService.getCountriesService().subscribe((data) => {
-        //     this.countries = data.countries;
-        //     let dataAr=[];
-        //     for(let key in this.countries){
-        //         dataAr.push({key: key, value: this.countries[key]});
-        //     }
-        //     this.countries=dataAr;
-        //     console.log('countries');
-        //     console.log(this.countries);
-        //
-        // });
     }
     ngAfterViewInit(){
-        // this.filters.ngAfterViewInit();
     }
 check(){
     let chbox = <HTMLInputElement>document.getElementById('remove_refferal');
-    console.log('check',this.remove_refferal)
     if(chbox.checked==true){
         
         this.remove_refferal=1;
-        console.log('checked',this.remove_refferal)
     }else{
         this.remove_refferal=0;
     }

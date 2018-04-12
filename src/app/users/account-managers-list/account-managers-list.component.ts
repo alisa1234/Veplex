@@ -102,14 +102,12 @@ export class AccountManagersListComponent implements OnInit {
   public values=[{'id':'choose_action','title':'Choose action'},{'id':'today','title':'Today'},{'id':'yesterday','title':'Yesterday'},{'id':'this_w','title':'This week'},{'id':'last_w','title':'Last week'},{'id':'this_m','title':'This month'},{'id':'last_m','title':'Last month'},{'id':'this_y','title':'This year'},{'id':'last_y','title':'Last year'},{'id':'custom','title':'Custom'}];
 
   public eventEmitter$: EventEmitter<any>;
-  // public eventEmitter_publisher$: EventEmitter<any>;
   @ViewChild('popup') popup:PopupChange;
 
   constructor(public router:Router,http: Http,domains: Domains,public filters:Filters, public usersService:UsersService,public statusService:StatusService,public popupChange:PopupChange, public checkboxTableService:CheckboxTableService, public calendarService:CalendarService, public globalLogin:GlobalLogin) {
 
 
     this._http = http;
-    // this.url = domains.url;
     this.domain = domains.domain;
     this.csrf = domains.csrf;
     this.urlGetList = domains.urlUsersAccountManagersList;
@@ -152,12 +150,10 @@ export class AccountManagersListComponent implements OnInit {
             data =>{
               this.list = data;
               this.module_name=data.module_name;
-              console.log('data',data,this.list);
                 if(this.list.rows.length==0){
                     this.not_found_result=true;
                 }else {
                     this.checkboxTableService.Create(this.list);
-                    console.log(this.list);
                     this.eventEmitter$.emit(this.list.rows);
                     this.value=this.list.filterTime.type;
                     if (this.value == 'custom') {
@@ -185,9 +181,6 @@ export class AccountManagersListComponent implements OnInit {
                     if (this.currentPage <= this.page_count) {
                         this.displaying = false;
                     }
-
-
-                    console.log('dsafs', this.total_revenue)
                     if (typeof this.list.filterParams != 'undefined') {
                         this.eventEmitter$.emit(this.list.filterParams);
                     }
@@ -221,8 +214,6 @@ export class AccountManagersListComponent implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -237,15 +228,6 @@ export class AccountManagersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.popupChange.ngOnInit();
-    // this.filters.ngOnInit();
-    // // jQuery('.popup_link').css('display','none');
-    // this.JqueryStatusSubscribe();
-    // let self=this;
-    // jQuery('.selection-block_form_date').change(function (e) {
-    //   console.log('change',e.target.value);
-    //   self.filterPeriod(e.target.value);
-    // })
   }
   pushOnDate(value){
       if (value == 'custom') {
@@ -299,13 +281,10 @@ export class AccountManagersListComponent implements OnInit {
             this.display_to = this.list.pagination.totalCount;
             this.display_of = this.list.pagination.totalCount;
         }
-      console.log('filter')
     },
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -319,8 +298,6 @@ export class AccountManagersListComponent implements OnInit {
       }
   }
   ngAfterViewInit(){
-    // this.filters.ngAfterViewInit();
-    // this.popupChange.ngAfterViewInit();
   }
   chooseField(event,id,user_id,proffer_id,value,value_id,field,type,data) {
     this.popupChange.choosenField(event, id, user_id, proffer_id, value, this.field_name, field, type, this.type_field, null, this.list, this.popup, value_id, data)
@@ -329,18 +306,15 @@ export class AccountManagersListComponent implements OnInit {
     this.popupChange.changedField(value,this.list,this.body.csrf,this.urlGetList);
   }
   focus(){
-    // console.log('focus',document.getElementsByClassName('search-field')[0].childNodes,jQuery('.search-field input'));
     jQuery('.search-field input').focus();
   }
   sort(value:string){
     this.filters.sorts(value,this.urlGetList)
         .subscribe(
-            res=>{this.list=res;console.log('sort',this.list);},
+            res=>{this.list=res;},
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -353,20 +327,12 @@ export class AccountManagersListComponent implements OnInit {
             }
         );
   }
-  // search(value:string){
-  //   this.filters.searches(value,this.urlGetList).subscribe(
-  //       res=>{this.list=res.data;console.log('sort',this.list)}
-  //   );
-  // }
   search_status(value:string){
     this.filters.searches_status(value,this.urlGetList,this.status_search_send).subscribe(
-        res=>{this.list=res.data;
-          console.log('sort',this.list,this.status_search)},
+        res=>{this.list=res.data;},
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -380,7 +346,6 @@ export class AccountManagersListComponent implements OnInit {
     );
   }
   enter_search(value,object){
-    console.log('search')
     this.filters.searches(value,this.urlGetList).subscribe(
         res=>{
           this.list=res;
@@ -416,18 +381,11 @@ export class AccountManagersListComponent implements OnInit {
             this.total_profit_margin = this.list.total_count.profit_margin;
             this.total_bonus = this.list.total_count.bonus;
             this.total_accounts = this.list.total_count.accounts;
-          // jQuery('#'+value+'_dropdown').hide();
-          console.log('sort enter',this.list,res);
           if(typeof this.list.filterParams != 'undefined'){
-            // this.search_field[value]=false;
-            // jQuery('button[value="'+value+'"]').addClass('active');
             object.hidden_delete=false;
           }else{
-            // this.search_field[value]=true;
-            // jQuery('button[value="'+value+'"]').removeClass('active')
             object.hidden_delete=true;
           }
-          //
           object.hidden=true;
 
           return true;
@@ -436,8 +394,6 @@ export class AccountManagersListComponent implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -454,11 +410,9 @@ export class AccountManagersListComponent implements OnInit {
 
   }
   clear(value:string,object){
-    console.log('clear')
     this.filters.clears(value,this.urlGetList).subscribe(
         res=>{
           this.list=res;
-          console.log('sort',this.list);
             this.checkboxTableService.Create(this.list);
             this.currentPage = this.list.pagination.page + 1;
             this.page_count = this.list.pagination.pageCount;
@@ -499,8 +453,6 @@ export class AccountManagersListComponent implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -520,7 +472,6 @@ export class AccountManagersListComponent implements OnInit {
     this.filters.nexts(this.urlGetList,this).subscribe(
         res=>{
           this.list=res;
-          console.log('next',this.list);
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -531,8 +482,6 @@ export class AccountManagersListComponent implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -562,7 +511,6 @@ export class AccountManagersListComponent implements OnInit {
     this.filters.prevs(this.urlGetList,this).subscribe(
         res=>{
           this.list=res;
-          console.log('prev',this.list)
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
           this.display_of=this.list.pagination.totalCount;
@@ -570,8 +518,6 @@ export class AccountManagersListComponent implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -602,12 +548,10 @@ export class AccountManagersListComponent implements OnInit {
   }
   filterPeriod(value:string){
     this.filters.filterPeriods(value,this.urlGetList).subscribe(
-        res=>{this.list=res.data;console.log('prev',this.list);},
+        res=>{this.list=res.data;},
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -624,7 +568,6 @@ export class AccountManagersListComponent implements OnInit {
     this.currentPage=1;
     this.filters.firsts(this.urlGetList,this).subscribe(
         res=>{this.list=res;
-          console.log('prev',this.list);
         
           this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
           this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
@@ -633,8 +576,6 @@ export class AccountManagersListComponent implements OnInit {
         (err) => {
             let error=err.json();
             if(error.logged==false){
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -661,8 +602,6 @@ export class AccountManagersListComponent implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -675,14 +614,9 @@ export class AccountManagersListComponent implements OnInit {
             })
     }
   update(id:string,item_name:string,name){
-    console.log(id)
-    console.log(item_name)
       localStorage.setItem("user_id", id.toString());
       localStorage.setItem("user_name", name);
     this.usersService.usersEdit(id,item_name,this.module_name);
       this.router.navigate(['/users/'+item_name+'-list/update',id]);
   }
-  // close(){
-  //   this.popupChange.closing();
-  // }
 }

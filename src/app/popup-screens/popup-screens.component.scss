@@ -2,11 +2,8 @@
   position: fixed;
   top: 20%;
   left: 50%;
-  //margin-left: -218px;
-  /* margin-top: -148px; */
   border-bottom: 2px solid #dbe1e9;
   background: #fff;
-  //width: 436px;
   width: auto;
   z-index: 10010;
   box-sizing: content-box;
@@ -61,11 +58,6 @@
         border: none;
         width: 21px;
         height: 21px;
-        //&:hover {
-        //  background: url(app/images/left_arrow-hover.svg) no-repeat;
-        //  width: 21px;
-        //  height: 21px;
-        //}
       }
       .countr{
         font: 14px "Arial";
@@ -88,11 +80,6 @@
         border: none;
         width: 21px;
         height: 21px;
-        //&:hover {
-        //  background: url(app/images/right_arrow-hover.svg) no-repeat;
-        //  width: 21px;
-        //  height: 21px;
-        //}
       }
 
       .ok{

@@ -83,14 +83,6 @@ this.item_name='usoffer';
   }
 
   ngOnInit() {
-    // this.route
-    //     .params
-    //     .subscribe(params => {
-    //       console.log(params);
-    //       this.offer_id = params['id'];
-    //       // this.renderOffer.renderUpdate(this.offer_id);
-    //
-    //     });
   }
   keypress(event:any){
     if(this.offer_ch==true)
@@ -101,82 +93,44 @@ this.item_name='usoffer';
     if(jQuery("#ip_whitelist").val() != ''){jQuery(".form_offer_act_add").css('display','block')}
   }
 addReturn(e){
-  // let input=jQuery('.form_offer_link').children('input');
   if(jQuery('#'+e.target.id).hasClass('form_offer_act_del')){
     if(e.target.id=='add_tid'){
-      // for(let i=0;i<input.length;i++){
-      //   let str=input[i].value;
-      // this.postback_url='{TID}';
       this.postback_url=this.postback_url.replace('{TID}','');
-      // }
     }
     if(e.target.id=='add_sid'){
-      // for(let i=0;i<input.length;i++){
-      //   let str=input[i].value;
       this.postback_url=this.postback_url.replace('{SID}','');
-      // }
     }
     if(e.target.id=='add_subid'){
-      // for(let i=0;i<input.length;i++){
-      //   let str=input[i].value;
       this.postback_url=this.postback_url.replace('{SUBID}','');
-      // }
     }
     if(e.target.id=='add_subid2'){
-      // for(let i=0;i<input.length;i++){
-      //   let str=input[i].value;
       this.postback_url=this.postback_url.replace('{SUBID2}','');
-      // }
     }
     if(e.target.id=='add_subid3'){
-      // for(let i=0;i<input.length;i++){
-      //   let str=input[i].value;
       this.postback_url=this.postback_url.replace('{SUBID3}','');
-      // }
     }
     if(e.target.id=='add_subid4'){
-      // for(let i=0;i<input.length;i++){
-      //   let str=input[i].value;
       this.postback_url=this.postback_url.replace('{SUBID4}','');
-      // }
     }
     jQuery('#'+e.target.id).removeClass('form_offer_act_del');
   }else{
     if(e.target.id=='add_tid'){
-      console.log('fsdfds',this.postback_url)
-      // for(let i=0;i<input.length;i++){
       this.postback_url+='{TID}';
-      // }
     }
     if(e.target.id=='add_subid'){
-      // for(let i=0;i<input.length;i++){
       this.postback_url+='{SUBID}';
-      // }
     }
-  //   if(e.target.id=='subid'){
-  //     for(let i=0;i<input.length;i++){
-  //       input[i].value+='{SUBID}';
-  //     }
-  //   }
     if(e.target.id=='add_subid2'){
-      // for(let i=0;i<input.length;i++){
       this.postback_url+='{SUBID2}';
-      // }
     }
     if(e.target.id=='add_subid3'){
-      // for(let i=0;i<input.length;i++){
       this.postback_url+='{SUBID3}';
-      // }
     }
     if(e.target.id=='add_subid4'){
-      // for(let i=0;i<input.length;i++){
       this.postback_url+='{SUBID4}';
-      // }
     }
     if(e.target.id=='add_sid'){
-      // for(let i=0;i<input.length;i++){
       this.postback_url+='{SID}';
-      // }
     }
     jQuery('#'+e.target.id).addClass('form_offer_act_del');
   }
@@ -228,7 +182,6 @@ addReturn(e){
       if(xhr.readyState==XMLHttpRequest.DONE){
         let res=xhr.response;
         let body=JSON.parse(res);
-        console.log('result body',body)
         if(typeof body.logged!='undefined'&& body.logged==false){
           self.router.navigate(['/']);
           let current_breadcrumb=localStorage.getItem('breadcramb_arr');
@@ -260,7 +213,6 @@ addReturn(e){
         if(body.validation.length === 0){jQuery('.form_offer_btn_ch').addClass('inactive');}
       }
     }
-    // this.addOffer.render_offer_results=null;
 
     jQuery(".Error").remove();
     jQuery(".error").remove();

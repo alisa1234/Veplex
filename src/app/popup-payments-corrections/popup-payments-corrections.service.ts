@@ -43,35 +43,5 @@ export class PopupPaymentsCorrectionsService {
         this.corrections_comment=corrections_comment;
         this.uuid=uuid;
         this.name=name;
-        // this._http.get(this.domain + this.getPublisherListCorrections+uuid)
-        //     .map((res: Response) => {
-        //         return res.json();
-        //
-        //     })
-        //     .subscribe(data=>{
-        //         this.list=data;
-        //        
-        //         // Doing it this way allows you to name the file
-        //         // let fileURL = URL.createObjectURL('');
-        //         // window.open(fileURL);
-        //         // debugger;
-        //         // this.hidden=false;
-        //     });
-        
-        // this._http.get(this.domain + this.getPublisherListReports+uuid)
-        //     .map((res: Response) => {
-        //         return res.json();
-        //
-        //     })
-        //     .subscribe(data=>{
-        //         this.list=data;
-        //         debugger;
-        //         this.hidden=false;
-        //     });
-        // this.id=id;
-        // this.name=name;
-        // this.information=information;
-
-
     }
 }

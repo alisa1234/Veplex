@@ -31,7 +31,6 @@ export class AdminComponent extends GlobalUsers implements OnInit,AfterViewInit 
 
     constructor(protected router:Router,http: Http,public route: ActivatedRoute,domains: Domains, public _countrieService: CountriesService, public usersService:UsersService,public formstyler:FormstylerPipe,public location: Location) {
     super(router,http,route,domains,_countrieService,usersService,location);
-    // this.router.navigate(['/users/add-admin']);
     this._this=this;
       this.item_name='admin';
       localStorage.setItem("users_value",  'Add admin');
@@ -63,7 +62,6 @@ ngAfterViewInit(){
 
 }
   send(formData:FormData=new FormData()){
-    console.log(this.company_name)
 let company_name=this.company_name;
 let phone=this.phone;
 

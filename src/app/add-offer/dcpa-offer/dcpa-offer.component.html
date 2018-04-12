@@ -17,17 +17,6 @@
     <li>
       <div class="form_offer_access class2">
         <app-select-box [(model)]="access_value" [values]="access_values" [option_value_var]="'value'" [option_text_var]="'name'" [click_event]="true"></app-select-box>
-        <!--<select-->
-                <!--[(ngModel)]="access_value"-->
-                <!--[ngModelOptions]="{standalone: true}"-->
-                <!--(click)="keypress($event)"-->
-                <!--id="access_value"-->
-                <!--class="form_offer_access_select"-->
-                <!--name="" data-placeholder="Offer access*">-->
-          <!--<option value="null">Offer access*</option>-->
-          <!--<option value="1">Public</option>-->
-          <!--<option value="2">Private</option>-->
-        <!--</select>-->
         <div class="question">
           <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
         </div>
@@ -103,7 +92,6 @@
               type="checkbox"/> <label for="auto_optimization">Automatic optimization</label></div>
     </li>
     <li>
-      <!--<div class="form_offer_link input-wr"><input type="text" placeholder="Link*"/></div>-->
       <div class="form_offer_return">
         <div class="form_offer_act_title">Pass:</div>
         <div class="form_offer_act">
@@ -123,7 +111,6 @@
     </li>
     <li>
       <div class="form_offer_category js-form_offer_category">
-        <!--<div class="form_offer_category_data"><span>Category*</span></div>-->
         <div class="form_offer_category_drop_wr">
           <div class="form_offer_category_drop">
             <div class="form_offer_category_drop_head">
@@ -140,18 +127,6 @@
                           placeholder="Category"/></td>
                   <td class="col2">
                     <app-select-box *ngIf="domains_loaded" (pushOnSelected)="getDomain(domains)" [click_event]="true"  [(model)]="domains" [values]="domains_arr" [option_value_var]="'domain'" [option_text_var]="'title'"></app-select-box>
-                    <!--<select-->
-                            <!--[(ngModel)]="domains"-->
-                            <!--[ngModelOptions]="{standalone: true}"-->
-                            <!--(click)="keypress($event)"-->
-                            <!--id="domains"-->
-                            <!--class="table-select"-->
-                            <!--data-placeholder="Tracking domain">-->
-                      <!--<option value="null" selected>Tracking domain</option>-->
-                      <!--<option-->
-                              <!--*ngFor="let domains of category_list_search.rows; let last=last"-->
-                              <!--value="{{domains.domain}}">{{domains.domain}}{{last ? initStyler(): ''}}</option>-->
-                    <!--</select>-->
                   </td>
                 </tr>
               </table>
@@ -179,19 +154,6 @@
     <li>
       <div class="form_offer_access">
         <app-select-box [(model)]="device_value" [values]="devices_values" [option_value_var]="'value'" [option_text_var]="'name'" [click_event]="true"></app-select-box>
-        <!--<select-->
-                <!--[(ngModel)]="device_value"-->
-                <!--[ngModelOptions]="{standalone: true}"-->
-                <!--(click)="keypress($event)"-->
-                <!--class="form_offer_access_select"-->
-                <!--id="device_value"-->
-                <!--name=""-->
-                <!--data-placeholder="Device">-->
-          <!--<option value="null">Device</option>-->
-          <!--<option value="0">All</option>-->
-          <!--<option value="1">Mobile</option>-->
-          <!--<option value="2">Desktop</option>-->
-        <!--</select>-->
         <div class="question">
           <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
         </div>
@@ -216,18 +178,6 @@
       <div
               class="form_offer_browse"
               id="form_offer_browse-screenshot">
-        <!--<div class="form_offer_browse_file"><span class="form_offer_browse_file_name">screen.png</span><a-->
-        <!--href="#"-->
-        <!--title="#"-->
-        <!--class="form_offer_browse_file_close"></a></div>-->
-        <!--<div class="form_offer_browse_file"><span class="form_offer_browse_file_name">screen.png</span><a-->
-        <!--href="#"-->
-        <!--title="#"-->
-        <!--class="form_offer_browse_file_close"></a></div>-->
-        <!--<div class="form_offer_browse_file"><span class="form_offer_browse_file_name">screen.png</span><a-->
-        <!--href="#"-->
-        <!--title="#"-->
-        <!--class="form_offer_browse_file_close"></a></div>-->
         <div
                 id="form_offer_screenshot_upload"
                 class="form_offer_browse_upload"><span class="form_offer_browse_upload_btn"><input
@@ -323,17 +273,6 @@
     <li>
       <div class="form_offer_access">
         <app-select-box [(model)]="enabled_value" [values]="enabledes_values" [option_value_var]="'value'" [option_text_var]="'name'" [click_event]="true"></app-select-box>
-        <!--<select-->
-                <!--[(ngModel)]="enabled_value"-->
-                <!--[ngModelOptions]="{standalone:true}"-->
-                <!--(click)="keypress($event)"-->
-                <!--class="form_offer_access_select"-->
-                <!--id="enabled_value"-->
-                <!--name="" data-placeholder="Status">-->
-          <!--<option value="null">Status</option>-->
-          <!--<option value="1">Active</option>-->
-          <!--<option value="2">Disabled</option>-->
-        <!--</select>-->
         <div class="question">
           <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
         </div>
@@ -352,11 +291,6 @@
                 placeholder="Whitelist callback IP/IPs"
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode==46"/>
         <a (click)="addIP()" class="form_offer_act_add ips" style="display: none;"></a>
-        <!--<select class="form_offer_access_select" name="" data-placeholder="Whitelist callback IP/IPs">-->
-        <!--<option value=""></option>-->
-        <!--<option value="">adsfadfdf 1</option>-->
-        <!--<option value="">adfadsfadf 2</option>-->
-        <!--</select>-->
         <div class="question">
           <div class="question_pop">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</div>
         </div>

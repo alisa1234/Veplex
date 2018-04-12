@@ -19,9 +19,7 @@ export class PopupPaymentsCorrectionsComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.elRef.nativeElement.contains(event.target) || event.target.closest('.page-table_cplus')) {
-      // console.log("chosen clicked inside");
     } else {
-      // console.log("chosen clicked outside");
       this.hidden = true;
       this.hiddenChange.emit(this.hidden);
     }

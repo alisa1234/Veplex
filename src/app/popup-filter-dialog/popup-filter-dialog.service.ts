@@ -27,7 +27,6 @@ export class PopupFilterDialogService {
         this.field = field;
         this.list = list;
         this.checked_arr[this.field] = [];
-        console.log('service list', list_filter, field)
         switch (field) {
             
             case 'browser_name':
@@ -41,7 +40,6 @@ export class PopupFilterDialogService {
                     this.checked_arr[this.field][this.values[i].id] = false;
                     
                 }
-                console.log('service list', this.values)
 
                 break;
             }
@@ -55,7 +53,6 @@ export class PopupFilterDialogService {
                    
 
                 }
-                console.log('service list', this.values)
                 break;
             }
             case 'country_name':
@@ -66,7 +63,6 @@ export class PopupFilterDialogService {
                     this.checked_arr[this.field][this.values[i].id] = false;
 
                 }
-                console.log('service list', this.values)
                 break;
             }
         }
@@ -123,7 +119,6 @@ export class PopupFilterDialogService {
    
     ValueCheckbox(id,checkboxNativeElement){
         this.checkbox_arr[this.field]=[];
-        console.log('arr',checkboxNativeElement)
      
             for (let i = 0; i < checkboxNativeElement.length; i++) {
                 if(id=='1' && checkboxNativeElement[i].nativeElement.id==id && checkboxNativeElement[i].nativeElement.checked==false){
@@ -155,27 +150,6 @@ export class PopupFilterDialogService {
           
                   
                 }
-                // else{
-                //  
-                // //     
-                //         debugger;
-                //         for(let y=0;y<checkboxNativeElement.length;y++){
-                //             if(checkboxNativeElement[y].nativeElement.id == '1'){
-                //             checkboxNativeElement[y].nativeElement.checked = false;
-                // //             this.checkbox_arr[this.field].push(checkboxNativeElement[y].nativeElement.id);
-                // //             debugger;
-                //         }
-                // //       
-                //     } 
-                // }
-
-                // if(checkboxNativeElement[i].nativeElement.checked == true && checkboxNativeElement[i].nativeElement.id == '258'){
-                //     for (let y = 0; y < checkboxNativeElement.length; y++) {
-                //         checkboxNativeElement[y].nativeElement.checked = true;
-                //         this.checkbox_arr[this.field].push(checkboxNativeElement[y].nativeElement.id);
-                //          
-                //     }
-                // }
             }
         console.log('ValueCheckbox1',this.checkbox_arr[this.field])
 
@@ -187,7 +161,6 @@ export class PopupFilterDialogService {
       }
     
     getCheckedFilter(eRef){
-        console.log('eRef',eRef)
         
     }
 

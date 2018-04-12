@@ -21,24 +21,6 @@ export class Types{
   styleUrls: ['./account-managers.component.scss']
 })
 export class AccountManagersComponent extends GlobalUsers implements OnInit {
-  // @ViewChild ('permission_statistics_value')  permission_statistics_value;
-  // @ViewChild ('permission_assign_statistics_value')  permission_assign_statistics_value;
-  // @ViewChild ('permission_users_value')  permission_users_value;
-  // @ViewChild ('permission_assign_users_value')  permission_assign_users_value;
-  // @ViewChild ('permission_offers_value')  permission_offers_value;
-  // @ViewChild ('permission_assign_offers_value')  permission_assign_offers_value;
-  // @ViewChild ('permission_payments_advertisers_value')  permission_payments_advertisers_value;
-  // @ViewChild ('permission_payments_publishers_value')  permission_payments_publishers_value;
-  // @ViewChild ('permission_assign_payments_publishers_value')  permission_assign_payments_publishers_value;
-  // @ViewChild ('permission_assign_payments_advertisers_value')  permission_assign_payments_advertisers_value;
-  // @ViewChild ('permission_settings_value')  permission_settings_value;
-  // @ViewChild ('permission_settings_customization_value')  permission_settings_customization_value;
-  // @ViewChild ('permission_settings_companys_profile_value')  permission_settings_companys_profile_value;
-  // @ViewChild ('permission_settings_billing_info_value')  permission_settings_billing_info_value;
-  // @ViewChild ('permission_settings_payments_value')  permission_settings_payments_value;
-  // @ViewChild ('permission_settings_system_value')  permission_settings_system_value;
-  // @ViewChild ('permission_settings_faq_value')  permission_settings_faq_value;
-
   variables={id:[],value:[]};
   bonus_publishers:string;
   bonus_advertisers:string;
@@ -149,9 +131,7 @@ export class AccountManagersComponent extends GlobalUsers implements OnInit {
     setTimeout(function () {
       jQuery('.form_users_select').trigger('refresh');
      
-    },0)
-   
-    console.log('dgd',this._this)
+    },0);
   }
   checking(id){
  
@@ -178,27 +158,21 @@ export class AccountManagersComponent extends GlobalUsers implements OnInit {
     }
 
     let someVar=jQuery('.form_users_check_item input[type=checkbox]');
-    console.log('someVar',someVar);
     for(let i=0;i<someVar.length;i++){
-      console.log('checked',someVar[i].checked)
       this.variables.id[i]=someVar[i].id;
       this.variables.value[i]=someVar[i].checked;
     }
-    console.log('arr',this.variables.value);
     
   }
   send(formData2:FormData=new FormData()){
     for(let i=0;i<this.variables.value.length;i++){
 
       if(this.variables.value[i]==1){
-
-        console.log('arr',this.variables.value[i]);
         this.variables.value[i]='1';
       }else{
         this.variables.value[i]='0'
       }
     }
-    console.log('variables arr',this.variables);
   
     
     
@@ -212,7 +186,6 @@ export class AccountManagersComponent extends GlobalUsers implements OnInit {
     let repeatPassword=this.repeatPassword;
     let csrf=this.body.csrf;
     formData2.append("_csrf",csrf);
-  //  
     this.FormDataCreateManagers(formData2,{
      
       bonus_publishers:bonus_publishers,

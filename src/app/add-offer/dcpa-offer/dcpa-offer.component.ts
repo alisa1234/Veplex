@@ -33,16 +33,13 @@ export class DcpaOfferComponent extends CpaOfferComponent {
     super(router,http,domains,_countrieService,addOffer,renderOffer,checkboxTableService,initChosen,globalLogin);
   }
   send(formData:FormData=new FormData()){
-  // this.device_value=jQuery("#device_value").val();
   let carriers=this.carriers;
   let platforms=this.platforms;
   let transaction_life=this.transaction_life;
   let information=this.information;
   let device_value=this.device_value;
-  console.log('inform bla'+this.information, typeof this.information, typeof information)
   formData.append("Offer[device][]",this.device_value);
   this.FormDataCreate(formData,{
-    // device:device_value,
     carriers:carriers,
     platforms:platforms,
     transaction_life:transaction_life,

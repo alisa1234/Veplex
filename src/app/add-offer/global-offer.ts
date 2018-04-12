@@ -60,13 +60,10 @@ export class GlobalOffer implements OnInit{
     banners:File[]=[];
     banner:File;
     banner_name:string []=[];
-    
-    // information:string;
+
     ip_whitelist:string;
     ips:string[]=[];
     transaction_life:number;
-    // carriers:string;
-    // platforms:string;
     profferLinks:any[];
     profferLink:any[]=[];
     url1:string;
@@ -110,7 +107,6 @@ export class GlobalOffer implements OnInit{
 
     some:string[];
     private value:any = '';
-    // private domains:any = "Tracking domain";
     private values=[];
     private access_values=[{'value':'null','name':'Offer access*'},{'value':'1','name':'Public'},{'value':'0','name':'Private'}];
     private enabledes_values=[{'value':'null','name':'Offer status*'},{'value':'1','name':'Active'},{'value':'0','name':'Disabled'}];
@@ -132,7 +128,6 @@ export class GlobalOffer implements OnInit{
     constructor(public router:Router,http: Http,domains: Domains, public _countrieService: CountriesService, public addOffer:AddOfferComponent,public renderOffer:RenderOffer,public initChosen:InitChosen, public checkboxTableService:CheckboxTableService, public globalLogin:GlobalLogin) {
 
         this._http = http;
-        // this.url = domains.url;
         this.domain = domains.domain;
         this.urlCountries = domains.countries;
         this.urlSaveSystem=domains.urlSaveSystem;
@@ -146,24 +141,15 @@ export class GlobalOffer implements OnInit{
         this.deleteCategories=domains.deleteCategories;
         this._countrieService = _countrieService;
         this.countriesLoaded=_countrieService.countriesLoaded;
-        // this._offerList=_offerList.offerResult;
         this.addOffer=addOffer;
         this.renderOffer=renderOffer;
         this.offer_ch=addOffer.offer_ch;
         this.offer_ok=addOffer.offer_ok;
         this.eventEmitter$=new EventEmitter();
         let result: any;
-        // this.eventEmitter$.emit(this.addOffer.render_offer_results);
-    // this.domains=null;
         this.access_value=null;
-        // this.device_value=null;
         this.enabled_value=null;
     this.values=[];
-
-        
-        
-
-
 
         this._http.get(this.domain + this.csrf)
             .map((res: Response) => {
@@ -179,16 +165,7 @@ export class GlobalOffer implements OnInit{
             }).subscribe(data=>{
             this.category_list = data;
             this.category_list_search.rows = data.rows;
-           
-        
-            // this.category_list_search.rows.unshift({'id':'null','name':'Choose domain'});
-            // debugger;
-            
-        // for(let i=0;i<this.category_list_search.rows.length;i++){
-        //     this.domains_arr.push({'domain':this.category_list_search.rows[i].domain,'title':this.category_list_search.rows[i].domain})
-        //  this.domains_loaded=true;
-        // }
-            
+
             if(typeof this.addOffer.render_offer_results != 'undefined') {
                 
                 for(let i=0;i<this.category_list_search.rows.length;i++) {
@@ -208,7 +185,6 @@ export class GlobalOffer implements OnInit{
             this.saveSystem.data=data.data;
             this.domains_arr.unshift({'domain':'tracking_domain','title':'Tracking domain'});
             for(let i=0;i<this.saveSystem.data.tracking_domain.length;i++){
-                // this.saveSystem.data.push(this.saveSystem.data.tracking_domain[i]);
                 this.domains_arr.push({'domain':this.saveSystem.data.tracking_domain[i],'title':this.saveSystem.data.tracking_domain[i]})
                 this.domains_loaded=true;
          
@@ -220,25 +196,8 @@ export class GlobalOffer implements OnInit{
             .map((res: Response) => {
                 return res.json();
             }).subscribe(data=>{
-            // this.values=[{'id':'choose_action','name':'Choose action'}];
             this.values=data.rows;
             this.value='32';
-            // this.values.unshift({'id':'32','name':'Choose advertiser'});
-            // for(let i=0;i<this.values.length;i++){
-            //     this.values[i+1].id='choose_action';
-            //     this.values[i+1].name='Choose advertiser';
-            //    
-            //        
-            // }
-            console.log(this.values);
-            // for(let i=0;i<data.rows.length;i++){
-            //     console.log(this.values);
-            //     debugger;
-            //     this.values[i].id = data.rows[i].id;
-            //     this.values[i].title = data.rows[i].name;
-            //     debugger;
-            //
-            // }
            
            
         });
@@ -272,18 +231,9 @@ export class GlobalOffer implements OnInit{
             for(let i=0;i<this.addOffer.render_offer_results.countries.length;i++){
                 this.countr.push(this.addOffer.render_offer_results.countries[i]);
             }
-           
-            // jQuery('#select_advertisers').attr('disabled','disabled');
-          
-
-            // this.savePage(item);
 
         }
     }
-   
-    // savePage(item){
-    //     this.list=item;
-    // }
    
     ngOnInit(){
         this.id_select='domains';
@@ -339,15 +289,7 @@ export class GlobalOffer implements OnInit{
             if(this.addOffer.render_offer_results.status==false){
                 this.enabled_value=0;
             }
-            
 
-            // for(let i=0;i<this.types.length;i++){
-            //     if(this.addOffer.render_offer_results.type==this.types[i]){
-            //         debugger;
-            //         this.addOffer.offer_value=this.types[i];
-            //         debugger;
-            //     }
-            // }
             if (this.addOffer.render_offer_results.auto_optimization == 1) {
 
                 this.auto_optimization=1;
@@ -380,7 +322,6 @@ export class GlobalOffer implements OnInit{
            
 
                         this.addHtml('a'+this.addOffer.render_offer_results.banners[i],this.addOffer.render_offer_results.banners[i]);
-                        // this.flag_for_listener_banner=true;
                    
                     
                 }
@@ -396,7 +337,6 @@ export class GlobalOffer implements OnInit{
 
         }
         jQuery('.form_offer_access_select').change(function () {
-            console.log('change')
             if(self.offer_ch==true)
             {
                 self.offer_ch=false;
@@ -408,7 +348,6 @@ export class GlobalOffer implements OnInit{
 
     getDomain(domain){
         this.domains=domain;
-        console.log(this.category_id,this.category_id_send)
        
         if(this.offer_ch==true)
         {
@@ -416,80 +355,8 @@ export class GlobalOffer implements OnInit{
             this.offer_ok=true;
         }
     }
-    // initChosen(){
-    //     if (this.chosenReady === false){
-    //         this.chosenReady = true;
-    //         console.log('initChosen');
-    //         let params = (<HTMLSelectElement>document.getElementById('countrie'));
-    //         let self = this;
-    //
-    //         jQuery(params).chosen({allow_single_deselect: true,
-    //             include_group_label_in_selected: false,
-    //             search_contains: true,});
-    //         jQuery("#countries").chosen().change( function (event,params) {
-    //             self.countr=[];
-    //
-    //             console.log('cu cuggggg');
-    //            
-    //             let select=jQuery(this).children(":selected");
-    //
-    //
-    //             // console.log('cu cuggggg3',jQuery(this).parent().parent().find('option[id="'+ select.id +'"]:selected'));
-    //            if(params.selected=='All'){
-    //
-    //                jQuery( "#countries option[id!='All']" ).prop('selected', false);
-    //               
-    //                    self.countr.push("All")
-    //               
-    //            }
-    //            else{jQuery( "#countries option[id='All']" ).prop('selected', false);
-    //              
-    //                for(let i=0;i<select.length;i++){
-    //
-    //                self.countr.push(select[i].id)
-    //            }
-    //            }
-    //             jQuery('#countries').trigger("chosen:updated");
-    //             console.log(self.countr)
-    //             // this.keypress();
-    //             self.offer_ok=true;
-    //             self.offer_ch=false;
-    //         
-    //         });
-    //         if(typeof this.addOffer.render_offer_results != 'undefined') {
-    //             if(this.addOffer.render_offer_results.countries.length !=0){
-    //                 for (let i = 0; i < this.addOffer.render_offer_results.countries.length; i++) {
-    //                     jQuery('#countries #' + this.addOffer.render_offer_results.countries[i]).attr('selected', true).trigger("chosen:updated")
-    //                 }
-    //             }
-    //         
-    //         }
-    //     }
-    // }
 
-    // initStyler(){
-    //     if (this.saving_system === false){
-    //
-    //         this.saving_system = true;
-    //         setTimeout(function(){
-    //             let params3 = (<HTMLSelectElement>document.getElementById('domains'));
-    //             let formAccess = (<HTMLSelectElement[]><any>document.getElementsByClassName('form_offer_access_select'));
-    //             jQuery(params3).styler();
-    //             jQuery(formAccess).styler();
-    //         },0);
-    //         if(typeof this.addOffer.render_offer_results != 'undefined') {
-    //             for(let i=0;i<this.category_list_search.rows.length;i++){
-    //                 if(this.category_list_search.rows[i].id==this.addOffer.render_offer_results.category_id){
-    //                     console.log(this.category_list_search.rows[i].domain);
-    //                     // jQuery('#'+this.category_list_search.rows[i].domain).attr('selected', 'true').trigger("refresh");
-    //                     jQuery('#domains option[value="'+this.category_list_search.rows[i].domain+'"]').attr('selected', 'true').trigger("refresh");
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
     selectChange() {
-        console.log('cu cu');
         jQuery("#countries").chosen().change( function () {
             let select=jQuery(this).children(":selected");
             let countr=[];
@@ -505,7 +372,6 @@ export class GlobalOffer implements OnInit{
     searchCategory(e){
         
         let search_value=e.target.value;
-        console.log(this.category_id)
 
         let regV= new RegExp(search_value,"i");
         if(search_value==''){
@@ -520,32 +386,19 @@ export class GlobalOffer implements OnInit{
         for(let i=0;i<this.category_list.rows.length;i++){
 
             res = regV.test(this.category_list.rows[i].title);
-            console.log("search test: ", this.category_list.rows[i].title, regV.source, res);
             if(res){
-            // if(this.category_list.rows[i].title.match(/Ad/g)){
                 this.category_list_search.rows.push({title: this.category_list.rows[i].title, domain: this.category_list.rows[i].domain, id: this.category_list.rows[i].id});
 
                 this.choose_domain=false;
                 for(let y=0;y<this.category_list_search.rows.length;y++){
                     if(this.category_id==this.category_list_search.rows[y].title)
-                       
-                        // this.domains=this.category_list_search.rows[i].domain;
                       this.category_id_send=this.category_list_search.rows[y].id;
                        this.domains=this.category_list_search.rows[y].domain;
                     
                 }
                 
-            }/*else{
-
-                if(this.category_list_search.rows.length==0){
-                   
-                    this.choose_domain=true;
-                    return  this.domains='tracking_domain';
-                }
-            }*/
+            }
         }
-        // console.log(search_data.rows);
-        // this.category_list_search = search_data;
 
         if (this.category_list_search.rows.length == 0){
             this.domains = 'tracking_domain';
@@ -553,21 +406,6 @@ export class GlobalOffer implements OnInit{
         }
     }
     addCategory(){
-        // this.category_id_send='';
-        console.log(this.category_id);
-     
-        // this.domains=jQuery('#domains').val();
-       
-        // if( this.category_id_send!=''){
-        //     this.category_id=this.category_id_send;
-        //     debugger;
-        // }
-        // for(let i=0;i<this.category_list_search.rows.length;i++){
-        //     if(this.category_id==this.category_list_search.rows[i].title){
-        //         this.category_id=this.category_list_search.rows[i].id;
-        //         debugger;
-        //     }
-        // }
         let category="Category[title]="+this.category_id+"&Category[domain]="+this.domains+ "&_csrf=" + this.body.csrf;
        
         let headers = new Headers();
@@ -610,10 +448,7 @@ export class GlobalOffer implements OnInit{
                             }
                         }
 
-
-                        // this.category_id_send=undefined;
-
-                    })
+                    });
                     this.choose_domain=false;
                 }
         if(this.result.saved=="ok") {
@@ -625,10 +460,7 @@ export class GlobalOffer implements OnInit{
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
-                    // localStorage.clear();
                     localStorage.setItem('current_url',this.router.url);
                   
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
@@ -657,10 +489,7 @@ export class GlobalOffer implements OnInit{
                     (err) => {
                         let error=err.json();
                         if(error.logged==false){
-
-                            // window.location.replace(this.domain);
                             this.router.navigate(['/']);
-                            // localStorage.clear();
                             localStorage.setItem('current_url',this.router.url);
                            
                             let current_breadcrumb=localStorage.getItem('breadcramb_arr');
@@ -670,22 +499,15 @@ export class GlobalOffer implements OnInit{
                         }
 
 
-                    })
+                    });
                 break;
             }
         }
     }
     selectTable(id){
         this.choose_domain=false;
-        // this.category_id=undefined;
-        console.log(this.category_id,this.category_id_send);
    
         let parentId=id;
-       
-        // if(this.category_id_send != this.category_id){
-        //     this.category_id=this.category_id_send;
-        //     debugger;
-        // }
         for(let i=0;i<this.category_list_search.rows.length;i++){
             if(parentId==this.category_list_search.rows[i].id){
                 this.category_id_send=this.category_list_search.rows[i].id;
@@ -694,8 +516,6 @@ export class GlobalOffer implements OnInit{
                 jQuery("#category_id")[0].value=this.category_list_search.rows[i].title;
                
                 this.domains=this.category_list_search.rows[i].domain;
-                
-                console.log(this.category_id_send,this.category_id);
               
                 
                 
@@ -703,7 +523,6 @@ export class GlobalOffer implements OnInit{
         }
     }
     ngAfterViewInit() {
-        // jQuery( "#domains option[value!='tracking_domain']" ).prop('selected', true);
         jQuery( "#domains option[value!='tracking_domain']" ).attr('disabled', 'disabled');
         jQuery('.js-form_offer_category .form_offer_category_data').click(function(){
             if(!jQuery(this).parents('.form_offer_category').hasClass('add')){
@@ -730,7 +549,6 @@ export class GlobalOffer implements OnInit{
             if(!jQuery('.col2').hasClass('add')){
                 jQuery('.col2').addClass('add');
                 jQuery('.col2 .jq-selectbox__dropdown').css('display','block');
-                // jQuery('.form_offer_category_drop_body').css('display','block');
             }else {
                 jQuery('.col2').removeClass('add');
                 jQuery('.col2 .jq-selectbox__dropdown').css('display','none');
@@ -764,7 +582,6 @@ export class GlobalOffer implements OnInit{
         for(let i=0;i<this.banner_name.length;i++){
          
             this.addHtml('a'+this.banner_name[i],this.banner_name[i]);
-            // this.flag_for_listener_banner=true;
         }
         this.banners.push(banner);
     
@@ -778,16 +595,11 @@ export class GlobalOffer implements OnInit{
        
            
                 jQuery("#form_offer_screenshot_upload").before("<div id='b"+this.upload_screenshot_file.nativeElement.files[0].name+"' class='form_offer_browse_file'><span class='form_offer_browse_file_name'>"+this.upload_screenshot_file.nativeElement.files[0].name+"</span><a id='b"+this.upload_screenshot_file.nativeElement.files[0].name+"' class='form_offer_browse_file_close' ></a></div>");
-          
-            
-            // }
+
 
         for(let i=0;i<this.pics_name.length;i++){
             this.addHtml('b'+this.pics_name[i],this.pics_name[i]);
-            // this.flag_for_listener_pics=true;
         }
-        
-        
        
         this.pics.push(pics);
      
@@ -823,7 +635,6 @@ export class GlobalOffer implements OnInit{
         some.addEventListener('click',this.clearing.bind(this));
     }
     clearing(event){
-        console.log('clearing func')
         let id = event.target.getAttribute('id');
            
         let id2 = event.target.parentNode.parentNode.id;
@@ -835,8 +646,6 @@ export class GlobalOffer implements OnInit{
               
                 if(id===this.ips[i]){
                     this.ips.splice(i,1);
-                    
-                    console.log('ips',this.ips)
                 }
             }
             document.getElementById(id).remove();
@@ -844,13 +653,11 @@ export class GlobalOffer implements OnInit{
         else{
             jQuery("#"+id2).find('.input_offer_upload')[0].value="";
             document.getElementById(id).remove();
-            console.log(this.pics,this.pics_name,this.name_for_listening);
            
             if(id.charAt(0)==='a'){
                id=id.slice(1);
                 
                 for(let i=0;i<this.banner_name.length;i++) {
-                    //     debugger;
                     if (this.banner_name[i] == id){
                         this.banner_name.splice(i,1);
                         this.banners.splice(i,1);
@@ -861,7 +668,6 @@ export class GlobalOffer implements OnInit{
                 id=id.slice(1);
                
                 for(let i=0;i<this.pics_name.length;i++) {
-                    //     debugger;
                     if (this.pics_name[i] == id){
                         this.pics_name.splice(i,1);
                         this.pics.splice(i,1);
@@ -869,37 +675,6 @@ export class GlobalOffer implements OnInit{
                     }
                 }
             }
-            // if(this.flag_for_listener_banner){
-            //     debugger;
-            //     this.flag_for_listener_banner=false;
-            //     for(let i=0;i<this.banner_name.length;i++) {
-            //         //     debugger;
-            //         if (this.banner_name[i] == this.name_for_listening){
-            //             this.banner_name.splice(i,1);
-            //             this.banners.splice(i,1);
-            //
-            //         }
-            //     }
-            // }else{
-            //     this.flag_for_listener_pics=false;
-            //     debugger;
-            //     for(let i=0;i<this.pics_name.length;i++) {
-            //         //     debugger;
-            //         if (this.pics_name[i] == this.name_for_listening){
-            //             this.pics_name.splice(i,1);
-            //             this.pics.splice(i,1);
-            //
-            //         }
-            //     }
-            // }
-            
-            // for(let i=0;i<this.pics.length;i++) {
-            //     //     debugger;
-            //     if (this.pics[i].name == this.name_for_listening){
-            //         this.pics.splice(i,1);
-            //         //     debugger;
-            //     }
-            // }
 
             if(jQuery("#"+id2).children('.form_offer_browse_file').length==0){
                 this.flags[id2]=false;
@@ -916,8 +691,6 @@ export class GlobalOffer implements OnInit{
     addIP(){
         jQuery('#form_offer_access-whitelist').parent('li').append("<div class='form_offer_access' id='"+this.ip_whitelist+"'><span class='wr_inpt'><input type='hidden' value='x'><span class='fon_inpt1'>"+this.ip_whitelist+"<a class='form_offer_browse_file_close' id='"+this.ip_whitelist+"'></a></span></span> </div>")
         this.ips.push(this.ip_whitelist);
-      
-        console.log('addd ips',this.ips)
         this.addHtml(this.ip_whitelist,this.ip_whitelist);
         this.ip_whitelist='';
         jQuery(".form_offer_act_add").css('display','none');
@@ -965,20 +738,6 @@ export class GlobalOffer implements OnInit{
         }
     }
     send(formData:FormData=new FormData()){
-        
-
-       
-        // if(typeof this.category_id!='undefined'){
-        //     this.category_id_send=this.category_id;
-        //     debugger;
-        // }
-        // for(let i=0;i<this.category_list_search.rows.length;i++){
-        //     if(this.category_id_send==this.category_list_search.rows[i].title){
-        //         this.category_id_send=this.category_list_search.rows[i].id;
-        //         debugger;
-        //       
-        //     }
-        // }
         this.urls.url=[];
         this.urls.share=[];
        
@@ -990,11 +749,6 @@ export class GlobalOffer implements OnInit{
         this.urls.share.push(jQuery("#share2").val());
         this.urls.share.push(jQuery("#share3").val());
 
-        // this.offer_value=jQuery("#offer_value").val();
-        // this.access_value=jQuery("#access_value").val();
-        // this.enabled_value=jQuery("#enabled_value").val();
-        // this.offer_value=jQuery("#offer_value").val();
-
         if(this.auto_optimization == 1){
             this.auto_optimization = 1;
         }else{this.auto_optimization = 0;}
@@ -1005,13 +759,8 @@ export class GlobalOffer implements OnInit{
         }
 
         let xhr: XMLHttpRequest = new XMLHttpRequest();
-        // let file_pics:File[]=this.pics;
-        // let file_pics:File[]=this.upload_screenshot_file.nativeElement.files;
 
         let file_pics_name:string []=this.pics_name;
-    
-        // let file_banners:File[]=this.banners;
-        // let file_banners:File[]=this.upload_banner_file.nativeElement.files[0];
         let file_banners_name:string []=this.banner_name;
         let auto_optimization=this.auto_optimization;
         let category_id_send=this.category_id_send;
@@ -1030,16 +779,11 @@ export class GlobalOffer implements OnInit{
         let user_id=this.value;
         let csrf=this.body.csrf;
         let allow_files = {banners:{},pics:{}};
-        // console.log(file_pics);
-        
-        // formData.append('Offer[file_pics2]',file_pics);
         for(let i=0;i<file_banners_name.length;i++){
-            // formData.append('Offer[files_banners]', file_banners_name[i]);
             allow_files.banners[i]=file_banners_name[i];
         
         }
         for(let i=0;i<file_pics_name.length;i++){
-            // formData.append('Offer[files_pics]', file_pics_name[i]);
             allow_files.pics[i]=file_pics_name[i];
         }
         for(let i=0;i<this.pics.length;i++){
@@ -1068,8 +812,6 @@ export class GlobalOffer implements OnInit{
         this.FormDataCreate(
             formData,
             {
-                // file_banners:file_banners,
-                // file_pics:file_pics,
                 allowed_files:JSON.stringify(allow_files),
                 name:name,
                 status:enabled_value,
@@ -1130,7 +872,7 @@ export class GlobalOffer implements OnInit{
 
                 if(body.validation.length === 0){jQuery('.form_offer_btn_ch').addClass('inactive');}
             }
-        }
+        };
         this.addOffer.render_offer_results=null;
         
         jQuery(".Error").remove();
@@ -1142,7 +884,6 @@ export class GlobalOffer implements OnInit{
         
         for(let key in values){
             let value = values[key];
-            console.log('key of formdata',typeof values,typeof values[key])
             if(typeof values[key] === 'object'){
                 formData.append('Offer['+key+']', '');
             }else{formData.append('Offer['+key+']', value);}

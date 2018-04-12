@@ -1,12 +1,6 @@
 <div class="page page-payments">
   <div class="page_header">
     <h1>Publishers</h1>
-    <!--<div class="data_set">-->
-      <!--<div class="selection-block_form_item">-->
-        <!--<app-select-box (pushOnSelected)="pushOnDate($event)" [(model)]="value" [values]="values" [option_value_var]="'id'" [option_text_var]="'title'"></app-select-box>-->
-      <!--</div>-->
-      <!--<app-calendar [(inner_custom)]="calendarService.custom" [_parent]="this" [start_day]="calendarService.start_day" [end_day]="calendarService.end_day"></app-calendar>-->
-    <!--</div>-->
   </div>
   <div class="page_info">
     <app-checkbox-table-select [_parent]="this" [attr]="'payment_status'"></app-checkbox-table-select>
@@ -96,7 +90,6 @@
               <td class="t6_8">{{popupChange.typeEncode(data.payment_status,'payment_status')}}<span class="page-table_prc"></span></td>
               <td class="t6_8">
                 <ul class="page-table_proffers">
-                  <!--<li><a (click)="popupInvoiceService.showInvoice()" class="proffers-invoice" title="Invoice"></a></li>-->
                   <li><a (click)="popupReportsService.showReportsPublisher(data.uuid)" class="proffers-correction"  title="Reports"></a></li>
                 </ul>
               </td>
@@ -136,4 +129,3 @@
 </div>
 <app-popup-payments-corrections [(hidden)]="PopupPaymentsCorrectionsService.hidden" ></app-popup-payments-corrections>
 <app-popup-reports [(hidden)]="popupReportsService.hidden" [list]="popupReportsService.list" [downloadCSV]="downloadCSV" [resendCSV]="resendCSV"></app-popup-reports>
-<!--[(name)]="popupInvoiceService.name" [(id)]="popupInvoiceService.id" [(information)]="popupInvoiceService.information"-->

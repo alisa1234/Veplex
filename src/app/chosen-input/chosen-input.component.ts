@@ -23,9 +23,7 @@ export class ChosenInputComponent implements AfterViewChecked,OnInit{
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.eRef.nativeElement.contains(event.target) || event.target == this.clicker) {
-        // console.log("chosen clicked inside");
     } else {
-        // console.log("chosen clicked outside");
       if(!this.hidden){
         this.Search(this.clicker.value);
       }
@@ -33,7 +31,6 @@ export class ChosenInputComponent implements AfterViewChecked,OnInit{
         
           this.isActive = false;
       }
-      console.log(this.clicker.value, this.selectElements);
        
       this.hidden = true;
     }
@@ -58,8 +55,6 @@ export class ChosenInputComponent implements AfterViewChecked,OnInit{
   }
 
   СallbackRes(res, value){
-      
-      console.log('ch inp',res)
       this.elements=res[value];
 
       let self = this;
@@ -69,7 +64,6 @@ export class ChosenInputComponent implements AfterViewChecked,OnInit{
   Search(value){
       this._parent.filters.searches_status(value,this._parent.urlGetList,this.selectElements).subscribe(
           res=> {
-              console.log('Search', res);
               let self = this;
               setTimeout(()=>{jQuery("#"+self.clicker.value + "_search").val(self.selectElements);jQuery('.chosen-class').trigger("chosen:updated");},0);
               this._parent.list = res;
@@ -93,8 +87,6 @@ export class ChosenInputComponent implements AfterViewChecked,OnInit{
       this.selectElements = [];
 
       this.selectElements = value;
-    
-      console.log('SelectedElements',this.selectElements);
   }
 
   constructor(public eRef: ElementRef, public checkboxTableService:CheckboxTableService) {
@@ -108,10 +100,6 @@ export class ChosenInputComponent implements AfterViewChecked,OnInit{
         });
     },0);
   }
-
-    ngAfterViewChecked(){
-
-    }
     ngOnInit(){
         this._parent.eventEmitter$.subscribe(item => this.onEvent(item));
     }
@@ -129,8 +117,6 @@ export class ChosenInputComponent implements AfterViewChecked,OnInit{
             }
         }
         this.isActive = this.selectElements.length > 0;
-        console.log('emit selected',this.selectElements);
-        console.log('emit selected length',this.selectElements.length);
     }
 
 }

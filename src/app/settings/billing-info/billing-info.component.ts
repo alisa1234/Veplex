@@ -107,8 +107,6 @@ export class BillingInfoComponent implements AfterContentInit,OnInit{
                           (err) => {
                               let error=err.json();
                               if(error.logged==false){
-
-                                  // window.location.replace(this.domain);
                                   this.router.navigate(['/']);
                                   let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                                   localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -150,8 +148,6 @@ export class BillingInfoComponent implements AfterContentInit,OnInit{
                           (err) => {
                               let error=err.json();
                               if(error.logged==false){
-
-                                  // window.location.replace(this.domain);
                                   this.router.navigate(['/']);
                                   let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                                   localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -239,8 +235,6 @@ export class BillingInfoComponent implements AfterContentInit,OnInit{
                               (err) => {
                                   let error=err.json();
                                   if(error.logged==false){
-
-                                      // window.location.replace(this.domain);
                                       this.router.navigate(['/']);
                                       let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                                       localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -257,7 +251,6 @@ export class BillingInfoComponent implements AfterContentInit,OnInit{
           }
   }
   getRadio(checked,field){
-  console.log(checked,field);
       if(this.globalLogin.role!='admin'){
           if(field=='paypal' ){
               this.paypal=checked;
@@ -388,8 +381,6 @@ if(this.globalLogin.role=='admin'){
         }
     }
 }
-    
-    // this.addOffer.render_offer_results=null;
 
     jQuery(".Error").remove();
     jQuery(".error").remove();
@@ -407,8 +398,6 @@ if(this.globalLogin.role=='admin'){
   }
 
   sendOk(){
-
-    // this.renderOffer.offerResult=undefined;
     this.router.navigate(['/offer/offer-list']);
 
   }

@@ -37,7 +37,6 @@ export class CpaOfferComponent extends GlobalOffer implements OnInit{
   private devices_values=[{'value':'null','name':'Device'},{'value':'0','name':'All'},{'value':'1','name':'Mobile'},{'value':'2','name':'Desktop'}];
   constructor(public router:Router,http: Http,domains: Domains, public _countrieService: CountriesService, public addOffer:AddOfferComponent,public renderOffer:RenderOffer, public checkboxTableService:CheckboxTableService, public initChosen:InitChosen, public globalLogin:GlobalLogin){
     super(router,http,domains,_countrieService,addOffer,renderOffer,initChosen,checkboxTableService,globalLogin);
-    // this.device_value=null;
 
     if(typeof this.addOffer.render_offer_results != 'undefined'){
       this.information=this.addOffer.render_offer_results.information;
@@ -45,31 +44,18 @@ export class CpaOfferComponent extends GlobalOffer implements OnInit{
       this.carriers=this.addOffer.render_offer_results.carriers;
       this.platforms=this.addOffer.render_offer_results.platforms;
       this.device_value=this.addOffer.render_offer_results.device;
-      console.log('inform bla'+this.information, typeof this.information)
-      // if(this.addOffer.render_offer_results.device==0){
-      //   this.device_value=0;
-      // }
-      // if(this.addOffer.render_offer_results.device==1){
-      //   this.device_value=1;
-      // }
-      // if(this.addOffer.render_offer_results.device==2){
-      //   this.device_value=2;
-      // }
       
     }
   }
   
   send(formData:FormData=new FormData()){
-    // this.device_value=jQuery("#device_value").val();
     let carriers=this.carriers;
     let platforms=this.platforms;
     let transaction_life=this.transaction_life;
     let information=this.information;
     let device_value=this.device_value;
-    console.log('inform bla'+this.information, typeof this.information, typeof information)
     formData.append("Offer[device][]",this.device_value);
     this.FormDataCreate(formData,{
-      // device:device_value,
       carriers:carriers,
       platforms:platforms,
       transaction_life:transaction_life,

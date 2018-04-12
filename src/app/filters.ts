@@ -47,9 +47,6 @@ export class Filters implements AfterViewInit{
                 e.stopPropagation();
             })
             if(e.target.className!='page-table_prc' && e.target.className!='search-table'){
-            
-                
-                //jQuery('#dialog_choose').hide();
             }
 
         })
@@ -99,7 +96,6 @@ searches(value:string,url:string){
         let logic = 'ilike';
         if(Array.isArray(status) && status.length > 0) {
             for (let i = 0; i < status.length; i++) {
-                console.log('creds2', status.length, status[i])
 
                 creds += "&filter[" + this.field_name + "][params][" + i + "][id]=" + status[i]
             }

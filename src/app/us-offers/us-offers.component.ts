@@ -103,16 +103,13 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
     public values=[{'id':'choose_action','title':'Choose action'},{'id':'today','title':'Today'},{'id':'yesterday','title':'Yesterday'},{'id':'this_w','title':'This week'},{'id':'last_w','title':'Last week'},{'id':'this_m','title':'This month'},{'id':'last_m','title':'Last month'},{'id':'this_y','title':'This year'},{'id':'last_y','title':'Last year'},{'id':'custom','title':'Custom'}]
 
     public eventEmitter$: EventEmitter<any>;
-    // public eventEmitter_publisher$: EventEmitter<any>;
     @ViewChild('popup') popup:PopupChange;
 
     constructor(http:Http, domains:Domains, public router:Router, public popupChange:PopupChange, public filters:Filters, public initChosen:InitChosen, public checkboxTableService:CheckboxTableService,public renderOffer:RenderOffer, public calendarService:CalendarService, public globalLogin:GlobalLogin) {
         this._http = http;
-        // this.url = domains.url;
         this.domain = domains.domain;
         this.csrf = domains.csrf;
         this.urlGetList = domains.urlGetAllUsoffers;
-        // this.categories=domains.categories;
         this.popupChange = popupChange;
         this.filters = filters;
         this.initChosen = initChosen;
@@ -134,7 +131,6 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
             .subscribe(
                 res=>result = res
             );
-        console.log('usoffers')
         this._http.get(this.domain + this.urlGetList)
             .map((res:Response) => {
                 return res.json();
@@ -143,11 +139,7 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
             .subscribe(
                 res=> {
                     this.list = res;
-                
-                    console.log(this.list)
                     this.checkboxTableService.Create(this.list);
-                 
-                    console.log(this.list);
                     this.eventEmitter$.emit(this.list.rows);
 
                     this.value=this.list.filterTime.type;
@@ -183,7 +175,6 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
                     if (typeof this.list.filterParams != 'undefined') {
                         this.eventEmitter$.emit(this.list.filterParams);
                     }
-                    // this.CreateCheckBox();
 
                     if (this.list.pagination.totalCount > 100) {
 
@@ -200,8 +191,6 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
                 (err) => {
                     let error = err.json();
                     if (error.logged == false) {
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -246,13 +235,10 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
             this.total_cr=this.list.total_count.cr;
             this.total_epv=this.list.total_count.epv;
             this.total_rpm=this.list.total_count.rpm;
-            console.log('filter')
         },
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -268,36 +254,11 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
 
 
         ngOnInit() {
-            // jQuery( ".datepicker" ).datepicker({
-            //     showOn: "button",
-            //     /*    buttonImage: "images/School%20Calendar.png",*/
-            //     buttonImageOnly: true,
-            //     buttonText: "Select date"
-            // });
-        // this.popupChange.ngOnInit();
-        //
-        // jQuery('.popup_link').css('display', 'none');
-
-        // this.JqueryStatusSubscribe();
     }
 
     ngAfterViewInit() {
-        // this.filters.ngAfterViewInit();
-        // this.popupChange.ngAfterViewInit();
 
     }
-    //
-    // getType() {
-    //     this.popupChange.getsType(this.list);
-    //
-    //     for (let i = 0; i < this.list.rows.length; i++) {
-    //         for (let y = 0; y < this.type.length; y++) {
-    //             if (this.list.rows[i].type == this.type[y].key) {
-    //                 this.list.rows[i].type = this.type[y].value;
-    //             }
-    //         }
-    //     }
-    // }
 
     sort(value:string) {
         this.filters.sorts(value, this.urlGetList)
@@ -309,8 +270,6 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
                 (err) => {
                     let error = err.json();
                     if (error.logged == false) {
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -338,12 +297,8 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
                 this.total_epv=this.list.total_count.epv;
                 this.total_rpm=this.list.total_count.rpm;
                 if (typeof this.list.filterParams != 'undefined') {
-
-                    // jQuery('button[value="' + value + '"]').addClass('active');
                     object.hidden_delete = false;
                 } else {
-
-                    // jQuery('button[value="' + value + '"]').removeClass('active')
                     object.hidden_delete = true;
                 }
                 object.hidden = true;
@@ -353,8 +308,6 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -388,8 +341,6 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -420,8 +371,6 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -459,8 +408,6 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -502,8 +449,6 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -530,8 +475,6 @@ export class UsOffersComponent implements OnInit,AfterViewInit {
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);

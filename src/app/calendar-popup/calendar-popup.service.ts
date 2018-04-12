@@ -43,33 +43,19 @@ export class CalendarPopupService{
         }
         this.start_day=this.mm+'/'+this.dd+'/'+this.yy;
         this.start_day2=this.mm+'/'+this.dd+'/'+this.yy;
-        // this.end_day=this.mm+'/'+this.dd+'/'+this.yy;
-        // this.end_day2=this.mm+'/'+this.dd+'/'+this.yy;
-       
-
     }
 
     showCalendar(){
-        console.log(this.start_day,this.end_day);
-
         this.custom=false;
-       
-
     }
 
     showCalendar2(){
-     
         this.custom2=false;
-
-
     }
     hideCalendar(){
         this.custom=true;
-
     }
     hideCalendar2(){
         this.custom2=true;
-
     }
-
 }

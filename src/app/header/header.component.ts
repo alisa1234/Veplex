@@ -45,38 +45,6 @@ export class HeaderComponent implements OnInit {
     this.urlLogOut = domains.urlLogOut;
 
     this._http = http;
-    // this.role=localStorage.getItem('role');
-    // this.name=localStorage.getItem('name');
-
-
-
-
-    // this.typeUser['publisher']=false;
-    // this.typeUser['admin']=false;
-    // this.typeUser['advertiser']=false;
- 
-    console.log('head',this.role)
-    //
-    // this.formComponent.eventEmitter$.subscribe(item => this.onEvent(item))
-    // if(typeof this.globalLogin.role == 'publisher'){
-    //   this.name=this.globalLogin.name;
-    //   this.role=this.globalLogin.role;
-    //   this.publisher=this.globalLogin.login;
-    // debugger;
-    // }
-    // if(typeof this.globalLogin.role !='undefined'){
-    // for(let key in this.typeUser){
-    //   this.typeUser[key]=false;
-    //   this.typeUser[this.globalLogin.role]=true;
-    //   this.name=this.globalLogin.name;
-    //   this.role=this.globalLogin.role;
-    //   this.result=this.typeUser[this.globalLogin.role];
-    //   debugger;
-    // }
-    // }
-    
-    
-    // console.log('header',this.name,this.role,this.formComponent.name,this.formComponent.role)
   }
   onEvent(item){
    
@@ -85,7 +53,6 @@ export class HeaderComponent implements OnInit {
    
   }
   logOut(){
-    console.log('logout')
     this._http.get(this.domain + this.urlLogOut)
         .map(this.extractData)
         .subscribe(

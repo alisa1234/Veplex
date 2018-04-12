@@ -22,9 +22,6 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
   urlGetList:string;
     getUnLock:string;
   list={rows:[],pagination:(<any>Object),sort:(<any>Object),filterParams:(<any>Object)};
-    // edit:boolean=true;
-    // lock:boolean=true;
-    // wait:boolean=true;
     id:number;
 
     isInfo:{[index:string]:boolean}={};
@@ -32,10 +29,6 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
     filter_model:string;
 
     not_found_result=false;
-    //
-    // public eventEmitter$: EventEmitter<any>;
-    // // public eventEmitter_publisher$: EventEmitter<any>;
-    // @ViewChild('popup') popup:PopupChange;
   constructor(public router:Router,http: Http,domains: Domains, public _countrieService: CountriesService,public filters:Filters,public popupChange:PopupChange,public renderOffer:RenderOffer,public popupInformationService:PopupInformationService,public statusService:StatusService, public popupScreensService:PopupScreensService, public globalLogin:GlobalLogin) {
     super(router,http,domains,_countrieService,filters,popupChange,statusService,globalLogin)
     this.urlGetList=domains.urlGetUsOfferStep_1 ;
@@ -90,12 +83,9 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
                     if (this.currentPage <= this.page_count) {
                         this.displaying = false;
                     }
-
-                    // this.getType();
                     if (typeof this.list.filterParams != 'undefined') {
                         this.eventEmitter$.emit(this.list.filterParams);
                     }
-                    // this.CreateCheckBox();
 
                     if (this.list.pagination.totalCount > 100) {
 
@@ -113,10 +103,7 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
-                    // let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb','[{"label":"Offers","params":{},"url":"/users/usoffer-list"}]');
                     localStorage.setItem('current_url','/users/usoffer-list');
                     this.globalLogin.serverTime=false;
@@ -129,17 +116,6 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
     
   ngOnInit() {
   }
-  // getType(){
-  //   this.popupChange.getsType(this.list);
-  //
-  //   for(let i=0;i<this.list.rows.length;i++) {
-  //     for (let y = 0; y < this.type.length; y++) {
-  //       if (this.list.rows[i].type == this.type[y].key) {
-  //         this.list.rows[i].type=this.type[y].value;
-  //       }
-  //     }
-  //   }
-  // }
     sort(value:string){
         this.filters.sorts(value,this.urlGetList)
             .subscribe(
@@ -147,8 +123,6 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -191,12 +165,8 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
                 }
 
                 if(typeof this.list.filterParams != 'undefined'){
-
-                    // jQuery('button[value="'+value+'"]').addClass('active');
                     object.hidden_delete=false;
                 }else{
-
-                    // jQuery('button[value="'+value+'"]').removeClass('active')
                     object.hidden_delete=true;
                 }
                 object.hidden=true;
@@ -206,8 +176,6 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -223,13 +191,11 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
         return false;
     }
     add(id){
-        console.log('dsac',id)
         this.renderOffer.addOffer(id);
         localStorage.setItem("offer_id",id);
        
     }
     clear(value:string,object){
-        console.log('clear')
         this.filters.clears(value,this.urlGetList).subscribe(
             res=>{
                 this.list=res;
@@ -260,15 +226,10 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
                 object.hidden_delete=true;
                 object.hidden=true;
                 object.isActive=false;
-                // object.search='';
-
-                // jQuery('button[value="'+value+'"]').removeClass('active')
             },
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -285,7 +246,6 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
         this.filters.nexts(this.urlGetList,this).subscribe(
             res=>{
                 this.list=res;
-                console.log('next',this.list);
                 this.display_from=this.list.pagination.pageSize*(this.list.pagination.page + 1)-(this.list.pagination.pageSize-1);
                 this.display_to=this.list.pagination.pageSize*(this.list.pagination.page + 1);
                 this.display_of=this.list.pagination.totalCount;
@@ -296,8 +256,6 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -335,8 +293,6 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -377,8 +333,6 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
             (err) => {
                 let error=err.json();
                 if(error.logged==false){
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb',current_breadcrumb);
@@ -397,8 +351,7 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
         }
     }
     getUnlock(offer_id){
-       
-       
+
         let senLock = "offer_id=" + offer_id + '&_csrf='+this.body.csrf;
         let headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -424,8 +377,6 @@ export class AddOfferStep1Component extends GlobalUsOffer implements OnInit {
                 (err) => {
                     let error=err.json();
                     if(error.logged==false){
-
-                        // window.location.replace(this.domain);
                         this.router.navigate(['/']);
                         let current_breadcrumb=localStorage.getItem('breadcramb_arr');
                         localStorage.setItem('current_breadcrumb',current_breadcrumb);

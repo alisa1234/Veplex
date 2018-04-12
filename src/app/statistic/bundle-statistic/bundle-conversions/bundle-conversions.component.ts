@@ -81,7 +81,6 @@ export class BundleConversionsComponent{
     tittle_name:string;
   constructor(http:Http, domains:Domains, public router:Router, public route:ActivatedRoute, public popupChange:PopupChange, public filters:Filters, public initChosen:InitChosen, public calendarService:CalendarService,public globalLogin:GlobalLogin,public renderStatistic:RenderStatistic) {
     this._http = http;
-    // this.url = domains.url;
     this.domain = domains.domain;
     this.csrf = domains.csrf;
     this.urlGetList = domains.urlGetBundleConversions;
@@ -121,8 +120,6 @@ export class BundleConversionsComponent{
                   this.calendarService.start_day = this.list.filterTime.start;
                   this.calendarService.end_day = this.list.filterTime.end;
                 }
-
-                // this.total_type= this.list.rows[0].total_type;
                 this.total_type = this.list.total_count.type;
                 this.total_raw = this.list.total_count.raw;
                 this.total_uniques = this.list.total_count.uniques;
@@ -191,8 +188,6 @@ export class BundleConversionsComponent{
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -212,11 +207,7 @@ export class BundleConversionsComponent{
           .subscribe(params => {
               console.log(params);
               this.tittle_id = params['id'];
-              // this.offer_id = params['id'];
-              // this.publisher_id = params['id'];
               this.renderStatistic.getBundleConversions(this.tittle_id);
-              // this.code = params['code'];
-              // this.userEmail = params['email'];
           });
   }
   pushOnDate(value) {
@@ -254,8 +245,6 @@ export class BundleConversionsComponent{
           (err) => {
               let error = err.json();
               if (error.logged == false) {
-
-                  // window.location.replace(this.domain);
                   this.router.navigate(['/']);
                   let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                   localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -280,8 +269,6 @@ export class BundleConversionsComponent{
             (err) => {
                 let error = err.json();
                 if (error.logged == false) {
-
-                    // window.location.replace(this.domain);
                     this.router.navigate(['/']);
                     let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                     localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -309,12 +296,8 @@ export class BundleConversionsComponent{
           this.total_cr=this.list.total_count.cr;
           this.total_epv=this.list.total_count.epv;
           if (typeof this.list.filterParams != 'undefined') {
-
-            // jQuery('button[value="' + value + '"]').addClass('active');
             object.hidden_delete = false;
           } else {
-
-            // jQuery('button[value="' + value + '"]').removeClass('active')
             object.hidden_delete = true;
           }
           object.hidden = true;
@@ -324,8 +307,6 @@ export class BundleConversionsComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -359,8 +340,6 @@ export class BundleConversionsComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -388,8 +367,6 @@ export class BundleConversionsComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -427,8 +404,6 @@ export class BundleConversionsComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -470,8 +445,6 @@ export class BundleConversionsComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
@@ -499,8 +472,6 @@ export class BundleConversionsComponent{
         (err) => {
             let error = err.json();
             if (error.logged == false) {
-
-                // window.location.replace(this.domain);
                 this.router.navigate(['/']);
                 let current_breadcrumb = localStorage.getItem('breadcramb_arr');
                 localStorage.setItem('current_breadcrumb', current_breadcrumb);
